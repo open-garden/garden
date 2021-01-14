@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GARDEN Documentation on en</title>
+    <link>https://ppk-keita-inoue.github.io/docs/en/</link>
+    <description>Recent content in GARDEN Documentation on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://ppk-keita-inoue.github.io/docs/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install Apache jena fuseki</title>
+      <link>https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/ajf/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/ajf/</guid>
+      <description>Download Apache Jena Fuseki from the official website.  Official site  Unzip the downloaded zip file to any location. The unzipped Apache Jena Fuseki will be placed. Double-click fuseki-server.bat to execute it. When executed, the command prompt will be launched. Visit Apache Jena Fuseki.  localhost:3030  Please do the following:  Select &amp;ldquo;manage datasets&amp;rdquo; select &amp;ldquo;add new dataset&amp;rdquo; Enter &amp;ldquo;garden&amp;rdquo; for the Dataset name Select &amp;ldquo;Persistent ( TDB2 )&amp;rdquo; of Dataset type Press create dataset  A dataset is created.</description>
+    </item>
+    
+  </channel>
+</rss>

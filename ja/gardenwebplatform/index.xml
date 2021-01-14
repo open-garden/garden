@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Garden Webplatform on ja</title>
+    <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/</link>
+    <description>Recent content in Garden Webplatform on ja</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JAVA HOMEの設定</title>
+      <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/javahome/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/javahome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tomcatの導入</title>
+      <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/tomcat/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/tomcat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PostgreSQLの導入</title>
+      <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/postgresql/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Apache Jena Fusekiの導入</title>
+      <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/</guid>
+      <description>Apache Jena Fusekiを公式サイトよりダウンロードします。  公式サイト   ダウンロードしたzipファイルを任意の場所で解凍します。 解凍したApache Jena Fusekiが配置されます。 fuseki-server.batをダブルクリックし実行します。 実行すると、コマンドプロンプトが起動されます。 Apache Jena Fusekiにアクセスします。  localhost:3030   以下の操作を行います。  manage datasetsを選択 add new datasetを選択 Dataset nameに「garden」と入力 Dataset typeの「Persistent(TDB2)」を選択 create datasetを押下   datasetが作成されます。 Apache Jena Fusekiの環境構築は以上になります。 </description>
+    </item>
+    
+    <item>
+      <title>ジョブの起動</title>
+      <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/job/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/job/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>アプリの起動</title>
+      <link>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/app/</link>
+      <pubDate>Thu, 07 Jan 2021 10:55:00 +0900</pubDate>
+      
+      <guid>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/app/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

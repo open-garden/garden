@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/javahome/</loc>
+    <lastmod>2021-01-07T10:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/</loc>
+    <lastmod>2021-01-07T10:03:13+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/tomcat/</loc>
+    <lastmod>2021-01-07T10:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/sample/</loc>
+    <lastmod>2021-01-07T10:03:13+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ppk-keita-inoue.github.io/docs/en/sample/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://ppk-keita-inoue.github.io/docs/ja/sample/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/postgresql/</loc>
+    <lastmod>2021-01-07T10:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/</loc>
+    <lastmod>2021-01-07T10:55:00+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/ajf/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/job/</loc>
+    <lastmod>2021-01-07T10:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/app/</loc>
+    <lastmod>2021-01-07T10:55:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/</loc>
+    <lastmod>2021-01-07T10:03:13+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ppk-keita-inoue.github.io/docs/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://ppk-keita-inoue.github.io/docs/ja/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ppk-keita-inoue.github.io/docs/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://ppk-keita-inoue.github.io/docs/ja/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://ppk-keita-inoue.github.io/docs/ja/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://ppk-keita-inoue.github.io/docs/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://ppk-keita-inoue.github.io/docs/ja/tags/"
+                />
+  </url>
+  
+</urlset>

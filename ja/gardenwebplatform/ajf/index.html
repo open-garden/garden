@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/docs/images/favicon.png" type="image/png">
+
+    <title>Apache Jena Fusekiの導入 :: ja</title>
+
+    
+    <link href="/docs/css/nucleus.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/fontawesome-all.min.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/hybrid.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/featherlight.min.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/perfect-scrollbar.min.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/auto-complete.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/atom-one-dark-reasonable.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/theme.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/hugo-theme.css?1610614716" rel="stylesheet">
+    
+    
+
+    <script src="/docs/js/jquery-3.3.1.min.js?1610614716"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/docs/ja/gardenwebplatform/ajf/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/docs/ja'>
+<img src="/docs/img/logo.png">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="検索...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/docs/js/jquery-3.3.1.min.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.stemmer.support.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/tinyseg.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.jp.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.multi.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/auto-complete.js?1610614716"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/ppk-keita-inoue.github.io\/docs\/ja";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/docs/js/search.js?1610614716"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs/ja/gardenwebplatform/" title="Garden Webplatform" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/docs/ja/gardenwebplatform/">
+          Garden Webplatform
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/ja/gardenwebplatform/javahome/" title="JAVA HOMEの設定" class="dd-item ">
+        <a href="/docs/ja/gardenwebplatform/javahome/">
+        JAVA HOMEの設定
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/ja/gardenwebplatform/tomcat/" title="Tomcatの導入" class="dd-item ">
+        <a href="/docs/ja/gardenwebplatform/tomcat/">
+        Tomcatの導入
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/ja/gardenwebplatform/postgresql/" title="PostgreSQLの導入" class="dd-item ">
+        <a href="/docs/ja/gardenwebplatform/postgresql/">
+        PostgreSQLの導入
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/ja/gardenwebplatform/ajf/" title="Apache Jena Fusekiの導入" class="dd-item active">
+        <a href="/docs/ja/gardenwebplatform/ajf/">
+        Apache Jena Fusekiの導入
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/ja/gardenwebplatform/job/" title="ジョブの起動" class="dd-item ">
+        <a href="/docs/ja/gardenwebplatform/job/">
+        ジョブの起動
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/ja/gardenwebplatform/app/" title="アプリの起動" class="dd-item ">
+        <a href="/docs/ja/gardenwebplatform/app/">
+        アプリの起動
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs/ja/sample/" title="Garden XXXXXXA" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/docs/ja/sample/">
+          Garden XXXXXXA
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/" selected>日本語</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="en" value="https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/ajf/">English</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small>© 2021</small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs/ja/'>GARDEN Documentation</a> > <a href='/docs/ja/gardenwebplatform/'>Garden Webplatform</a> > Apache Jena Fusekiの導入
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Apache Jena Fusekiの導入
+            </h1>
+          
+
+        
+
+
+<h4 id="apache-jena-fusekiを公式サイトよりダウンロードします">Apache Jena Fusekiを公式サイトよりダウンロードします。</h4>
+<ul>
+<li><a href="https://jena.apache.org/download/"> 公式サイト </a></li>
+</ul>
+<h4 id="ダウンロードしたzipファイルを任意の場所で解凍します">ダウンロードしたzipファイルを任意の場所で解凍します。</h4>
+<p><img src="/docs/img/ajf/ajf_21.png" alt="">
+<img src="/docs/img/ajf/ajf_22.png" alt=""></p>
+<h4 id="解凍したapache-jena-fusekiが配置されます">解凍したApache Jena Fusekiが配置されます。</h4>
+<p><img src="/docs/img/ajf/ajf_31.png" alt=""></p>
+<h4 id="fuseki-serverbatをダブルクリックし実行します">fuseki-server.batをダブルクリックし実行します。</h4>
+<p><img src="/docs/img/ajf/ajf_41.png" alt=""></p>
+<h4 id="実行するとコマンドプロンプトが起動されます">実行すると、コマンドプロンプトが起動されます。</h4>
+<p><img src="/docs/img/ajf/ajf_42.png" alt=""></p>
+<h4 id="apache-jena-fusekiにアクセスします">Apache Jena Fusekiにアクセスします。</h4>
+<ul>
+<li><a href="http://localhost:3030/">localhost:3030</a>
+<img src="/docs/img/ajf/ajf_51.png" alt=""></li>
+</ul>
+<h4 id="以下の操作を行います">以下の操作を行います。</h4>
+<ol>
+<li>manage datasetsを選択</li>
+<li>add new datasetを選択</li>
+<li>Dataset nameに「garden」と入力</li>
+<li>Dataset typeの「Persistent(TDB2)」を選択</li>
+<li>create datasetを押下
+<img src="/docs/img/ajf/ajf_61.png" alt=""></li>
+</ol>
+<h4 id="datasetが作成されます">datasetが作成されます。</h4>
+<p><img src="/docs/img/ajf/ajf_71.png" alt=""></p>
+<h4 id="apache-jena-fusekiの環境構築は以上になります">Apache Jena Fusekiの環境構築は以上になります。</h4>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/docs/ja/gardenwebplatform/postgresql/" title="PostgreSQLの導入"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/docs/ja/gardenwebplatform/job/" title="ジョブの起動" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/docs/js/clipboard.min.js?1610614716"></script>
+    <script src="/docs/js/perfect-scrollbar.min.js?1610614716"></script>
+    <script src="/docs/js/perfect-scrollbar.jquery.min.js?1610614716"></script>
+    <script src="/docs/js/jquery.sticky.js?1610614716"></script>
+    <script src="/docs/js/featherlight.min.js?1610614716"></script>
+    <script src="/docs/js/highlight.pack.js?1610614716"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/docs/js/modernizr.custom-3.6.0.js?1610614716"></script>
+    <script src="/docs/js/learn.js?1610614716"></script>
+    <script src="/docs/js/hugo-learn.js?1610614716"></script>
+
+    <link href="/docs/mermaid/mermaid.css?1610614716" rel="stylesheet" />
+    <script src="/docs/mermaid/mermaid.js?1610614716"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

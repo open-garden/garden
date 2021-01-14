@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/docs/images/favicon.png" type="image/png">
+
+    <title>Install Apache jena fuseki :: en</title>
+
+    
+    <link href="/docs/css/nucleus.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/fontawesome-all.min.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/hybrid.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/featherlight.min.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/perfect-scrollbar.min.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/auto-complete.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/atom-one-dark-reasonable.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/theme.css?1610614716" rel="stylesheet">
+    <link href="/docs/css/hugo-theme.css?1610614716" rel="stylesheet">
+    
+    
+
+    <script src="/docs/js/jquery-3.3.1.min.js?1610614716"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/docs/en/gardenwebplatform/ajf/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/docs/en'>
+<img src="/docs/img/logo.png">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/docs/js/jquery-3.3.1.min.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.stemmer.support.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/tinyseg.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.jp.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/lunr.multi.js?1610614716"></script>
+<script type="text/javascript" src="/docs/js/auto-complete.js?1610614716"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/ppk-keita-inoue.github.io\/docs\/en";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/docs/js/search.js?1610614716"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs/en/gardenwebplatform/" title="Garden Webplatform" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/docs/en/gardenwebplatform/">
+          Garden Webplatform
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/en/gardenwebplatform/ajf/" title="Install Apache jena fuseki" class="dd-item active">
+        <a href="/docs/en/gardenwebplatform/ajf/">
+        Install Apache jena fuseki
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/docs/en/sample/" title="Garden XXXXXXA" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/docs/en/sample/">
+          Garden XXXXXXA
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/">日本語</option>
+                    
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="en" value="https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/ajf/" selected>English</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small>© 2021</small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs/en/'>GARDEN Documentation</a> > <a href='/docs/en/gardenwebplatform/'>Garden Webplatform</a> > Install Apache jena fuseki
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Install Apache jena fuseki
+            </h1>
+          
+
+        
+
+
+<h4 id="download-apache-jena-fuseki-from-the-official-website">Download Apache Jena Fuseki from the official website.</h4>
+<ul>
+<li><a href="https://jena.apache.org/download/">Official site</a></li>
+</ul>
+<h4 id="unzip-the-downloaded-zip-file-to-any-location">Unzip the downloaded zip file to any location.</h4>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="the-unzipped-apache-jena-fuseki-will-be-placed">The unzipped Apache Jena Fuseki will be placed.</h4>
+<!-- raw HTML omitted -->
+<h4 id="double-click-fuseki-serverbat-to-execute-it">Double-click fuseki-server.bat to execute it.</h4>
+<!-- raw HTML omitted -->
+<h4 id="when-executed-the-command-prompt-will-be-launched">When executed, the command prompt will be launched.</h4>
+<!-- raw HTML omitted -->
+<h4 id="visit-apache-jena-fuseki">Visit Apache Jena Fuseki.</h4>
+<ul>
+<li><a href="http://localhost:3030/">localhost:3030</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h4 id="please-do-the-following">Please do the following:</h4>
+<ol>
+<li>Select &ldquo;manage datasets&rdquo;</li>
+<li>select &ldquo;add new dataset&rdquo;</li>
+<li>Enter &ldquo;garden&rdquo; for the Dataset name</li>
+<li>Select &ldquo;Persistent ( TDB2 )&rdquo; of Dataset type</li>
+<li>Press create dataset</li>
+</ol>
+<!-- raw HTML omitted -->
+<h4 id="a-dataset-is-created">A dataset is created.</h4>
+<!-- raw HTML omitted -->
+<h4 id="thats-all-for-building-the-environment-of-apache-jena-fuseki">That&rsquo;s all for building the environment of Apache Jena Fuseki.</h4>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/docs/en/gardenwebplatform/" title="Garden Webplatform"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/docs/en/sample/" title="Garden XXXXXXA" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/docs/js/clipboard.min.js?1610614716"></script>
+    <script src="/docs/js/perfect-scrollbar.min.js?1610614716"></script>
+    <script src="/docs/js/perfect-scrollbar.jquery.min.js?1610614716"></script>
+    <script src="/docs/js/jquery.sticky.js?1610614716"></script>
+    <script src="/docs/js/featherlight.min.js?1610614716"></script>
+    <script src="/docs/js/highlight.pack.js?1610614716"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/docs/js/modernizr.custom-3.6.0.js?1610614716"></script>
+    <script src="/docs/js/learn.js?1610614716"></script>
+    <script src="/docs/js/hugo-learn.js?1610614716"></script>
+
+    <link href="/docs/mermaid/mermaid.css?1610614716" rel="stylesheet" />
+    <script src="/docs/mermaid/mermaid.js?1610614716"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

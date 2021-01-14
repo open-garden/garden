@@ -1,0 +1,78 @@
+[
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/javahome/",
+	"title": "JAVA HOMEの設定",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/",
+	"title": "Garden Webplatform",
+	"tags": [],
+	"description": "",
+	"content": "導入手順 Garden Webplatformを導入する手順を説明します。\n 新規に導入する場合 導入済みの場合  新規に導入する場合 Garden Webplatformを新規に導入する場合の手順は以下の通りです。\n  JAVA HOMEを設定する\n  Tomcatをインストールする\n  PostgreSQLをインストールする\n  Apache Jena Fusekiをインストールする\n  ジョブを起動する\n  アプリを起動する\n  導入済みの場合 Garden Webplatformを既に導入されている場合は、以下の手順で起動できます。\n  ジョブを起動する\n  アプリを起動する\n  "
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/tomcat/",
+	"title": "Tomcatの導入",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/sample/",
+	"title": "Garden XXXXXXA",
+	"tags": [],
+	"description": "",
+	"content": "ああああああ いいいいいい\n"
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/postgresql/",
+	"title": "PostgreSQLの導入",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/ajf/",
+	"title": "Apache Jena Fusekiの導入",
+	"tags": [],
+	"description": "",
+	"content": "Apache Jena Fusekiを公式サイトよりダウンロードします。  公式サイト   ダウンロードしたzipファイルを任意の場所で解凍します。 解凍したApache Jena Fusekiが配置されます。 fuseki-server.batをダブルクリックし実行します。 実行すると、コマンドプロンプトが起動されます。 Apache Jena Fusekiにアクセスします。  localhost:3030   以下の操作を行います。  manage datasetsを選択 add new datasetを選択 Dataset nameに「garden」と入力 Dataset typeの「Persistent(TDB2)」を選択 create datasetを押下   datasetが作成されます。 Apache Jena Fusekiの環境構築は以上になります。 "
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/job/",
+	"title": "ジョブの起動",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/gardenwebplatform/app/",
+	"title": "アプリの起動",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/",
+	"title": "GARDEN Documentation",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN Documentation GARDENドキュメントへようこそ。\nこのホームページには、ドキュメントのさまざまなセクションの簡単な説明が記載された索引が含まれています。\nお好きな順番でお読みください。\n Garden Webplatform Garden XXXXXXA  "
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://ppk-keita-inoue.github.io/docs/ja/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
