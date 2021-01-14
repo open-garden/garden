@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Garden XXXXXXA on ja</title>
-    <link>https://ppk-keita-inoue.github.io/docs/ja/sample/</link>
+    <link>https://open-garden.github.io/garden/ja/sample/</link>
     <description>Recent content in Garden XXXXXXA on ja</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>js</language>
-    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://ppk-keita-inoue.github.io/docs/ja/sample/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/sample/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

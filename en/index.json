@@ -1,41 +1,41 @@
 [
 {
-	"uri": "https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/ajf/",
+	"uri": "https://open-garden.github.io/garden/en/gardenwebplatform/ajf/",
 	"title": "Install Apache jena fuseki",
 	"tags": [],
 	"description": "",
 	"content": "Download Apache Jena Fuseki from the official website.  Official site  Unzip the downloaded zip file to any location. The unzipped Apache Jena Fuseki will be placed. Double-click fuseki-server.bat to execute it. When executed, the command prompt will be launched. Visit Apache Jena Fuseki.  localhost:3030  Please do the following:  Select \u0026ldquo;manage datasets\u0026rdquo; select \u0026ldquo;add new dataset\u0026rdquo; Enter \u0026ldquo;garden\u0026rdquo; for the Dataset name Select \u0026ldquo;Persistent ( TDB2 )\u0026rdquo; of Dataset type Press create dataset  A dataset is created. That\u0026rsquo;s all for building the environment of Apache Jena Fuseki. "
 },
 {
-	"uri": "https://ppk-keita-inoue.github.io/docs/en/gardenwebplatform/",
+	"uri": "https://open-garden.github.io/garden/en/gardenwebplatform/",
 	"title": "Garden Webplatform",
 	"tags": [],
 	"description": "",
 	"content": "aaaaaa bbbbbb\n"
 },
 {
-	"uri": "https://ppk-keita-inoue.github.io/docs/en/sample/",
+	"uri": "https://open-garden.github.io/garden/en/sample/",
 	"title": "Garden XXXXXXA",
 	"tags": [],
 	"description": "",
 	"content": "aaaaaa bbbbbb\n"
 },
 {
-	"uri": "https://ppk-keita-inoue.github.io/docs/en/",
+	"uri": "https://open-garden.github.io/garden/en/",
 	"title": "GARDEN Documentation",
 	"tags": [],
 	"description": "",
 	"content": "GARDEN Documentation Welcome to the GARDEN documentation.\nThis home page contains an index with a brief description of the different sections in the documentation.\nFeel free to read in whatever order preferred.\n Garden Webplatform Garden XXXXXXA  "
 },
 {
-	"uri": "https://ppk-keita-inoue.github.io/docs/en/categories/",
+	"uri": "https://open-garden.github.io/garden/en/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://ppk-keita-inoue.github.io/docs/en/tags/",
+	"uri": "https://open-garden.github.io/garden/en/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
