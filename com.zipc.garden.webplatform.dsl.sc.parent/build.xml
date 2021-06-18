@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="com.zipc.garden.webplatform.dsl.sc" default="" basedir=".">
+	
+	<condition property="isWindows">
+	    <os family="windows" />
+	</condition>
+
+	<condition property="isUnix">
+	    <os family="unix" />
+	</condition>
+
+	<target name="build-project-war" depends="mvn-war_windows, mvn-war_unix"/>
+
+	<target name="build-project-jar" depends="mvn-jar_windows, mvn-jar_unix"/>
+
+	<target name="mvn-war_windows" if="isWindows">
+	    <exec dir="." executable="cmd">
+	        <arg line="/c mvn clean install -P webapp" />
+	    </exec>
+	</target>
+
+	<target name="mvn-war_unix" if="isUnix">
+	    <exec dir="." executable="sh">
+	        <arg line="-c 'mvn clean install -P webapp'" />
+	    </exec>
+	</target>
+
+	<target name="mvn-jar_windows" if="isWindows">
+	    <exec dir="." executable="cmd">
+	        <arg line="/c mvn clean install -P fatjar" />
+	    </exec>
+	</target>
+
+	<target name="mvn-jar_unix" if="isUnix">
+	    <exec dir="." executable="sh">
+	        <arg line="-c 'mvn clean install -P fatjar'" />
+	    </exec>
+	</target>
+	
+</project>

@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--                                                               -->
+    <!-- Consider inlining CSS to reduce the number of requested files -->
+    <!--                                                               -->
+    <link type="text/css" rel="stylesheet" href="Zipc_Webplatform.css">
+    <link type="text/css" rel="stylesheet" href="Zipc_Webplatform_customstyle.css">
+	<link rel="stylesheet" type="text/css" href="zipc_webplatform/js/xtext/xtext-ace.css"/>
+	<link rel="stylesheet" type="text/css" href="zipc_webplatform/js/xtext/xtext-style.css"/>
+
+    <!--                                           -->
+    <!-- Any title is fine                         -->
+    <!--                                           -->
+    <title>Web Application Starter Project</title>
+    
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    <script type="text/javascript" language="javascript" src="zipc_webplatform/zipc_webplatform.nocache.js"></script>
+    <script src="zipc_webplatform/js/ace/ace.js">       </script>
+    <script src="zipc_webplatform/js/ace/ext-language_tools.js">       </script>
+    <script> var isomorphicDir = "zipc_webplatform/sc/" </script>
+    <script src="zipc_webplatform/sc/modules/ISC_Core.js">          </script>
+    <script src="zipc_webplatform/sc/modules/ISC_Foundation.js">    </script>
+    <script src="zipc_webplatform/sc/modules/ISC_Containers.js">    </script>
+    <script src="zipc_webplatform/sc/modules/ISC_Grids.js">         </script>
+    <script src="zipc_webplatform/sc/modules/ISC_Forms.js">         </script>
+    <script src="zipc_webplatform/sc/modules/ISC_RichTextEditor.js"></script>
+    <script src="zipc_webplatform/sc/modules/ISC_Calendar.js">      </script>
+    <script src="zipc_webplatform/sc/modules/ISC_DataBinding.js">   </script>
+    <script src="zipc_webplatform/sc/modules/ISC_Drawing.js">       </script>
+    
+    <!--                                                      -->
+    <!-- Loads JavaScript modules of Xtext web integration.   -->
+    <!--                                                      -->
+    <script src="zipc_webplatform/js/webjars/jquery/2.2.4/jquery.js">   </script>
+    <script src="zipc_webplatform/js/xtext/xtext-ace.js">               </script>
+    <script src="zipc_webplatform/js/xtext/resource/mode-dsl.js">       </script>
+    <script src="zipc_webplatform/js/viz/viz.js">               </script>
+    <script src="zipc_webplatform/js/viz/full.render.js">       </script>
+    <script src="zipc_webplatform/js/svg-pan-zoom/svg-pan-zoom.min.js">       </script>
+    
+    <!--                                                      -->
+    <!-- Loads JavaScript modules of VueJs integration.       -->
+    <!--                                                      -->
+    <link type="text/css" rel="stylesheet" href="zipc_webplatform/js/vue/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="zipc_webplatform/js/vue/css/bootstrap-vue.min.css" />
+    <link rel="stylesheet" type="text/css" href="zipc_webplatform/js/jquery/css/theme.blue.css">
+    <link rel="stylesheet" type="text/css" href="zipc_webplatform/js/vue/css/theme.custom.css">
+    <script src="zipc_webplatform/js/jquery/jquery.tablesorter.js"> </script>
+    <script src="zipc_webplatform/js/jquery/widget-resizable.js">   </script>
+    <script src="zipc_webplatform/js/vue/vue.js">                   </script>
+    <script src="zipc_webplatform/js/vue/bootstrap-vue.min.js">     </script>
+    <script src="zipc_webplatform/js/vue/components/vue-bptable.js"></script>
+    
+    <script src="zipc_webplatform/js/common/file-util.js">         </script>
+    
+	<script>
+	    var currentSkin = "Tahoe";
+	    var cscDatas = new Map();
+	</script>
+	<script type="text/javascript">
+	   document.write("<"+"script src=zipc_webplatform/sc/skins/" + currentSkin + "/load_skin.js?isc_version=10.0.js><"+"/script>");
+	</script>
+	<script type="text/javascript">
+		document.onselectstart = function(){ return false; };
+	</script>
+	<script>
+	    isc.Canvas.addProperties({
+		showCustomScrollbars:false
+		})
+	</script>
+	
+  </head>
+
+  <!--                                           -->
+  <!-- The body can have arbitrary html, or      -->
+  <!-- you can leave the body empty if you want  -->
+  <!-- to create a completely dynamic UI.        -->
+  <!--                                           -->
+  <body>
+
+    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+  </body>
+</html>

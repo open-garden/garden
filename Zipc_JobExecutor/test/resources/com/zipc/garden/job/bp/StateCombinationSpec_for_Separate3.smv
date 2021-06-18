@@ -1,0 +1,6 @@
+-- State Combination
+SPEC !EF(State_1 = 2 & State_2 = 3 & State_3 = 1)
+SPEC !EF(State_1 = 2 & State_2 = 3 & State_3 = 2)
+SPEC !EF(State_1 = 2 & State_2 = 4 & State_3 = 0)
+SPEC !EF(State_1 = 2 & State_2 = 4 & State_3 = 1)
+SPEC !EF(State_1 = 2 & State_2 = 4 & State_3 = 2)

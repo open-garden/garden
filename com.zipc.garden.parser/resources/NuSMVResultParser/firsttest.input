@@ -1,0 +1,23 @@
+*** This is NuSMV 2.6.0 (compiled on Wed Oct 14 15:32:58 2015)
+
+-- specification !(EF (lc_state = no_lc & other1_position = left))  is false
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    lc_req = none
+    other1_position = out
+  -> State: 1.2 <-
+    other1_position = left
+-- specification !(EF (lc_state = no_lc & other1_position = out))  is true
+-- specification !(EF (lc_state = no_lc & other1_position = out))  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 2.1 <-
+    lc_req = none
+    other1_position = out
+    other2_position = out
+    ego_position_state = center
+    ego_moves_state = lane_keeping
+    lc_state = no_lc
+    lc_state_prev = no_lc

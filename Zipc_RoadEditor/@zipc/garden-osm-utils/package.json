@@ -1,0 +1,15 @@
+{
+  "name": "@zipc/garden-osm-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc --build $EXTRA_TSC_ARGS"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "three": "^0.116.0"
+  }
+}

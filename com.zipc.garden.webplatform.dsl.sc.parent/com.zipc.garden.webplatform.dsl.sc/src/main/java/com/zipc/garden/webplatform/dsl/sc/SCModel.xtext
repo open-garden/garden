@@ -1,0 +1,260 @@
+grammar com.zipc.garden.webplatform.dsl.sc.SCModel with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate sCModel "http://www.zipc.com/garden/webplatform/dsl/sc/SCModel"
+
+SCRoot:
+	{SCRoot}
+	(scenarios+=Scenario)*;
+
+Scenario:
+	'Scenario' id=ID '{' (
+		('direction' ':' direction=ScenarioDirection)?
+		& (roads+=Road)*
+		& (egoCar=EgoCar)?
+		& (objects+=Object)*
+		& (trajectories+=Trajectory)*
+		& (model=Model)?
+		& (range+=Range)*
+		& (envObjects+=EnvObject)*
+		& (envObjectDefs+=EnvObjectDef)*
+		& (junctions+=Junction)*
+		& (environment=Environment)?
+	) '}';
+
+AbstractElement:
+	ConnectableElement | Actor | Model | Range | EnvObject;
+
+ConnectableElement:
+	Road | Lane | Junction;
+
+Road:
+	'Road' id=ID '{' (
+		( priorityRoad?='priorityRoad' )? 
+		&( point=Point )?
+		&('type' ':' type=RoadType)?
+		&( ('length' ':' length=INT)
+		( 'height' ':' height=DoubleObject
+			'ramp_angle' ':' rampAngle=DoubleObject )?
+		(	'connection' ':' connection=[ConnectableElement|ID]
+			(connectionType=ConnectionType)? )?
+		( ('radius' ':' radius=DoubleObject)
+		    | ( 'start_radius' ':' start_radius=DoubleObject
+			    'end_radius' ':' end_radius=DoubleObject ) )? )
+		& (lanes+=Lane)*
+	) '}';
+
+Lane:
+	'Lane' id=ID '{' (
+		('type' ':' type=LaneType)?
+		& ('position' ':' position=LanePosition)?
+		& ('width' ':' width=DoubleObject)?
+	) '}';
+
+Actor:
+	EgoCar | Object;
+
+EgoCar:
+	{EgoCar}
+	'EgoCar' '{' (
+		('model' ':' model=[ModelEntity|ID])?
+		& (routes+=AbstractRoutes)*
+	) '}';
+
+Object:
+	'Object' id=ID '{' (
+		('model' ':' model=[ModelEntity|ID])?
+		& (routes+=AbstractRoutes)*
+	) '}';
+
+Trajectory:
+	'Trajectory' id=ID  '{' (
+		(routes+=WayPoint)*
+		('mode' ':' mode=WayPoint)?
+		('average' ':' average=WayPoint)?
+		('edge' ':' edge=WayPoint)?
+	) '}';
+
+AbstractRoutes:
+	Routes | WayPoint;
+
+Routes:
+	{Routes}
+	'Routes' '{'
+		('accel' ':' accel=[Range|RangeID])?
+		(entities+=RoutesEntity)*
+	'}';
+
+WayPoint: 
+	{WayPoint}
+	'WayPoint' '{'
+		('accel' ':' accel=[Range|RangeID])?
+		(points+=Point)*
+	'}'
+;
+
+RoutesEntity:
+	Start | Mid | Goal;
+
+Start:
+	{Start}
+	'Start' '{' (
+		('lane'             ':' lane=[ConnectableElement|ID])?
+		& ('shift'            ':' shift=[Range|RangeID])?
+		& ('lanechange_start' ':' lanechange_start=IntegerObject)?
+		& ('lanechange_end'   ':' lanechange_end=IntegerObject)?
+		& ('velocity'         ':' velocity=[Range|RangeID])?
+	) '}';
+
+Mid:
+	{Mid}
+	'Mid' '{' (
+		('lane'             ':' lane=[ConnectableElement|ID])?
+		& ('lanechange_start' ':' lanechange_start=IntegerObject)?
+		& ('lanechange_end'   ':' lanechange_end=IntegerObject)?
+		& ('velocity'         ':' velocity=[Range|RangeID])?
+	) '}';
+
+Goal:
+	{Goal}
+	'Goal' '{' (
+		('lane'             ':' lane=[ConnectableElement|ID])?
+		& ('shift'            ':' shift=[Range|RangeID])?
+		& ('lanechange_start' ':' lanechange_start=IntegerObject)?
+		& ('lanechange_end'   ':' lanechange_end=IntegerObject)?
+		& ('velocity'         ':' velocity=[Range|RangeID])?
+	) '}';
+
+Model:
+	{Model}
+	'Model' '{'
+		(elements+=ModelEntity)*
+	'}';
+
+ModelEntity:
+	Car | Bike;
+
+Car:
+	'Car' id=ID '{' (
+		('width' ':' width=DoubleObject)?
+		& ('height' ':' height=DoubleObject)?
+		& ('length' ':' length=DoubleObject)?
+		& ('wheelbase' ':' wheelbase=DoubleObject)?
+	) '}';
+
+Bike:
+	'Bike' id=ID '{' (
+		('width' ':' width=DoubleObject)?
+		& ('height' ':' height=DoubleObject)?
+		& ('length' ':' length=DoubleObject)?
+		& ('wheelbase' ':' wheelbase=DoubleObject)?
+	) '}';
+
+Range:
+	'Range' id=ID '{' (
+		('min'     ':' min=DoubleObject)?
+		& ('max'     ':' max=DoubleObject)?
+		& ('average' ':' average=DoubleObject)?
+		& ('mode'    ':' mode=DoubleObject)?
+		& ('median'  ':' median=DoubleObject)?
+		& ('value'   ':' ( 
+			(value+=DoubleObject)
+			| ('[' (value+=DoubleObject (',' value+=DoubleObject )*)? ']' )
+		) )?
+	) '}';
+
+Environment:
+	{Environment}
+	'Environment' '{' (
+		('time_of_day'     ':' time_of_day=STRING)?
+		& ('light_intensity' ':' light_intensity=FloatObject)?
+		& ('height_angle'    ':' height_angle=FloatObject)?
+		& ('cloud_density'   ':' cloud_density=FloatObject)?
+		& ('rain_density'    ':' rain_density=FloatObject)?
+		& ('fog_density'     ':' fog_density=FloatObject)?
+		& ('snow_density'    ':' snow_density=FloatObject)?
+	) '}';
+
+Point:
+	{Point}
+	'Point' '{' (
+		('x' ':' x=DOUBLE)?
+		('y' ':' y=DOUBLE)?
+		('z' ':' z=DOUBLE)?
+		('roll' ':' roll=DOUBLE)?
+		('yaw' ':' yaw=DOUBLE)?
+		('pitch' ':' pitch=DOUBLE)?
+	) '}';
+
+EnvObject:
+	{EnvObject}
+	'EnvObject' '{' (
+		('type' ':' type=(ENV_OBJECT_TYPE | ID))?
+		('width' ':' width=DoubleObject)?
+		('height' ':' height=DoubleObject)?
+		('road' ':' road=[Road|ID])?
+		('lane' ':' lane=[Lane|ID])?
+		(points+=Point)*
+	) '}';
+
+EnvObjectDef:
+	{EnvObjectDef}
+	'EnvObjectDef' '{'
+		(defTypes+=ID)*
+	'}';
+
+Junction:
+	{Junction}
+	'Junction' id=ID '{'
+		entries+=JunctionEntry*
+	'}';
+
+JunctionEntry:
+	connection=[Road|ID] '<' connectionType=ConnectionType '>';
+
+/* Primitive Data Types */
+
+DOUBLE returns ecore::EDouble:
+	'-'? INT ('.' INT)?;
+
+IntegerObject returns ecore::EIntegerObject hidden():
+	'-'? INT;
+
+FloatObject returns ecore::EFloatObject hidden():
+	DOUBLE;
+
+DoubleObject returns ecore::EDoubleObject hidden():
+	DOUBLE;
+
+RangeID returns ecore::EString:
+	DOUBLE | ID;
+
+/* Enum */
+enum ScenarioDirection:
+	left='left' | right='right';
+
+enum RoadType:
+	straight='straight' | circular='circular'  | clothoid_in='clothoid_in'  | clothoid_out='clothoid_out' | clothoid='clothoid' | cubic_left='cubic_left' | cubic_right='cubic_right';
+
+enum ConnectionType:
+	successor='successor' | predecessor='predecessor';
+
+enum LanePosition:
+	center='center' | left='left' | right='right';
+
+enum LaneType:
+	driving='driving' | center='center' | border='border' | sidewalk='sidewalk';
+
+terminal ENV_OBJECT_TYPE:
+	// Geometry
+	'triangle' | 'cube' | 'round' |
+	// Road markings
+	'crosswalk' | 'stopline' | 'arrow_straight' | 'arrow_right' | 'arrow_left' |
+	// Traffic Objects
+	'traffic_light' | 'no_parking' | 'speed_limit_40';
+
+/* Terminal */
+@Override
+terminal ID:
+	('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '-' | '_' | '0'..'9')*;

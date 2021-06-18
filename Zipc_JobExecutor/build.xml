@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project Zipc_JobExecutor with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="." />
+    <property name="dir.jarfile" value="." />
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <property name="lib-dir" value="lib"/>
+
+    <!-- Configure path to GWT SDK -->
+    <condition property="gwt.sdk" value="C:\Tools\GWT\gwt-2.9.0" else="/home/garden-user/garden/gwt-2.9.0">
+        <os family="windows" />
+    </condition>
+
+    <!-- Configure path to Zipc Projects -->
+    <property name="zipc.fsmsimulator" location="../Zipc_FsmSimulator" />
+    <property name="zipc.webplatform" location="../Zipc_Webplatform" />
+
+    <path id="Zipc_JobExecutor.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="${zipc.fsmsimulator}/bin"/>
+        <pathelement location="${zipc.webplatform}/war/WEB-INF/classes"/>
+        <fileset dir="${lib-dir}" includes="**/*.jar"/>
+        <fileset dir="${zipc.fsmsimulator}/lib" includes="**/*.jar"/>
+        <fileset dir="${zipc.webplatform}/lib" includes="**/*.jar"/>
+        <fileset dir="${gwt.sdk}" includes="gwt-dev.jar" />
+        <fileset dir="${gwt.sdk}" includes="gwt-user.jar" />
+    </path>
+
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target depends="init" name="build-project">
+        <javac encoding="utf-8" debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Zipc_JobExecutor.classpath"/>
+        </javac>
+    </target>
+
+    <target name="create_run_jar" depends="build-project">
+        <jar destfile="${dir.jarfile}/Zipc_JobExecutor.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+                <attribute name="Rsrc-Main-Class" value="com.zipc.garden.job.JobExecutor" />
+                <attribute name="Class-Path" value="." />
+                <attribute name="Rsrc-Class-Path" value="./ Zipc_Xtext_SC.jar Zipc_Dao.jar Zipc_Model.jar Zipc_Parser.jar javax.persistence-api-2.2.jar hibernate-core-5.4.3.Final.jar hibernate-commons-annotations-5.1.0.Final.jar jena-core-3.11.0.jar jboss-logging-3.3.2.Final.jar jboss-transaction-api_1.2_spec-1.1.1.Final.jar dom4j-2.1.1.jar byte-buddy-1.9.10.jar classmate-1.3.4.jar antlr-2.7.7.jar postgresql-42.2.2.jar slf4j-api-1.6.1.jar jena-arq-3.11.0.jar jena-base-3.11.0.jar jena-iri-3.11.0.jar jena-shaded-guava-3.11.0.jar libthrift-0.12.0.jar commons-compress-1.18.jar jena-rdfconnection-3.13.1.jar gwt-dev.jar gwt-user.jar" />
+            </manifest>
+
+            <fileset dir="${dir.buildfile}/bin" />
+            <fileset dir="${zipc.webplatform}/war/WEB-INF/classes" />
+            <fileset dir="${zipc.fsmsimulator}/bin" />
+
+            <zipfileset src="jar-in-jar-loader.zip" />
+            <zipfileset dir="${dir.buildfile}/lib" includes="Zipc_Xtext_SC.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib" includes="Zipc_Dao.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib" includes="Zipc_Model.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib" includes="Zipc_Parser.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="javax.persistence-api-2.2.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="hibernate-core-5.4.3.Final.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="hibernate-commons-annotations-5.1.0.Final.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="jboss-logging-3.3.2.Final.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="jboss-transaction-api_1.2_spec-1.1.1.Final.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="dom4j-2.1.1.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="byte-buddy-1.9.10.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="classmate-1.3.4.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/required" includes="antlr-2.7.7.jar" />
+            
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/spatial" includes="postgresql-42.2.2.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/hibernate/spatial" includes="slf4j-api-1.6.1.jar" />
+            
+            <zipfileset dir="${zipc.webplatform}/lib/fuseki_lib" includes="jena-rdfconnection-3.13.1.jar" />
+            
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="jena-arq-3.11.0.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="jena-core-3.11.0.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="jena-base-3.11.0.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="jena-iri-3.11.0.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="jena-shaded-guava-3.11.0.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="libthrift-0.12.0.jar" />
+            <zipfileset dir="${zipc.webplatform}/lib/jena_lib" includes="commons-compress-1.18.jar" />
+            
+            <zipfileset dir="${gwt.sdk}" includes="gwt-dev.jar" />
+            <zipfileset dir="${gwt.sdk}" includes="gwt-user.jar" />
+            
+        </jar>
+    </target>
+</project>
+

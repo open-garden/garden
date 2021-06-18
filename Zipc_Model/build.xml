@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Zipc_Model">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <property name="lib-dir" value="lib"/>
+    <path id="Zipc_Model.classpath">
+        <pathelement location="bin"/>
+            <fileset dir="${lib-dir}" includes="**/*.jar"/>
+            <fileset dir="../Zipc_Webplatform/${lib-dir}" includes="**/*.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.xml"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <javac encoding="utf-8" debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Zipc_Model.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target depends="build-project" name="jar-project">
+        <jar jarfile="Zipc_Model.jar">
+            <fileset dir="src">
+            	<include name="**/*.java"/>
+            	<include name="**/*.xml"/>
+        	</fileset>
+            <fileset dir="bin"/>
+        </jar>
+    </target>
+
+</project>
+

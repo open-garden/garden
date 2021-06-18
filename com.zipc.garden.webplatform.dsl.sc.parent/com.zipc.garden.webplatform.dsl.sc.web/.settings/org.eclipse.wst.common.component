@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="com.zipc.garden.webplatform.dsl.sc.web-1.0.0-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/xtext-gen"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/xtend-gen"/>
+        <dependent-module archiveName="com.zipc.garden.webplatform.dsl.sc-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.zipc.garden.webplatform.dsl.sc/com.zipc.garden.webplatform.dsl.sc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.zipc.garden.webplatform.dsl.sc.ide-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.zipc.garden.webplatform.dsl.sc.ide/com.zipc.garden.webplatform.dsl.sc.ide">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="com.zipc.garden.webplatform.dsl.sc.web"/>
+        <property name="java-output-path" value="/com.zipc.garden.webplatform.dsl.sc.web/target/classes"/>
+    </wb-module>
+</project-modules>

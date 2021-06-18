@@ -1,0 +1,9 @@
+grammar com.zipc.garden.webplatform.dsl.core.DSLCore with org.eclipse.xtext.common.Terminals
+
+generate dSLCore "http://www.zipc.com/garden/webplatform/dsl/core/DSLCore"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
