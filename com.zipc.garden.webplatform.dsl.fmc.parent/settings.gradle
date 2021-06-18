@@ -1,0 +1,6 @@
+include 'com.zipc.garden.webplatform.dsl.fmc'
+include 'com.zipc.garden.webplatform.dsl.fmc.ide'
+include 'com.zipc.garden.webplatform.dsl.fmc.web'
+
+include ':com.zipc.garden.webplatform.dsl.core'
+project(':com.zipc.garden.webplatform.dsl.core').projectDir = new File('../com.zipc.garden.webplatform.dsl.core.parent/com.zipc.garden.webplatform.dsl.core')

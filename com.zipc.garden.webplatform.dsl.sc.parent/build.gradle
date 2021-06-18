@@ -1,0 +1,40 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'org.xtext:xtext-gradle-plugin:2.0.4'
+	}
+}
+
+subprojects {
+	ext.xtextVersion = '2.17.0'
+	ext.guiceVersion = '4.0'
+	ext.guavaVersion = '28.1-jre'
+	repositories {
+		jcenter()
+	}
+	
+	apply plugin: 'java'
+	compileJava.options.encoding = 'UTF-8'
+	
+	dependencies {
+		compile platform("org.eclipse.xtext:xtext-dev-bom:${xtextVersion}")
+		compile "com.google.inject:guice:${guiceVersion}"
+		compile "com.google.guava:guava:${guavaVersion}"
+	}
+
+	apply plugin: 'org.xtext.xtend'
+	apply from: "${rootDir}/gradle/source-layout.gradle"
+	apply plugin: 'eclipse'
+	
+	group = 'com.zipc.garden.webplatform.dsl.sc'
+	version = '1.0.0-SNAPSHOT'
+	
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+	
+	configurations.all {
+		exclude group: 'asm'
+	}
+}

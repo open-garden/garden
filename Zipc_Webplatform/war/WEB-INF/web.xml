@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <session-config>
+    <session-timeout>1440</session-timeout>
+  </session-config>
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>login</servlet-name>
+    <servlet-class>com.zipc.garden.webplatform.server.service.LoginServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/zipc_webplatform/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>profile</servlet-name>
+    <servlet-class>com.zipc.garden.webplatform.server.service.UserProfileServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>profile</servlet-name>
+    <url-pattern>/zipc_webplatform/profile</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>progressCheck</servlet-name>
+    <servlet-class>com.zipc.garden.webplatform.server.service.ProgressCheckServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>progressCheck</servlet-name>
+    <url-pattern>/zipc_webplatform/progressCheck</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>project</servlet-name>
+    <servlet-class>com.zipc.garden.webplatform.server.service.ProjectServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>project</servlet-name>
+    <url-pattern>/zipc_webplatform/project</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>editResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.EditResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>editResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/editResource</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>sparqlQuery</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.SPARQLQueryServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>sparqlQuery</servlet-name>
+  	<url-pattern>/zipc_webplatform/sparqlQuery</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>user</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.UserServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>user</servlet-name>
+  	<url-pattern>/zipc_webplatform/user</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>fileHistory</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.FileHistoryServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>fileHistory</servlet-name>
+  	<url-pattern>/zipc_webplatform/fileHistory</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>download</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.FileDownLoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>download</servlet-name>
+  	<url-pattern>/zipc_webplatform/download</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+	<servlet-name>export</servlet-name>
+	<servlet-class>com.zipc.garden.webplatform.server.TPFileExportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>export</servlet-name>
+	<url-pattern>/zipc_webplatform/export</url-pattern>
+  </servlet-mapping>
+	
+  <servlet>  	<servlet-name>file</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.FileUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>file</servlet-name>
+  	<url-pattern>/zipc_webplatform/file</url-pattern>
+  </servlet-mapping>
+   
+  <servlet>
+  	<servlet-name>uploadFile</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.FileUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>uploadFile</servlet-name>
+  	<url-pattern>/zipc_webplatform/uploadFile</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>passwordReset</servlet-name>
+    <servlet-class>com.zipc.garden.webplatform.server.service.PasswordResetServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>passwordReset</servlet-name>
+    <url-pattern>/zipc_webplatform/passwordReset</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>tcResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.TCResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>tcResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/tcResource</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>fmcResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.FMCResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>fmcResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/fmcResource</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>scsResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.SCSResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>scsResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/scsResource</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>cscsResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.CSCSResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>cscsResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/cscsResource</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>generateResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.GenerateResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>generateResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/generateResource</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>grid</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.GridPngServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>grid</servlet-name>
+  	<url-pattern>/zipc_webplatform/grid</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>tpsResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.TPSResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>tpsResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/tpsResource</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>bpsResource</servlet-name>
+  	<servlet-class>com.zipc.garden.webplatform.server.service.BPSResourceServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>bpsResource</servlet-name>
+  	<url-pattern>/zipc_webplatform/bpsResource</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+  	<listener-class>com.zipc.garden.webplatform.server.GARDENBaseContextListener</listener-class>
+  </listener>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Zipc_Webplatform.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

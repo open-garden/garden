@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.zipc.com/garden/webplatform/dsl/core/COREModel"
+    nsPrefix="DSLCore">
+  <eClassifiers xsi:type="ecore:EDataType" name="ID" instanceClassName="com.zipc.garden.webplatform.dsl.terminals.ID"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractOperation" abstract="true" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="#//IdentifiableElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryOperation" eSuperTypes="#//AbstractOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryOperation" eSuperTypes="#//AbstractOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operand" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OperatorIdentifier">
+    <eLiterals name="operator_undefined" literal="operator_undefined"/>
+    <eLiterals name="operator_removes" value="1" literal="operator_removes"/>
+    <eLiterals name="operator_implies" value="2" literal="operator_implies"/>
+    <eLiterals name="operator_or" value="3" literal="operator_or"/>
+    <eLiterals name="operator_and" value="4" literal="operator_and"/>
+    <eLiterals name="operator_not" value="5" literal="operator_not"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="#//OperatorIdentifier"/>
+  </eClassifiers>
+</ecore:EPackage>

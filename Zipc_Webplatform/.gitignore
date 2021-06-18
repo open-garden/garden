@@ -1,0 +1,10 @@
+gwt-unitCache
+/test-classes/
+*.class
+
+Zipc_Webplatform.war
+
+/war/WEB-INF/deploy/
+/war/WEB-INF/classes/
+
+/war/zipc_webplatform/

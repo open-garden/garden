@@ -1,0 +1,23 @@
+# hamcrest-all-1.3.jar
+https://repo1.maven.org/maven2/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar
+
+# javax.mail-1.6.2.jar
+https://repo1.maven.org/maven2/com/sun/mail/javax.mail/1.6.2/javax.mail-1.6.2.jar
+
+# junit-4.12.jar
+https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar
+
+# opencsv-4.1.jar
+https://repo1.maven.org/maven2/com/opencsv/opencsv/4.1/opencsv-4.1.jar
+
+# org.eclipse.emf.gwt.common_2.6.0.v20120130-0943.jar
+http://ftp.jaist.ac.jp/pub/eclipse/modeling/emf/emf/updates/2.7/core/R201201300943/plugins/org.eclipse.emf.gwt.common_2.6.0.v20120130-0943.jar
+
+# org.eclipse.emf.gwt.ecore_2.7.0.v20120130-0943.jar
+http://ftp.jaist.ac.jp/pub/eclipse/modeling/emf/emf/updates/2.7/core/R201201300943/plugins/org.eclipse.emf.gwt.ecore_2.7.0.v20120130-0943.jar
+
+# smartgwt-4.0.zip
+https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/smartgwt/smartgwt-4.0.zip
+
+# UNZIP -> smartgwt.jar && REMOVE smartgwt-4.0.zip
+'unzip -p smartgwt-4.0.zip "smartgwt-4.0/smartgwt.jar" > ./smartgwt.jar; rm smartgwt-4.0.zip'

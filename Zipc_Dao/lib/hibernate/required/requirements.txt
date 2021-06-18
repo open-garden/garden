@@ -1,0 +1,5 @@
+# hibernate-core-5.4.3.Final.jar
+https://repo1.maven.org/maven2/org/hibernate/hibernate-core/5.4.3.Final/hibernate-core-5.4.3.Final.jar
+
+# javax.persistence-api-2.2.jar
+https://repo1.maven.org/maven2/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar

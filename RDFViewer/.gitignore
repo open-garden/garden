@@ -1,0 +1,25 @@
+# Java
+*.class
+*.xtendbin
+*._trace
+*.war
+*.ear
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Maven
+target
+
+# Build
+out
+build
+bin
+
+# Other
+*.log
+*.swp
+*.bak
+!.gitkeep
+description.txt

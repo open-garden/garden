@@ -1,0 +1,185 @@
+/** Add css rules here for your application. */
+/** TCEditor use this treeGrid style */
+.treeCell_TCEditor,
+.treeCell_TCEditorDark,
+.treeCell_TCEditorOver,
+.treeCell_TCEditorOverDark,
+.treeCell_TCEditorSelected,
+.treeCell_TCEditorSelectedDark,
+.treeCell_TCEditorSelectedOver,
+.treeCell_TCEditorSelectedOverDark,
+.treeCell_TCEditorDisabled,
+.treeCell_TCEditorDisabledDark {
+  color: #3f3f3f;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+}
+
+.treeCell_TCEditorDark,
+.treeCell_TCEditorNEWDark,
+.treeCell_TCEditorDELDark,
+.treeCell_TCEditorCheckedDark,
+.treeCell_TCEditorInheritedDark {
+  background-color: #fafafa;
+}
+
+.treeCell_TCEditorOver,
+.treeCell_TCEditorOverDark,
+.treeCell_TCEditorNEWOver,
+.treeCell_TCEditorNEWOverDark,
+.treeCell_TCEditorDELOver,
+.treeCell_TCEditorDELOverDark,
+.treeCell_TCEditorCheckedOver,
+.treeCell_TCEditorCheckedOverDark,
+.treeCell_TCEditorInheritedOver,
+.treeCell_TCEditorInheritedOverDark {
+  background: #b6e3ff !important;
+  color: white;
+}
+
+.treeCell_TCEditorSelected,
+.treeCell_TCEditorSelectedDark,
+.treeCell_TCEditorNEWSelected,
+.treeCell_TCEditorNEWSelectedDark,
+.treeCell_TCEditorDELSelected,
+.treeCell_TCEditorDELSelectedDark,
+.treeCell_TCEditorCheckedSelected,
+.treeCell_TCEditorCheckedSelectedDark,
+.treeCell_TCEditorInheritedSelected,
+.treeCell_TCEditorInheritedSelectedDark {
+  color: white;
+  background-color: #5fb9f2;
+}
+
+.treeCell_TCEditorSelectedOver,
+.treeCell_TCEditorSelectedOverDark,
+.treeCell_TCEditorNEWSelectedOver,
+.treeCell_TCEditorNEWSelectedOverDark,
+.treeCell_TCEditorDELSelectedOver,
+.treeCell_TCEditorDELSelectedOverDark,
+.treeCell_TCEditorCheckedSelectedOver,
+.treeCell_TCEditorCheckedSelectedOverDark,
+.treeCell_TCEditorInheritedSelectedOver,
+.treeCell_TCEditorInheritedSelectedOverDark {
+  color: white;
+  background-color: #5fb9f2;
+  -moz-box-shadow: 0 0 5px #5fb9f2;
+  -webkit-box-shadow: 0 0 5px #5fb9f2;
+  box-shadow: 0 0 5px #5fb9f2;
+}
+
+.treeCell_TCEditorDisabled,
+.treeCell_TCEditorDisabledDark,
+.treeCell_TCEditorNEWDisabled,
+.treeCell_TCEditorNEWDisabledDark,
+.treeCell_TCEditorDELDisabled,
+.treeCell_TCEditorDELDisabledDark,
+.treeCell_TCEditorCheckedDisabled,
+.treeCell_TCEditorCheckedDisabledDark,
+.treeCell_TCEditorInheritedDisabled,
+.treeCell_TCEditorInheritedDisabledDark {
+  background-color: white;
+  color: #ababab;
+}
+
+.treeCell_TCEditorNEW {
+  color: #3f3f3f;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  background-color: #FFCC33 !important;
+}
+
+.treeCell_TCEditorDEL {
+  color: #3f3f3f;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  background-color: #BBBBBB !important;
+}
+
+.treeCell_TCEditorChecked {
+  color: #0066FF !important;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+}
+
+.treeCell_TCEditorInherited {
+  color: #3f3f3f;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  background-color: #FFFF99 !important;
+}
+
+.gridCell_TPViewer,
+.gridCell_TPViewerDark,
+.gridCell_TPViewerOver,
+.gridCell_TPViewerOverDark{
+  font-family:RobotoLight;
+  font-size:11px;
+  border-bottom:1px solid #a0a0a0;
+  border-right:1px solid #a0a0a0;
+}
+
+.gridCell_LSCEditor,
+.gridCell_LSCEditorOver{
+ border: 1px solid #a0a0a0;
+}
+
+/** BPSEditor use this treeGrid style */
+.treeCell_BPSEditor,
+.treeCell_BPSEditorOver,
+.treeCell_BPSEditorHidden,
+.treeCell_BPSEditorHiddenOver {
+  color: #3f3f3f;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+}
+
+.treeCell_BPSEditorChecked,
+.treeCell_BPSEditorCheckedOver {
+  color: #0066FF !important;
+  font-family: RobotoLight;
+  font-size: 11px;
+  text-overflow: ellipsis;
+}
+
+.treeCell_BPSEditorLight,
+.treeCell_BPSEditorLightOver {
+  background-color: rgba(122, 163, 218, 0.3) !important;
+}
+
+.treeCell_BPSEditorHidden,
+.treeCell_BPSEditorCheckedHidden,
+.treeCell_BPSEditorLightHidden {
+  display:none;
+}
+
+.flexTable-Table {	
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.flexTable-Cell {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.flexTable-Rowspan {
+  vertical-align: top;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.label_Label {
+  font-size: x-large;
+  font-weight: bold;
+  color: #157fcc;
+  margin: 40px 0px 40px;
+  text-align: center;
+}

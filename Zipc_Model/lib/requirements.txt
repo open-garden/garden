@@ -1,0 +1,9 @@
+# gwt-user-2.9.0.jar
+https://repo1.maven.org/maven2/com/google/gwt/gwt-user/2.9.0/gwt-user-2.9.0.jar
+
+# org.eclipse.emf.gwt.common_2.6.0.v20120130-0943.jar
+http://ftp.jaist.ac.jp/pub/eclipse/modeling/emf/emf/updates/2.7/core/R201201300943/plugins/org.eclipse.emf.gwt.common_2.6.0.v20120130-0943.jar
+
+# org.eclipse.emf.gwt.ecore_2.7.0.v20120130-0943.jar
+http://ftp.jaist.ac.jp/pub/eclipse/modeling/emf/emf/updates/2.7/core/R201201300943/plugins/org.eclipse.emf.gwt.ecore_2.7.0.v20120130-0943.jar
+

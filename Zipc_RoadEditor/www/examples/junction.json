@@ -1,0 +1,340 @@
+{
+    "gid": "JunctionExample01",
+    "description": "JunctionExample01",
+    "direction": "left",
+    "roads": [
+        null,
+        {
+            "id": "Road100",
+            "point": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "roll": 0,
+                "yaw": 0,
+                "pitch": 0
+            },
+            "type": "straight",
+            "length": 10,
+            "height": 0,
+            "ramp_angle": 0,
+            "reverse": false,
+            "radius": 0,
+            "start_radius": 0,
+            "end_radius": 0,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "Lane102",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    },
+                    {
+                        "id": "Lane101",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 0,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "Lane103",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false
+        },
+        {
+            "id": "Road200",
+            "point": {
+                "x": 17,
+                "y": 0,
+                "z": -22,
+                "roll": 0,
+                "yaw": -90,
+                "pitch": 0
+            },
+            "type": "straight",
+            "length": 15,
+            "height": 0,
+            "ramp_angle": 0,
+            "reverse": false,
+            "radius": 0,
+            "start_radius": 0,
+            "end_radius": 0,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "Lane202",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    },
+                    {
+                        "id": "Lane201",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 0,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "Lane203",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false
+        },
+        {
+            "id": "Road300",
+            "point": {
+                "x": 60,
+                "y": 0,
+                "z": 0,
+                "roll": 0,
+                "yaw": 0,
+                "pitch": 0
+            },
+            "type": "straight",
+            "length": 25,
+            "height": 0,
+            "ramp_angle": 0,
+            "reverse": false,
+            "radius": 0,
+            "start_radius": 0,
+            "end_radius": 0,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "Lane302",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    },
+                    {
+                        "id": "Lane301",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 0,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "Lane303",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false
+        },
+        {
+            "id": "Road400",
+            "point": {
+                "x": 53,
+                "y": 0,
+                "z": 11.05,
+                "roll": 0,
+                "yaw": -80,
+                "pitch": 0
+            },
+            "type": "straight",
+            "length": 15,
+            "height": 0,
+            "ramp_angle": 0,
+            "reverse": false,
+            "radius": 0,
+            "start_radius": 0,
+            "end_radius": 0,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "Lane402",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    },
+                    {
+                        "id": "Lane401",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 0,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "Lane403",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 3.5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false
+        }
+    ],
+    "junctions": [
+        {
+            "id": "Junction1000",
+            "connections": [
+                {
+                    "id": "Road100",
+                    "type": "successor"
+                },
+                {
+                    "id": "Road200",
+                    "type": "successor"
+                },
+                {
+                    "id": "Road300",
+                    "type": "predecessor"
+                },
+                {
+                    "id": "Road400",
+                    "type": "predecessor"
+                }
+            ]
+        }
+    ],
+    "egoCar": {
+        "routes": [
+            {
+                "accel": 0,
+                "entities": [
+                    {
+                        "type": "start",
+                        "lane": {
+                            "road": "Road200",
+                            "lane": "L-02"
+                        },
+                        "shift": 0,
+                        "lanechange_start": -1,
+                        "lanechange_end": -1,
+                        "velocity": 80
+                    },
+                    {
+                        "type": "mid",
+                        "lane": {
+                            "road": "Junction1000",
+                            "lane": ""
+                        },
+                        "lanechange_start": -1,
+                        "lanechange_end": -1,
+                        "velocity": 80
+                    },
+                    {
+                        "type": "goal",
+                        "lane": {
+                            "road": "Road400",
+                            "lane": "L-02"
+                        },
+                        "shift": -1,
+                        "lanechange_start": -1,
+                        "lanechange_end": -1,
+                        "velocity": 80
+                    }
+                ]
+            }
+        ]
+    },
+    "objects": [
+        {
+            "id": "OtherCar1",
+            "routes": [
+                {
+                    "accel": 2000,
+                    "entities": [
+                        {
+                            "type": "start",
+                            "lane": {
+                                "road": "Road100",
+                                "lane": "L-01"
+                            },
+                            "shift": -1,
+                            "lanechange_start": -1,
+                            "lanechange_end": -1,
+                            "velocity": 80
+                        },
+                        {
+                            "type": "mid",
+                            "lane": {
+                                "road": "Junction1000",
+                                "lane": ""
+                            },
+                            "lanechange_start": -1,
+                            "lanechange_end": -1,
+                            "velocity": 80
+                        },
+                        {
+                            "type": "goal",
+                            "lane": {
+                                "road": "Road300",
+                                "lane": "L-02"
+                            },
+                            "shift": -1,
+                            "lanechange_start": -1,
+                            "lanechange_end": -1,
+                            "velocity": 80
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
