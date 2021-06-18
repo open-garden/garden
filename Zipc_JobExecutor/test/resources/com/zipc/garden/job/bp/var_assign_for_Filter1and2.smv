@@ -1,0 +1,85 @@
+MODULE main
+
+VAR
+-- Counter
+  Counter : 0 .. 5;
+-- 自車・他車両の相対速度
+  Cond_1 : 0 .. 3;
+  Event_1 : 0 .. 3;
+  State_1 : 0 .. 2;
+-- 他車両の位置
+  Cond_2 : 0 .. 5;
+  Event_2 : 0 .. 6;
+  State_2 : 0 .. 4;
+-- 自車加減速状態
+  State_3 : 0 .. 2;
+
+ASSIGN
+-- 自車・他車両の相対速度
+  init(Cond_1) := 0;
+  next(Cond_1) := case
+       Counter != 0 : 0;
+       State_1 = 0 : { 0, 2, 3 };
+       State_1 = 1 : { 0, 1 };
+       State_1 = 2 : { 0, 1 };
+       TRUE : Cond_1;
+    esac;
+  init(Event_1) := 0;
+  next(Event_1) := case
+       Counter != 1 : 0;
+       State_1 = 0 & Cond_1 = 3 : { 3 };
+       State_1 = 0 & Cond_1 = 2 : { 2 };
+       State_1 = 1 & Cond_1 = 1 : { 1 };
+       State_1 = 2 & Cond_1 = 1 : { 1 };
+       TRUE : Event_1;
+    esac;
+  init(State_1) := 0;
+  next(State_1) := case
+       Counter != 2 : State_1;
+       State_1 = 0 & Event_1 = 3 : 1;
+       State_1 = 0 & Event_1 = 2 : 2;
+       State_1 = 1 & Event_1 = 1 : 0;
+       State_1 = 2 & Event_1 = 1 : 0;
+       TRUE : State_1;
+    esac;
+-- 他車両の位置
+  init(Cond_2) := 0;
+  next(Cond_2) := case
+       Counter != 3 : 0;
+       State_2 = 0 : { 0, 1 };
+       State_2 = 1 : { 0, 2, 3 };
+       State_2 = 2 : { 0, 1, 4 };
+       State_2 = 3 : { 0, 5 };
+       TRUE : Cond_2;
+    esac;
+  init(Event_2) := 0;
+  next(Event_2) := case
+       Counter != 4 : 0;
+       State_2 = 0 & State_1 = 1 & Cond_2 = 1 : { 1 };
+       State_2 = 1 & State_1 = 1 & Cond_2 = 2 : { 2 };
+       State_2 = 1 & State_1 = 2 & Cond_2 = 3 : { 3 };
+       State_2 = 2 & State_1 = 2 & Cond_2 = 1 : { 4 };
+       State_2 = 2 & Cond_2 = 4 : { 5 };
+       State_2 = 3 & Cond_2 = 5 : { 6 };
+       TRUE : Event_2;
+    esac;
+  init(State_2) := 0;
+  next(State_2) := case
+       Counter != 5 : State_2;
+       State_2 = 0 & Event_2 = 1 : 1;
+       State_2 = 1 & Event_2 = 2 : 2;
+       State_2 = 1 & Event_2 = 3 : 0;
+       State_2 = 2 & Event_2 = 4 : 1;
+       State_2 = 2 & Event_2 = 5 : 3;
+       State_2 = 3 & Event_2 = 6 : 4;
+       TRUE : State_2;
+    esac;
+-- 自車加減速状態
+  init(State_3) := 0;
+  next(State_3) := 0;
+-- Counter
+  init(Counter) := 0;
+  next(Counter) := case
+       Counter != 5 : Counter + 1;
+       TRUE : 0;
+    esac;

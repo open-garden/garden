@@ -1,0 +1,175 @@
+options
+{
+  STATIC = false;
+  UNICODE_INPUT = true;
+  MULTI = true;
+  VISITOR = true;
+//  DEBUG_LOOKAHEAD = true;
+}
+
+PARSER_BEGIN(NuSMVResultParser)
+package com.zipc.garden.parser.nusmv.output;
+
+public class NuSMVResultParser {
+}
+
+PARSER_END(NuSMVResultParser)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+TOKEN : // quoted identifier
+{
+  < QUOTED_IDENTIFIER :
+  	< QUOTATION_MARK > ( < ANY_UNICODE_CHARACTER > )* < QUOTATION_MARK >
+  >
+| < #QUOTATION_MARK : "\"" >
+| < #ANY_UNICODE_CHARACTER : ~["\r", "\n"] >
+| < EQUALITY : "=" >
+}
+
+TOKEN : // identifier{
+  < IDENTIFIER : ( ~["\"", " ", ".", ",", ":", "(", ")", "!", "|", "&", "-", "\t", "\r", "\n"] )+ >
+}
+
+TOKEN : // comment
+{
+  < HEADER_COMMENT : "***" ( < ANY_UNICODE_CHARACTER > )* >
+| < COMMENT : "-- as" ( < ANY_UNICODE_CHARACTER > )* >
+}
+
+TOKEN : {
+  < SPECIFICATION : "-- specification" ( < ANY_UNICODE_CHARACTER > )+ ( "is false" | "is true" ) >
+}
+
+TOKEN : // operators{
+  < NOT : "!" >
+| < AND : "&" >
+| < OR : "|" >
+| < LPAREN : "(" >
+| < RPAREN : ")" >
+}
+
+
+TOKEN : // trace comment
+{
+  < TRACE_DESCRIPTION : "Trace Description:" ( < ANY_UNICODE_CHARACTER > )* >
+| < TRACE_TYPE : "Trace Type:" ( < ANY_UNICODE_CHARACTER > )* >
+}
+
+TOKEN : // step label
+{
+  < LABEL_START : "->" >
+| < LABEL_END : "<-" >
+| < STEP_NUMBER : (["0"-"9"])+ "." (["0"-"9"])+ >
+}
+
+TOKEN : // operators{
+  < PARENT_SPEC: "." >
+| < REFERENCE_SPEC: ":" >
+}
+
+ASTRoot Root() :
+{}
+{
+  Header() Results() < EOF >
+  {
+    return jjtThis;
+  }
+}
+
+void Header() :
+{}
+{
+  ( < HEADER_COMMENT > )*
+}
+
+void Results() :
+{}
+{
+  ( Result() )*
+}
+
+void Result() :
+{}
+{
+  Specification() ( ( < COMMENT > )? < TRACE_DESCRIPTION > < TRACE_TYPE > ( Step() )+ )?
+}
+
+void Specification() :
+{}
+{
+  < SPECIFICATION >
+}
+
+void Step() :
+{
+  Token t = null;
+}
+{
+  < LABEL_START > "State:"
+  ( t = < STEP_NUMBER >)
+  {
+    jjtThis.jjtSetValue(t.image);
+  }
+  < LABEL_END >
+  ( Assignment() )*
+  ("-- Loop starts here")*
+}
+
+void Assignment() :
+{}
+{
+  Variable() < EQUALITY > Value()
+}
+
+void Variable() :
+{
+  Token t;
+}
+{
+  t = < IDENTIFIER >
+  {
+    jjtThis.jjtSetValue(t.image);
+  }
+}
+
+void Value() :
+{
+  Token t;
+}
+{
+  t = < IDENTIFIER >
+  {
+    jjtThis.jjtSetValue(t.image);
+  }
+}
+
+// Below are o ma ji na i
+void Node() :
+{}
+{
+  ParentNode() ( < REFERENCE_SPEC > ParentNode() )*
+}
+
+void ParentNode() :
+{}
+{
+  Identifier() ( < PARENT_SPEC > Identifier() )*
+}
+
+void Identifier() :
+{
+  Token t = null;
+}
+{
+  ( t = < QUOTED_IDENTIFIER > | t = < IDENTIFIER > )
+  {
+    jjtThis.jjtSetValue(t.image);
+  }
+}

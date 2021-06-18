@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Zipc_Model/src" editDirectory="" editorDirectory=""
+    modelPluginID="" modelName="GARDEN_project" editPluginClass="" editorPluginClass=""
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory=""
+    testSuiteClass="" importerID="org.eclipse.emf.importer.ecore" bundleManifest="false"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" runtimePlatform="GWT"
+    importOrganizing="true">
+  <foreignModel>GARDEN_project.ecore</foreignModel>
+  <genPackages prefix="GPModel" basePackage="com.zipc.garden.model" disposableProviderFactory="true"
+      ecorePackage="GARDEN_project.ecore#/">
+    <genClasses ecoreClass="GARDEN_project.ecore#//GPResource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GARDEN_project.ecore#//GPResource/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GARDEN_project.ecore#//GPResource/children"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GARDEN_project.ecore#//GPResource/directory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GARDEN_project.ecore#//GPResource/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GARDEN_project.ecore#//GPResource/id"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

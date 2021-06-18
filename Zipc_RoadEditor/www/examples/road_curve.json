@@ -1,0 +1,618 @@
+{
+    "gid": "RoadStructure.CURVE",
+    "description": "RoadStructure_CURVE",
+    "direction": "left",
+    "roads": [
+        {
+            "id": "R100",
+            "length": 20,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "straight",
+            "radius": 80,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "connectionInfo": {
+                "world": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "positive": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "negative": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "to": {}
+            },
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L102",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "L101",
+                        "type": "center",
+                        "position": "center",
+                        "width": 3,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "L103",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false,
+            "priorityRoad": false,
+            "point": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "roll": 0,
+                "yaw": 45,
+                "pitch": 0
+            }
+        },
+        {
+            "id": "R200",
+            "length": 25,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "clothoid_in",
+            "radius": -40,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "connectionInfo": {
+                "world": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "positive": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "negative": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "to": {}
+            },
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L202",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "L201",
+                        "type": "center",
+                        "position": "center",
+                        "width": 3,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "L203",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false,
+            "priorityRoad": false,
+            "connection": {
+                "road": "R100",
+                "lane": ""
+            },
+            "rotationZ": 0,
+            "point": {
+                "x": 14.142136,
+                "y": 0,
+                "z": -14.142136,
+                "roll": 0,
+                "yaw": 45,
+                "pitch": 0
+            }
+        },
+        {
+            "id": "R300",
+            "length": 40,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "circular",
+            "radius": -40,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "connectionInfo": {
+                "world": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "positive": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "negative": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "to": {}
+            },
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L302",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "L301",
+                        "type": "center",
+                        "position": "center",
+                        "width": 3,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "L303",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false,
+            "priorityRoad": false,
+            "connection": {
+                "road": "R200",
+                "lane": ""
+            },
+            "rotationZ": 0,
+            "point": {
+                "x": 33.474135,
+                "y": 0,
+                "z": -29.822675,
+                "roll": 0,
+                "yaw": 27.80948,
+                "pitch": 0
+            }
+        },
+        {
+            "id": "R400",
+            "length": 25,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "clothoid_out",
+            "radius": -40,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "connectionInfo": {
+                "world": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "positive": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "negative": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "to": {}
+            },
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L402",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "L401",
+                        "type": "center",
+                        "position": "center",
+                        "width": 3,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "L403",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false,
+            "priorityRoad": false,
+            "connection": {
+                "road": "R300",
+                "lane": ""
+            },
+            "rotationZ": 0,
+            "point": {
+                "x": 71.824072,
+                "y": 0,
+                "z": -29.26146,
+                "roll": 0,
+                "yaw": -29.48057,
+                "pitch": 0
+            }
+        },
+        {
+            "id": "R500",
+            "length": 20,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "straight",
+            "radius": 80,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "connectionInfo": {
+                "world": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "positive": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "negative": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    },
+                    "rotation": {
+                        "_x": 0,
+                        "_y": 0,
+                        "_z": 0,
+                        "_order": "XYZ"
+                    }
+                },
+                "to": {}
+            },
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L502",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "L501",
+                        "type": "center",
+                        "position": "center",
+                        "width": 3,
+                        "refLineVisible": false
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "L503",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 5,
+                        "refLineVisible": false
+                    }
+                ]
+            },
+            "refLineVisible": false,
+            "priorityRoad": false,
+            "connection": {
+                "road": "R400",
+                "lane": ""
+            },
+            "rotationZ": 0,
+            "point": {
+                "x": 90.691081,
+                "y": 0,
+                "z": -13.02442,
+                "roll": 0,
+                "yaw": -46.671089,
+                "pitch": 0
+            }
+        }
+    ],
+    "junctions": [],
+    "objects": [],
+    "trajectories": [],
+    "backgroundPlane01": {
+        "metadata": {
+            "version": 4.5,
+            "type": "Object",
+            "generator": "Object3D.toJSON"
+        },
+        "geometries": [
+            {
+                "uuid": "F19626F4-F6F2-4993-9824-064B31E19740",
+                "type": "PlaneBufferGeometry",
+                "width": 0,
+                "height": 0,
+                "widthSegments": 1,
+                "heightSegments": 1
+            }
+        ],
+        "materials": [
+            {
+                "uuid": "9BF85446-C010-4866-B645-27BB23A18C4F",
+                "type": "MeshStandardMaterial",
+                "color": 15790320,
+                "roughness": 1,
+                "metalness": 0,
+                "emissive": 0,
+                "depthFunc": 3,
+                "depthTest": true,
+                "depthWrite": true,
+                "stencilWrite": false,
+                "stencilWriteMask": 255,
+                "stencilFunc": 519,
+                "stencilRef": 0,
+                "stencilFuncMask": 255,
+                "stencilFail": 7680,
+                "stencilZFail": 7680,
+                "stencilZPass": 7680
+            }
+        ],
+        "object": {
+            "uuid": "26F83BE7-7656-4393-BDC1-F78B7E4155A7",
+            "type": "Mesh",
+            "visible": false,
+            "layers": 1,
+            "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                -50,
+                0,
+                1
+            ],
+            "geometry": "F19626F4-F6F2-4993-9824-064B31E19740",
+            "material": "9BF85446-C010-4866-B645-27BB23A18C4F"
+        }
+    },
+    "backgroundPlane02": {
+        "metadata": {
+            "version": 4.5,
+            "type": "Object",
+            "generator": "Object3D.toJSON"
+        },
+        "geometries": [
+            {
+                "uuid": "FD8FFDD3-E9BE-4100-8984-A5F6F556428C",
+                "type": "PlaneBufferGeometry",
+                "width": 0,
+                "height": 0,
+                "widthSegments": 1,
+                "heightSegments": 1
+            }
+        ],
+        "materials": [
+            {
+                "uuid": "4D1512DC-4FED-4FF8-B966-C978308E8C98",
+                "type": "MeshStandardMaterial",
+                "color": 15790320,
+                "roughness": 1,
+                "metalness": 0,
+                "emissive": 0,
+                "depthFunc": 3,
+                "depthTest": true,
+                "depthWrite": true,
+                "stencilWrite": false,
+                "stencilWriteMask": 255,
+                "stencilFunc": 519,
+                "stencilRef": 0,
+                "stencilFuncMask": 255,
+                "stencilFail": 7680,
+                "stencilZFail": 7680,
+                "stencilZPass": 7680
+            }
+        ],
+        "object": {
+            "uuid": "0F63A467-478C-4ADB-9248-DB95187C6E42",
+            "type": "Mesh",
+            "visible": false,
+            "layers": 1,
+            "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                -50,
+                0,
+                1
+            ],
+            "geometry": "FD8FFDD3-E9BE-4100-8984-A5F6F556428C",
+            "material": "4D1512DC-4FED-4FF8-B966-C978308E8C98"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="gradle-wrapper" default="" basedir=".">
+	<description>
+	</description>
+	<!-- set global properties for this build -->
+	<property environment="env" />
+	<property name="gradle.executable" location="./gradlew.bat" />
+
+	<target name="clean">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="--stop" />
+		</exec>
+	</target>
+
+	<target name="fatJar" depends="clean">
+		<exec executable="${gradle.executable}" dir=".">
+			<arg value="fatJar" />
+		</exec>
+	</target>
+
+	<target name="jar-project" depends="fatJar">
+		<echo message="${ant.project.name}: ${ant.file}" />
+	</target>
+</project>

@@ -1,0 +1,5 @@
+# z3 for ubuntu
+https://github.com/Z3Prover/z3/releases/download/z3-4.8.10/z3-4.8.10-x64-ubuntu-18.04.zip
+
+# UNZIP -> z3 libraries && REMOVE z3-4.8.10-x64-ubuntu-18.04.zip
+'unzip -qq -jo z3-4.8.10-x64-ubuntu-18.04.zip "z3-4.8.10-x64-ubuntu-18.04/bin/*" -x "z3-4.8.10-x64-ubuntu-18.04/bin/python/*" -d ./; rm z3-4.8.10-x64-ubuntu-18.04.zip'

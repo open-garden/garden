@@ -1,0 +1,673 @@
+{
+    "_id": "",
+    "gid": "RoadStructure.MERGE",
+    "description": "",
+    "direction": "left",
+    "roads": [
+        {
+            "id": "R100",
+            "point": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "roll": 0,
+                "yaw": 20,
+                "pitch": 0
+            },
+            "priorityRoad": false,
+            "connection": {
+                "road": "",
+                "lane": ""
+            },
+            "length": 80,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "clothoid_in",
+            "radius": -600,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "refLineVisible": false,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L-04",
+                        "type": "border",
+                        "position": "left",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 0,
+                        "laneIndex": 4,
+                        "sprite01": {
+                            "basePoint": true,
+                            "position2": {
+                                "x": 0.820399,
+                                "y": 1
+                            },
+                            "tangent": {
+                                "x": 0.998995,
+                                "y": 0
+                            }
+                        },
+                        "sprite02": {
+                            "basePoint": false,
+                            "position2": {
+                                "x": 1,
+                                "y": 0
+                            },
+                            "tangent": {
+                                "x": 0.997777,
+                                "y": 0
+                            }
+                        },
+                        "spriteEdge": {
+                            "offsetType": "merge",
+                            "offsetInward": false
+                        }
+                    },
+                    {
+                        "id": "L-03",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 1,
+                        "laneIndex": 3
+                    },
+                    {
+                        "id": "L-02",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 2,
+                        "laneIndex": 2
+                    },
+                    {
+                        "id": "L-01",
+                        "type": "border",
+                        "position": "left",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 3,
+                        "laneIndex": 1
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 2,
+                        "refLineVisible": false,
+                        "childIndex": 4,
+                        "laneIndex": 0
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "R-01",
+                        "type": "border",
+                        "position": "right",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 5,
+                        "laneIndex": -1
+                    },
+                    {
+                        "id": "R-02",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 6,
+                        "laneIndex": -2
+                    },
+                    {
+                        "id": "R-03",
+                        "type": "border",
+                        "position": "right",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 7,
+                        "laneIndex": -3
+                    }
+                ]
+            }
+        },
+        {
+            "id": "R200",
+            "point": {
+                "x": 75.764123,
+                "y": 0,
+                "z": -25.636184,
+                "roll": 0,
+                "yaw": 16.179143,
+                "pitch": 0
+            },
+            "priorityRoad": false,
+            "connection": {
+                "road": "R100",
+                "lane": ""
+            },
+            "length": 120,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "clothoid_in",
+            "radius": -300,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": false,
+            "refLineVisible": false,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L-05",
+                        "type": "border",
+                        "position": "left",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 0,
+                        "laneIndex": 5
+                    },
+                    {
+                        "id": "L-04",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 1,
+                        "laneIndex": 4,
+                        "sprite01": {
+                            "basePoint": true,
+                            "position2": {
+                                "x": 0,
+                                "y": 1
+                            },
+                            "tangent": {
+                                "x": 1,
+                                "y": 0
+                            }
+                        },
+                        "sprite02": {
+                            "basePoint": false,
+                            "position2": {
+                                "x": 0.665595,
+                                "y": 0
+                            },
+                            "tangent": {
+                                "x": 0.996115,
+                                "y": 0
+                            }
+                        },
+                        "spriteEdge": {
+                            "offsetType": "merge",
+                            "offsetInward": false
+                        }
+                    },
+                    {
+                        "id": "L-03",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 2,
+                        "laneIndex": 3
+                    },
+                    {
+                        "id": "L-02",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 3,
+                        "laneIndex": 2
+                    },
+                    {
+                        "id": "L-01",
+                        "type": "border",
+                        "position": "left",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 4,
+                        "laneIndex": 1
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 2,
+                        "refLineVisible": false,
+                        "childIndex": 5,
+                        "laneIndex": 0
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "R-01",
+                        "type": "border",
+                        "position": "right",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 6,
+                        "laneIndex": -1
+                    },
+                    {
+                        "id": "R-02",
+                        "type": "driving",
+                        "position": "right",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 7,
+                        "laneIndex": -2
+                    },
+                    {
+                        "id": "R-03",
+                        "type": "border",
+                        "position": "right",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 8,
+                        "laneIndex": -3
+                    }
+                ]
+            }
+        },
+        {
+            "id": "R300",
+            "point": {
+                "x": 73.061604,
+                "y": 0,
+                "z": -34.952106,
+                "roll": 0,
+                "yaw": 16.181224,
+                "pitch": 0
+            },
+            "priorityRoad": false,
+            "connection": {
+                "road": "R200",
+                "lane": "L-04"
+            },
+            "length": 70,
+            "height": 0,
+            "ramp_angle": 0,
+            "type": "clothoid_in",
+            "radius": 40,
+            "start_radius": 0,
+            "end_radius": 0,
+            "reverse": true,
+            "refLineVisible": false,
+            "lanes": {
+                "left": [
+                    {
+                        "id": "L-02",
+                        "type": "border",
+                        "position": "left",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 0,
+                        "laneIndex": 2
+                    },
+                    {
+                        "id": "L-01",
+                        "type": "driving",
+                        "position": "left",
+                        "width": 4,
+                        "refLineVisible": false,
+                        "childIndex": 1,
+                        "laneIndex": 1
+                    }
+                ],
+                "center": [
+                    {
+                        "id": "C-00",
+                        "type": "center",
+                        "position": "center",
+                        "width": 0,
+                        "refLineVisible": false,
+                        "childIndex": 2,
+                        "laneIndex": 0
+                    }
+                ],
+                "right": [
+                    {
+                        "id": "R-01",
+                        "type": "border",
+                        "position": "right",
+                        "width": 0.7,
+                        "refLineVisible": false,
+                        "childIndex": 3,
+                        "laneIndex": -1,
+                        "sprite01": {
+                            "basePoint": true,
+                            "position2": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "tangent": {
+                                "x": -1,
+                                "y": 0
+                            }
+                        },
+                        "sprite02": {
+                            "basePoint": false,
+                            "position2": {
+                                "x": 0.22657,
+                                "y": 1
+                            },
+                            "tangent": {
+                                "x": -0.948292,
+                                "y": 0
+                            }
+                        },
+                        "spriteEdge": {
+                            "offsetType": "branch",
+                            "offsetInward": false
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "roadMarks": [
+        {
+            "name": "Line_Solid",
+            "type": "RoadMark.Line",
+            "mode": "solid",
+            "parameters": {
+                "position": "right",
+                "width": 0.15,
+                "offset": 0,
+                "color": 16777215
+            },
+            "segments": [
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R300",
+                        "lane": "L-02"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R200",
+                        "lane": "L-05"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R300",
+                        "lane": "R-01"
+                    },
+                    "start": 1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R100",
+                        "lane": "L-04"
+                    },
+                    "start": -1,
+                    "end": 79
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R100",
+                        "lane": "L-02"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R200",
+                        "lane": "L-02"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R200",
+                        "lane": "R-02"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R100",
+                        "lane": "R-02"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R200",
+                        "lane": "R-03"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R100",
+                        "lane": "R-03"
+                    },
+                    "start": -1,
+                    "end": -1
+                }
+            ]
+        },
+        {
+            "name": "Line_Broken_R200_L-04",
+            "type": "RoadMark.Line",
+            "mode": "broken2-2",
+            "parameters": {
+                "position": "right",
+                "width": 0.3,
+                "offset": 0,
+                "color": 16777215
+            },
+            "segments": [
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R200",
+                        "lane": "L-04"
+                    },
+                    "start": -1,
+                    "end": 70
+                }
+            ]
+        },
+        {
+            "name": "Line_5-5_R100_L-03",
+            "type": "RoadMark.Line",
+            "mode": "center5-5",
+            "parameters": {
+                "position": "right",
+                "width": 0.15,
+                "offset": 0,
+                "color": 16777215
+            },
+            "segments": [
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R100",
+                        "lane": "L-03"
+                    },
+                    "start": -1,
+                    "end": -1
+                },
+                {
+                    "type": "RoadMark.LineSegment",
+                    "lane": {
+                        "road": "R200",
+                        "lane": "L-03"
+                    },
+                    "start": -1,
+                    "end": -1
+                }
+            ]
+        }
+    ],
+    "junctions": [],
+    "objects": [],
+    "trajectories": [],
+    "routes": [],
+    "backgroundMap": {
+        "visible": false,
+        "boundary": {
+            "n": 0,
+            "e": 0,
+            "s": 0,
+            "w": 0
+        }
+    },
+    "backgroundPlane01": {
+        "metadata": {
+            "version": 4.5,
+            "type": "Object",
+            "generator": "Object3D.toJSON"
+        },
+        "geometries": [
+            {
+                "uuid": "7CC955E5-8EBD-433A-A7A1-6E0C36F920AD",
+                "type": "PlaneBufferGeometry",
+                "width": 0,
+                "height": 0,
+                "widthSegments": 1,
+                "heightSegments": 1
+            }
+        ],
+        "materials": [
+            {
+                "uuid": "C7141FC5-926D-40A1-9BE5-EBEAFE8F9EB4",
+                "type": "MeshStandardMaterial",
+                "color": 15790320,
+                "roughness": 1,
+                "metalness": 0,
+                "emissive": 0,
+                "depthFunc": 3,
+                "depthTest": true,
+                "depthWrite": true,
+                "stencilWrite": false,
+                "stencilWriteMask": 255,
+                "stencilFunc": 519,
+                "stencilRef": 0,
+                "stencilFuncMask": 255,
+                "stencilFail": 7680,
+                "stencilZFail": 7680,
+                "stencilZPass": 7680
+            }
+        ],
+        "object": {
+            "uuid": "F425D0A4-7565-47AA-AB68-C51B7C6A3D8F",
+            "type": "Mesh",
+            "visible": false,
+            "layers": 1,
+            "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                -1,
+                0,
+                1
+            ],
+            "geometry": "7CC955E5-8EBD-433A-A7A1-6E0C36F920AD",
+            "material": "C7141FC5-926D-40A1-9BE5-EBEAFE8F9EB4"
+        }
+    },
+    "backgroundPlane02": {
+        "metadata": {
+            "version": 4.5,
+            "type": "Object",
+            "generator": "Object3D.toJSON"
+        },
+        "geometries": [
+            {
+                "uuid": "64779626-C876-47CD-B3CB-0F52CAC5B57A",
+                "type": "PlaneBufferGeometry",
+                "width": 0,
+                "height": 0,
+                "widthSegments": 1,
+                "heightSegments": 1
+            }
+        ],
+        "materials": [
+            {
+                "uuid": "7F146E17-870B-42A9-98C1-C9121C16A3B5",
+                "type": "MeshStandardMaterial",
+                "color": 15790320,
+                "roughness": 1,
+                "metalness": 0,
+                "emissive": 0,
+                "depthFunc": 3,
+                "depthTest": true,
+                "depthWrite": true,
+                "stencilWrite": false,
+                "stencilWriteMask": 255,
+                "stencilFunc": 519,
+                "stencilRef": 0,
+                "stencilFuncMask": 255,
+                "stencilFail": 7680,
+                "stencilZFail": 7680,
+                "stencilZPass": 7680
+            }
+        ],
+        "object": {
+            "uuid": "ED919A51-B20D-4F3D-91E2-4444D168C811",
+            "type": "Mesh",
+            "visible": false,
+            "layers": 1,
+            "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                -1,
+                0,
+                1
+            ],
+            "geometry": "64779626-C876-47CD-B3CB-0F52CAC5B57A",
+            "material": "7F146E17-870B-42A9-98C1-C9121C16A3B5"
+        }
+    }
+}
