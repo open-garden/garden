@@ -1,5 +1,0 @@
-userName:RegisterTest
-displayName:RegisterTest
-mail:RegisterTest@zipc.com
-password:RegisterTest
-role:1

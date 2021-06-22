@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GARDEN ScenarioPlatform on ja</title>
+    <link>https://open-garden.github.io/garden/ja/</link>
+    <description>Recent content in GARDEN ScenarioPlatform on ja</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/postgresql/</link>
+      <pubDate>Mon, 21 Jun 2021 11:10:34 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/postgresql/</guid>
+      <description>認証キーの追加をします。
+sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -リポジトリの追加をします。
+lsb_release -csudo sh -c &#39;echo &amp;quot;deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main&amp;quot; &amp;gt; /etc/apt/sources.list.d/pgdg.list&#39;PostgreSQL をインストールします。
+sudo apt updatesudo apt install postgresql-11.pgpassファイルの設定をします。
+データベースに接続するとき、psqlは強制的にパスワード入力を促しますので、パスワードの入力省略するため、事前に.pgpassファイルを作成します。
+garden-userに切り替えます
+sudo su - garden-user.pgpassファイルを編集します。
+vi ~/.pgpass.pgpassファイルの内容は以下の通りです。
+# データベースgardenの接続情報localhost:5432:garden:postgres:postgres# データベースairflowの接続情報localhost:5432:airflow:postgres:postgres.pgpassファイルの権限を変更します。
+chmod 600 ~/.pgpass外部接続許可設定（オプション）
+外部から接続するため、接続許可の設定をします。
+postgresql.conf を編集します。
+sudo vi /etc/postgresql/11/main/postgresql.conf57行目【# - Connection Settings -】の付近、listen_addresses = &amp;lsquo;*&amp;rsquo; を追加し、すべての通信を受け入れます。
+# - Connection Settings -#listen_addresses = &#39;localhost&#39; # what IP address(es) to listen on;listen_addresses = &#39;*&#39;pg_hba.</description>
+    </item>
+    
+    <item>
+      <title>ユーザー作成</title>
+      <link>https://open-garden.github.io/garden/ja/build/createuser/</link>
+      <pubDate>Mon, 21 Jun 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/createuser/</guid>
+      <description>Ubuntu 18.04 上にユーザーを作成します。ホームディレクトリを /home/garden-user に指定して、ユーザーを作成します。
+sudo useradd -s /bin/bash -m -d /home/garden-user -c &amp;quot;GARDEN user&amp;quot; garden-userパスワードを &amp;ldquo;garden&amp;rdquo; に設定します。
+sudo passwd garden-usergarden-user に sudo の権限を与えます。
+sudo usermod -aG sudo garden-userアプリ配置ディレクトリを作成します。 garden-user に切り替えます。
+sudo su - garden-usergarden-user のhomeディレクトリの直下に下記のようなフォルダを作成します。
+mkdir -p {etc/{airflow/{dags,data},fuseki,tomcat},garden/{war,dags,script,job_executor,node_services},tmp}/home/garden-user/├── etc│ ├── airflow│ ├── dags│ └── data│ ├── fuseki│ └── tomcat├── garden│ ├── war│ ├── dags│ ├── script│ ├── job_executor│ └── node_services├── tmp└── .</description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/java/</link>
+      <pubDate>Mon, 21 Jun 2021 11:19:40 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/java/</guid>
+      <description>OpenJDK Amazon Corretto 8 をインストールします。
+java-common パッケージをインストールします。
+sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install java-common=0.68ubuntu1~18.04.1Linux .deb ファイルをダウンロードして、インストールします。
+cd ~/tmpwget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.debsudo apt install ./amazon-corretto-8-x64-linux-jdk.debjavaバージョンを確認します。
+java -version以下のように表示されます。
+openjdk version &amp;quot;1.8.0_292&amp;quot;OpenJDK Runtime Environment Corretto-8.292.10.1 (build 1.8.0_292-b10)OpenJDK 64-Bit Server VM Corretto-8.292.10.1 (build 25.292-b10, mixed mode)</description>
+    </item>
+    
+    <item>
+      <title>Apache2</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/apache2/</link>
+      <pubDate>Tue, 22 Jun 2021 03:55:18 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/apache2/</guid>
+      <description>Apache2をインストールします。
+sudo apt updatesudo apt install apache2=2.4.29-1ubuntu4.16以下のパスに***.confを作成します。
+cd /etc/apache2/sites-available/sudo vi acacia.confファイルの内容は以下となります。
+&amp;lt;VirtualHost *:80&amp;gt;ProxyPreserveHost OnProxyRequests OffErrorLog ${APACHE_LOG_DIR}/hoge_error.log&amp;lt;Location /scenario_modeler&amp;gt;ProxyPass http://localhost:8080/scenario_modelerProxyPassReverse http://localhost:8080/scenario_modeler&amp;lt;/Location&amp;gt;&amp;lt;Location /rdf_viewer&amp;gt;ProxyPass http://localhost:8080/rdf_viewerProxyPassReverse http://localhost:8080/rdf_viewer&amp;lt;/Location&amp;gt;&amp;lt;Location /scenario_editor&amp;gt;ProxyPass http://localhost:5000/scenario_editorProxyPassReverse http://localhost:5000/scenario_editor&amp;lt;/Location&amp;gt;&amp;lt;Location /airflow&amp;gt;ProxyPass http://localhost:8085/airflowProxyPassReverse http://localhost:8085/airflow&amp;lt;/Location&amp;gt;&amp;lt;Location /chronograf&amp;gt;ProxyPass http://localhost:8888/chronografProxyPassReverse http://localhost:8888/chronograf&amp;lt;/Location&amp;gt;&amp;lt;Location /road_editor&amp;gt;ProxyPass http://localhost:38001/road_editorProxyPassReverse http://localhost:38001/road_editor&amp;lt;/Location&amp;gt;&amp;lt;Location /portal&amp;gt;ProxyPass http://localhost:3000/portalProxyPassReverse http://localhost:3000/portal&amp;lt;/Location&amp;gt;&amp;lt;/VirtualHost&amp;gt;a2dissite コマンドで 000-default.</description>
+    </item>
+    
+    <item>
+      <title>ビルド&amp;インストール</title>
+      <link>https://open-garden.github.io/garden/ja/build/build/</link>
+      <pubDate>Mon, 21 Jun 2021 11:35:56 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/build/</guid>
+      <description>GARDEN Scenario Platform をビルドします。
+ユーザーを切り替えます。
+sudo su - garden-userMavenをインストールします。
+sudo apt updatesudo apt install maven=3.6.0-1~18.04.1Antをインストールします。
+sudo apt updatesudo apt install ant=1.10.5-3~18.04Gitをインストールします。
+sudo apt updatesudo apt install git=1:2.17.1-1ubuntu0.8GWTをダウンロードします。
+cd ~/gardencurl -O https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zipファイル展開します。
+unzip gwt-2.9.0.zip -d ./GARDENプロジェクトのビルドを実行します。
+cd ~/gardengit clone https://github.com/open-garden/garden.git garden-repocp ~/garden/garden-repo/script/GARDEN_acacia.sh ~/garden/script	cd ~/garden/scriptchmod 764 GARDEN_acacia.sh	./GARDEN_acacia.sh build_all必要な資材が以下のように格納されていることを確認します。
+# warの資材/home/garden-user/garden/war├── Zipc_Webplatform.war├── com.zipc.garden.webplatform.dsl.fmc.web.war├── com.</description>
+    </item>
+    
+    <item>
+      <title>Apache Jena Fuseki</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/jena/</link>
+      <pubDate>Tue, 22 Jun 2021 03:59:00 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/jena/</guid>
+      <description>Apache Jena Fusekiをインストールします。
+fusekiグループを作成します。
+sudo groupadd fusekifusekiユーザを作成します。
+sudo useradd -s /bin/false -g fuseki -d /home/garden-user/etc/fuseki fusekiApache Jena Fusekiをダウンロードします。
+cd ~/tmpwget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-3.17.0.tar.gzダウンロードファイルを展開します。
+sudo tar xzvf apache-jena-fuseki-3.17.0.tar.gz -C /home/garden-user/etc/fuseki --strip-components=1権限の設定をします。
+sudo chgrp -R fuseki /home/garden-user/etc/fusekisudo chown -R fuseki /home/garden-user/etc/fusekisudo chmod -R 764 /home/garden-user/etc/fusekiデータベース設定ファイルの格納ディレクトリを作成します。
+sudo -u fuseki mkdir -p /home/garden-user/etc/fuseki/run/configurationデータベース設定ファイル garden.ttl を作成します。
+sudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden.ttlgarden.ttl ファイルの内容は以下となります。
+@prefix : &amp;lt;http://base/#&amp;gt; .@prefix rdf: &amp;lt;http://www.</description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/tomcat/</link>
+      <pubDate>Tue, 22 Jun 2021 04:10:34 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/tomcat/</guid>
+      <description>Tomcatをインストールします。
+tomcatグループを作成します。
+sudo groupadd tomcattomcatユーザを作成します。
+sudo useradd -s /bin/false -g tomcat -d /home/garden-user/etc/tomcat tomcatApache Tomcatをダウンロードします。Tomcat 9 の最新版をダウンロードしてください。ダウンロードのURLは以下から確認できます。 https://downloads.apache.org/tomcat/tomcat-9/
+確認したバージョンで以下の v9.x.x を変更して実行してください。
+cd ~/tmpwget https://downloads.apache.org/tomcat/tomcat-9/v9.x.x/bin/apache-tomcat-9.x.x.tar.gzダウンロードファイルを展開します。
+sudo tar xzvf apache-tomcat-9.x.x.tar.gz -C /home/garden-user/etc/tomcat --strip-components=1権限の設定をします。
+cd /home/garden-user/etc/tomcatsudo chgrp -R tomcat /home/garden-user/etc/tomcatsudo chown -R tomcat /home/garden-user/etc/tomcatsudo chmod -R 764 /home/garden-user/etc/tomcatTomcatのサービスを設定します。
+sudo vi /etc/systemd/system/tomcat.servicetomcat.serviceの内容は以下となります。
+[Unit]Description=Apache Tomcat Web Application ContainerAfter=network.target[Service]Type=forkingEnvironment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-correttoEnvironment=CATALINA_PID=/home/garden-user/etc/tomcat/temp/tomcat.pidEnvironment=CATALINA_HOME=/home/garden-user/etc/tomcatEnvironment=CATALINA_BASE=/home/garden-user/etc/tomcatEnvironment=&#39;CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC&#39;Environment=&#39;JAVA_OPTS=-Djava.</description>
+    </item>
+    
+    <item>
+      <title>InfluxDB</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/influxdb/</link>
+      <pubDate>Tue, 22 Jun 2021 04:17:12 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/influxdb/</guid>
+      <description>InfluxDBをインストールします。
+リポジトリを追加します。
+echo &amp;quot;deb https://repos.influxdata.com/ubuntu bionic stable&amp;quot; | sudo tee /etc/apt/sources.list.d/influxdb.listGPGキーをインポートします。
+sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -InfluxDBをインストールします。
+sudo apt-get updatesudo apt-get install influxdb=1.8.6-1influxdb.confを編集します。
+sudo vi /etc/influxdb/influxdb.confbind-address を有効にします。
+[http]# Determines whether HTTP endpoint is enabled.enabled = true# Determines whether the Flux query endpoint is enabled.# flux-enabled = false# Determines whether the Flux query logging is enabled.# flux-log-enabled = false# The bind address used by the HTTP service.</description>
+    </item>
+    
+    <item>
+      <title>Chronograf</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/chronograf/</link>
+      <pubDate>Tue, 22 Jun 2021 07:48:38 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/chronograf/</guid>
+      <description>chronografをインストールします。
+wgetで.debをダウンロードします。
+cd ~/tmpsudo wget https://dl.influxdata.com/chronograf/releases/chronograf_1.8.9.1_amd64.debインストールします。
+sudo dpkg -i chronograf_1.8.9.1_amd64.deb設定ファイルを編集します。以下のようにEnvironment=&amp;quot;BASE_PATH=/chronograf&amp;quot;を追加します。
+sudo vi /lib/systemd/system/chronograf.service[Service]User=chronografGroup=chronografEnvironment=&amp;quot;HOST=0.0.0.0&amp;quot;Environment=&amp;quot;PORT=8888&amp;quot;Environment=&amp;quot;BASE_PATH=/chronograf&amp;quot;Environment=&amp;quot;BOLT_PATH=/var/lib/chronograf/chronograf-v1.db&amp;quot;サービスの自動起動有効にします。
+sudo systemctl enable chronograf設定ファイルを再読込します。
+sudo systemctl --system daemon-reloadchronografを起動します。
+sudo systemctl restart chronograf</description>
+    </item>
+    
+    <item>
+      <title>Airflow</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/airflow/</link>
+      <pubDate>Tue, 22 Jun 2021 04:43:25 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/airflow/</guid>
+      <description>Airflowをインストールします。
+airflowグループを作成します。
+sudo groupadd airflowairflowユーザを作成します。
+sudo useradd -s /bin/false -g airflow -d /home/garden-user/etc/airflow airflow権限の設定をします。
+cd /home/garden-user/etc/airflowsudo chgrp -R airflow /home/garden-user/etc/airflowsudo chown -R airflow /home/garden-user/etc/airflowsudo chmod -R 764 /home/garden-user/etc/airflowPython3.6をインストールします。
+sudo apt install python3.6 python3-pippsql を使って PostgreSQL へ接続します。
+sudo -u postgres psql以下のように表示されます。
+psql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))&amp;quot;help&amp;quot; でヘルプを表示します。postgres=#データベース「airflow」を作成します。
+CREATE DATABASE airflow;psqlを終了してPostgreSQLから切断します。
+\qユーザーを切り替えます。
+sudo su - airflow --shell=/bin/bash環境変数の設定をします。
+vi ~/.profile.</description>
+    </item>
+    
+    <item>
+      <title>Nodejs</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/nodejs/</link>
+      <pubDate>Tue, 22 Jun 2021 08:01:31 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/nodejs/</guid>
+      <description>nodejs, npm をインストールします。
+sudo apt install -y nodejs npmn package をインストールします。
+sudo npm install n@7.3.0 -gn package を使って node をインストールします。
+sudo n 14.17.3最初にインストールした nodejs, npm は削除します。
+sudo apt purge -y nodejs npmバージョンを確認します。
+node -vgarden-user のホームディレクトリに、npm グローバルインストール用のディレクトリを作成します。
+mkdir ~/.npm-global新しいディレクトリパスを使用するようにnpmを設定します。
+npm config set prefix &#39;~/.npm-global&#39;システム変数の設定をします。
+cat &amp;gt;&amp;gt; ~/.bashrc &amp;lt;&amp;lt;EOL# set path so it includes user&#39;s npm global installations directory.export PATH=~/.npm-global/bin:$PATHEOLシステム変数を適用します。
+source ~/.</description>
+    </item>
+    
+    <item>
+      <title>MongoDB</title>
+      <link>https://open-garden.github.io/garden/ja/build/tools/mongodb/</link>
+      <pubDate>Tue, 22 Jun 2021 08:08:50 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/tools/mongodb/</guid>
+      <description>MongoDBをインストールします。
+GPGキーをインポートします。
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4リポジトリを追加します。
+echo &amp;quot;deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse&amp;quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.listMongoDBをインストールします。
+sudo apt updatesudo apt install mongodb-org=4.0.25MongoDBを起動します。
+sudo systemctl start mongodMongoDB compass をインストールします。
+ブラウザで https://www.mongodb.com/try/download/compass にアクセスしてダウンロードします。
+MongoDB compass をインストールします。
+sudo dpkg -i EnterfileName.debアクティビティからMongoDB compassを検索して実行します。
+New Connectionタブを押下し、接続先URLを入力します。 （URL:mongodb://localhost:27017）</description>
+    </item>
+    
+  </channel>
+</rss>

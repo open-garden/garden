@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scenario Editor on ja</title>
+    <link>https://open-garden.github.io/garden/ja/scenarioeditor/</link>
+    <description>Recent content in Scenario Editor on ja</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Mon, 21 Jun 2021 06:09:42 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/scenarioeditor/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

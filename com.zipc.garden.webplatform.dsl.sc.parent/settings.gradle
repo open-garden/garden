@@ -1,3 +1,0 @@
-include 'com.zipc.garden.webplatform.dsl.sc'
-include 'com.zipc.garden.webplatform.dsl.sc.ide'
-include 'com.zipc.garden.webplatform.dsl.sc.web'

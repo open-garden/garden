@@ -1,5 +1,0 @@
-# jena-arq-3.11.0.jar
-https://repo1.maven.org/maven2/org/apache/jena/jena-arq/3.11.0/jena-arq-3.11.0.jar
-
-# jena-core-3.11.0.jar
-https://repo1.maven.org/maven2/org/apache/jena/jena-core/3.11.0/jena-core-3.11.0.jar

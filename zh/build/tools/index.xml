@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安装工具 on zh</title>
+    <link>https://open-garden.github.io/garden/zh/build/tools/</link>
+    <description>Recent content in 安装工具 on zh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Tue, 22 Jun 2021 02:56:38 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/zh/build/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/postgresql/</link>
+      <pubDate>Mon, 21 Jun 2021 11:10:34 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/postgresql/</guid>
+      <description>添加密钥。
+sudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -添加仓库。
+lsb_release -csudo sh -c &#39;echo &amp;quot;deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main&amp;quot; &amp;gt; /etc/apt/sources.list.d/pgdg.list&#39;安装 PostgreSQL。
+sudo apt updatesudo apt install postgresql-11配置 .pgpass 文件。
+连接数据库时，psql 会强制要求输入密码，为省略输入密码的步骤，提前创建 .pgpass 文件。
+切换到 garden-user
+sudo su - garden-user编辑 .pgpass 文件。
+vi ~/.pgpass.pgpass 文件内容如下：
+# 数据库garden的连接信息localhost:5432:garden:postgres:postgres# 数据库airflow的连接信息localhost:5432:airflow:postgres:postgres变更 .pgpass 文件的权限。
+chmod 600 ~/.pgpass外部连接许可配置（可选）
+为从外部连接，进行连接许可的配置。
+编辑 postgresql.conf。
+sudo vi /etc/postgresql/11/main/postgresql.conf第57行【# - Connection Settings -】附近，添加 listen_addresses = &amp;lsquo;*&#39;，接受全部通信。</description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/java/</link>
+      <pubDate>Mon, 21 Jun 2021 11:19:40 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/java/</guid>
+      <description>安装 OpenJDK Amazon Corretto 8。
+安装 java-common 包。
+sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install java-common=0.68ubuntu1~18.04.1下载 Linux .deb 文件并安装。
+cd ~/tmpwget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.debsudo apt install ./amazon-corretto-8-x64-linux-jdk.deb查看 java 版本。
+java -version显示如下：
+openjdk version &amp;quot;1.8.0_292&amp;quot;OpenJDK Runtime Environment Corretto-8.292.10.1 (build 1.8.0_292-b10)OpenJDK 64-Bit Server VM Corretto-8.292.10.1 (build 25.292-b10, mixed mode)</description>
+    </item>
+    
+    <item>
+      <title>Apache2</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/apache2/</link>
+      <pubDate>Tue, 22 Jun 2021 03:55:18 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/apache2/</guid>
+      <description>安装 Apache2。
+sudo apt updatesudo apt install apache2=2.4.29-1ubuntu4.16在以下路径中创建 ***.conf。
+cd /etc/apache2/sites-available/sudo vi acacia.conf文件内容如下：
+&amp;lt;VirtualHost *:80&amp;gt;ProxyPreserveHost OnProxyRequests OffErrorLog ${APACHE_LOG_DIR}/hoge_error.log&amp;lt;Location /scenario_modeler&amp;gt;ProxyPass http://localhost:8080/scenario_modelerProxyPassReverse http://localhost:8080/scenario_modeler&amp;lt;/Location&amp;gt;&amp;lt;Location /rdf_viewer&amp;gt;ProxyPass http://localhost:8080/rdf_viewerProxyPassReverse http://localhost:8080/rdf_viewer&amp;lt;/Location&amp;gt;&amp;lt;Location /scenario_editor&amp;gt;ProxyPass http://localhost:5000/scenario_editorProxyPassReverse http://localhost:5000/scenario_editor&amp;lt;/Location&amp;gt;&amp;lt;Location /airflow&amp;gt;ProxyPass http://localhost:8085/airflowProxyPassReverse http://localhost:8085/airflow&amp;lt;/Location&amp;gt;&amp;lt;Location /chronograf&amp;gt;ProxyPass http://localhost:8888/chronografProxyPassReverse http://localhost:8888/chronograf&amp;lt;/Location&amp;gt;&amp;lt;Location /road_editor&amp;gt;ProxyPass http://localhost:38001/road_editorProxyPassReverse http://localhost:38001/road_editor&amp;lt;/Location&amp;gt;&amp;lt;Location /portal&amp;gt;ProxyPass http://localhost:3000/portalProxyPassReverse http://localhost:3000/portal&amp;lt;/Location&amp;gt;&amp;lt;/VirtualHost&amp;gt;用 a2dissite 命令使 000-default.</description>
+    </item>
+    
+    <item>
+      <title>Apache Jena Fuseki</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/jena/</link>
+      <pubDate>Tue, 22 Jun 2021 03:59:00 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/jena/</guid>
+      <description>安装 Apache Jena Fuseki。
+创建 fuseki 组。
+sudo groupadd fuseki创建 fuseki 用户。
+sudo useradd -s /bin/false -g fuseki -d /home/garden-user/etc/fuseki fuseki下载 Apache Jena Fuseki。
+cd ~/tmpwget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-3.17.0.tar.gz解压下载文件。
+sudo tar xzvf apache-jena-fuseki-3.17.0.tar.gz -C /home/garden-user/etc/fuseki --strip-components=1设置权限。
+sudo chgrp -R fuseki /home/garden-user/etc/fusekisudo chown -R fuseki /home/garden-user/etc/fusekisudo chmod -R 764 /home/garden-user/etc/fuseki创建保存数据库配置文件的目录。
+sudo -u fuseki mkdir -p /home/garden-user/etc/fuseki/run/configuration创建数据库配置文件 garden.ttl。
+sudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden.ttlgarden.ttl 文件内容如下：</description>
+    </item>
+    
+    <item>
+      <title>Tomcat</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/tomcat/</link>
+      <pubDate>Tue, 22 Jun 2021 04:10:34 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/tomcat/</guid>
+      <description>安装 Tomcat。
+创建 tomcat 组。
+sudo groupadd tomcat创建 tomcat 用户。
+sudo useradd -s /bin/false -g tomcat -d /home/garden-user/etc/tomcat tomcat下载 Apache Tomcat。请下载 Tomcat 9 最新版。下载 URL 可通过此网址确认： https://downloads.apache.org/tomcat/tomcat-9/
+执行时，请将命令中的 v9.x.x 替换为正确的版本。
+cd ~/tmpwget https://downloads.apache.org/tomcat/tomcat-9/v9.x.x/bin/apache-tomcat-9.x.x.tar.gz解压下载文件。
+sudo tar xzvf apache-tomcat-9.x.x.tar.gz -C /home/garden-user/etc/tomcat --strip-components=1设置权限。
+cd /home/garden-user/etc/tomcatsudo chgrp -R tomcat /home/garden-user/etc/tomcatsudo chown -R tomcat /home/garden-user/etc/tomcatsudo chmod -R 764 /home/garden-user/etc/tomcat配置 Tomcat 服务。
+sudo vi /etc/systemd/system/tomcat.servicetomcat.service 内容如下：</description>
+    </item>
+    
+    <item>
+      <title>InfluxDB</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/influxdb/</link>
+      <pubDate>Tue, 22 Jun 2021 04:17:12 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/influxdb/</guid>
+      <description>安装 InfluxDB。
+添加仓库。
+echo &amp;quot;deb https://repos.influxdata.com/ubuntu bionic stable&amp;quot; | sudo tee /etc/apt/sources.list.d/influxdb.list导入 GPG 密钥。
+sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -安装 InfluxDB。
+sudo apt-get updatesudo apt-get install influxdb=1.8.6-1编辑 influxdb.conf。
+sudo vi /etc/influxdb/influxdb.conf使 bind-address 生效。
+[http]# Determines whether HTTP endpoint is enabled.enabled = true# Determines whether the Flux query endpoint is enabled.# flux-enabled = false# Determines whether the Flux query logging is enabled.</description>
+    </item>
+    
+    <item>
+      <title>Chronograf</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/chronograf/</link>
+      <pubDate>Tue, 22 Jun 2021 07:48:38 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/chronograf/</guid>
+      <description>安装 chronograf。
+用 wget 下载 .deb。
+cd ~/tmpsudo wget https://dl.influxdata.com/chronograf/releases/chronograf_1.8.9.1_amd64.deb安装。
+sudo dpkg -i chronograf_1.8.9.1_amd64.deb编辑配置文件。如下所示，添加Environment=&amp;quot;BASE_PATH=/chronograf&amp;quot;。
+sudo vi /lib/systemd/system/chronograf.service[Service]User=chronografGroup=chronografEnvironment=&amp;quot;HOST=0.0.0.0&amp;quot;Environment=&amp;quot;PORT=8888&amp;quot;Environment=&amp;quot;BASE_PATH=/chronograf&amp;quot;Environment=&amp;quot;BOLT_PATH=/var/lib/chronograf/chronograf-v1.db&amp;quot;将服务设为自动启动。
+sudo systemctl enable chronograf重新加载配置文件。
+sudo systemctl --system daemon-reload启动 chronograf。
+sudo systemctl restart chronograf</description>
+    </item>
+    
+    <item>
+      <title>Airflow</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/airflow/</link>
+      <pubDate>Tue, 22 Jun 2021 04:43:25 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/airflow/</guid>
+      <description>安装 Airflow。
+创建 airflow 组。
+sudo groupadd airflow创建 airflow 用户。
+sudo useradd -s /bin/false -g airflow -d /home/garden-user/etc/airflow airflow设置权限。
+cd /home/garden-user/etc/airflowsudo chgrp -R airflow /home/garden-user/etc/airflowsudo chown -R airflow /home/garden-user/etc/airflowsudo chmod -R 764 /home/garden-user/etc/airflow安装 Python3.6。
+sudo apt install python3.6 python3-pip用 psql 连接 PostgreSQL。
+sudo -u postgres psql显示如下：
+psql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))&amp;quot;help&amp;quot; 显示帮助。postgres=#创建数据库「airflow」。
+CREATE DATABASE airflow;退出 psql，从 PostgreSQL 断开。
+\q切换用户。</description>
+    </item>
+    
+    <item>
+      <title>Nodejs</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/nodejs/</link>
+      <pubDate>Tue, 22 Jun 2021 08:01:31 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/nodejs/</guid>
+      <description>安装 nodejs, npm。
+sudo apt install -y nodejs npm安装 n package。
+sudo npm install n@7.3.0 -g用 n package 安装 node。
+sudo n 14.17.3删除一开始安装的 nodejs, npm。
+sudo apt purge -y nodejs npm查看版本。
+node -v在 garden-user 的主目录下创建 npm 全局安装目录。
+mkdir ~/.npm-global配置 npm 使用新的目录路径。
+npm config set prefix &#39;~/.npm-global&#39;设置系统变量。
+cat &amp;gt;&amp;gt; ~/.bashrc &amp;lt;&amp;lt;EOL# set path so it includes user&#39;s npm global installations directory.export PATH=~/.npm-global/bin:$PATHEOL使系统变量生效。</description>
+    </item>
+    
+    <item>
+      <title>MongoDB</title>
+      <link>https://open-garden.github.io/garden/zh/build/tools/mongodb/</link>
+      <pubDate>Tue, 22 Jun 2021 08:08:50 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/tools/mongodb/</guid>
+      <description>安装 MongoDB。
+导入 GPG 密钥。
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4添加仓库。
+echo &amp;quot;deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse&amp;quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list安装 MongoDB。
+sudo apt updatesudo apt install mongodb-org=4.0.25启动 MongoDB。
+sudo systemctl start mongod</description>
+    </item>
+    
+  </channel>
+</rss>

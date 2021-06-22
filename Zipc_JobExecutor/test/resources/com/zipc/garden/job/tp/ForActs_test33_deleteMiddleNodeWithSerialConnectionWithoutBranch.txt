@@ -1,6 +1,0 @@
------ Tree Configuration ---
-[Parameter]
-N_1(enum) : N_1_1_1_1_1_1_1_1
-N_2(enum) : N_2_1_1_1_1_1_1_1
------ constraints ---
-[Constraint]

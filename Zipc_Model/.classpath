@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.gwt.common_2.6.0.v20120130-0943.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.gwt.ecore_2.7.0.v20120130-0943.jar"/>
-	<classpathentry kind="lib" path="lib/gwt-user.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

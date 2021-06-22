@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="zh" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/garden/img/favicon.png" type="image/png">
+
+    <title>InfluxDB :: zh</title>
+
+    
+    <link href="/garden/css/nucleus.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/fontawesome-all.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/hybrid.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/featherlight.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/perfect-scrollbar.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/auto-complete.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/atom-one-dark-reasonable.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/theme.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/hugo-theme.css?1626218051" rel="stylesheet">
+    
+    <link href="/garden/css/theme-white.css?1626218051" rel="stylesheet">
+    
+    
+
+    <script src="/garden/js/jquery-3.3.1.min.js?1626218051"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/garden/zh/build/tools/influxdb/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/garden/zh'>
+<img src="/garden/img/logo_garden3.png" hspace="0" vspace="0px" width="100%">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="検索...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/garden/js/jquery-3.3.1.min.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.stemmer.support.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/tinyseg.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.jp.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.multi.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/auto-complete.js?1626218051"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/open-garden.github.io\/garden\/\/zh";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/garden/js/search.js?1626218051"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenariomodeler/" title="Scenario Modeler" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenariomodeler/">
+          Scenario Modeler
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioanalyzer/" title="Scenario Analyzer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioanalyzer/">
+          Scenario Analyzer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioroadeditor/" title="Scenario RoadEditor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioroadeditor/">
+          Scenario RoadEditor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioeditor/" title="Scenario Editor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioeditor/">
+          Scenario Editor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioexecuter/" title="Scenario Executer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioexecuter/">
+          Scenario Executer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/build/" title="Build &amp; Install" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/zh/build/">
+          Build &amp; Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/createuser/" title="创建用户" class="dd-item ">
+        <a href="/garden/zh/build/createuser/">
+        创建用户
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/build/tools/" title="安装工具" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/zh/build/tools/">
+          安装工具
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/postgresql/" title="PostgreSQL" class="dd-item ">
+        <a href="/garden/zh/build/tools/postgresql/">
+        PostgreSQL
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/java/" title="Java" class="dd-item ">
+        <a href="/garden/zh/build/tools/java/">
+        Java
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/apache2/" title="Apache2" class="dd-item ">
+        <a href="/garden/zh/build/tools/apache2/">
+        Apache2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/jena/" title="Apache Jena Fuseki" class="dd-item ">
+        <a href="/garden/zh/build/tools/jena/">
+        Apache Jena Fuseki
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/tomcat/" title="Tomcat" class="dd-item ">
+        <a href="/garden/zh/build/tools/tomcat/">
+        Tomcat
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/influxdb/" title="InfluxDB" class="dd-item active">
+        <a href="/garden/zh/build/tools/influxdb/">
+        InfluxDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/chronograf/" title="Chronograf" class="dd-item ">
+        <a href="/garden/zh/build/tools/chronograf/">
+        Chronograf
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/airflow/" title="Airflow" class="dd-item ">
+        <a href="/garden/zh/build/tools/airflow/">
+        Airflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/nodejs/" title="Nodejs" class="dd-item ">
+        <a href="/garden/zh/build/tools/nodejs/">
+        Nodejs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/mongodb/" title="MongoDB" class="dd-item ">
+        <a href="/garden/zh/build/tools/mongodb/">
+        MongoDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/build/" title="构建&amp;安装" class="dd-item ">
+        <a href="/garden/zh/build/build/">
+        构建&amp;安装
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/license/" title="License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/license/">
+          License
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/contact/" title="Contact" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/contact/">
+          Contact
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://open-garden.github.io/garden/ja/build/tools/influxdb/">日本語</option>
+                    
+                  
+              
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="zh" value="https://open-garden.github.io/garden/zh/build/tools/influxdb/" selected>中文</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small></small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/garden/zh/'>GARDEN ScenarioPlatform</a> > <a href='/garden/zh/build/'>Build & Install</a> > <a href='/garden/zh/build/tools/'>安装工具</a> > InfluxDB
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              InfluxDB
+            </h1>
+          
+
+        
+
+
+<p>安装 InfluxDB。</p>
+<p>添加仓库。</p>
+<pre><code>echo &quot;deb https://repos.influxdata.com/ubuntu bionic stable&quot; | sudo tee /etc/apt/sources.list.d/influxdb.list
+</code></pre><p>导入 GPG 密钥。</p>
+<pre><code>sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+</code></pre><p>安装 InfluxDB。</p>
+<pre><code>sudo apt-get update
+sudo apt-get install influxdb=1.8.6-1
+</code></pre><p>编辑 influxdb.conf。</p>
+<pre><code>sudo vi /etc/influxdb/influxdb.conf
+</code></pre><p>使 bind-address 生效。</p>
+<pre><code>[http]
+  # Determines whether HTTP endpoint is enabled.
+  enabled = true
+
+  # Determines whether the Flux query endpoint is enabled.
+  # flux-enabled = false
+
+  # Determines whether the Flux query logging is enabled.
+  # flux-log-enabled = false
+
+  # The bind address used by the HTTP service.
+  bind-address = &quot;:8086&quot;
+</code></pre><p>启动 InfluxDB。</p>
+<pre><code>sudo systemctl start influxdb
+</code></pre>
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/garden/zh/build/tools/tomcat/" title="Tomcat"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/garden/zh/build/tools/chronograf/" title="Chronograf" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/garden/js/clipboard.min.js?1626218051"></script>
+    <script src="/garden/js/perfect-scrollbar.min.js?1626218051"></script>
+    <script src="/garden/js/perfect-scrollbar.jquery.min.js?1626218051"></script>
+    <script src="/garden/js/jquery.sticky.js?1626218051"></script>
+    <script src="/garden/js/featherlight.min.js?1626218051"></script>
+    <script src="/garden/js/highlight.pack.js?1626218051"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/garden/js/modernizr.custom-3.6.0.js?1626218051"></script>
+    <script src="/garden/js/learn.js?1626218051"></script>
+    <script src="/garden/js/hugo-learn.js?1626218051"></script>
+
+    <link href="/garden/mermaid/mermaid.css?1626218051" rel="stylesheet" />
+    <script src="/garden/mermaid/mermaid.js?1626218051"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

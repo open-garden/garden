@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Build &amp; Install on zh</title>
+    <link>https://open-garden.github.io/garden/zh/build/</link>
+    <description>Recent content in Build &amp; Install on zh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/zh/build/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>创建用户</title>
+      <link>https://open-garden.github.io/garden/zh/build/createuser/</link>
+      <pubDate>Mon, 21 Jun 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/createuser/</guid>
+      <description>在 Ubuntu 18.04 中创建用户。指定 /home/garden-user 为主目录，创建用户。
+sudo useradd -s /bin/bash -m -d /home/garden-user -c &amp;quot;GARDEN user&amp;quot; garden-user密码设为 &amp;ldquo;garden&amp;rdquo;。
+sudo passwd garden-user赋予 garden-user 用户 sudo 权限。
+sudo usermod -aG sudo garden-user创建应用配置目录。 切换到 garden-user。
+sudo su - garden-user在 garden-user 的主目录下创建如下文件夹。
+mkdir -p {etc/{airflow/{dags,data},fuseki,tomcat},garden/{war,dags,script,job_executor,node_services},tmp}/home/garden-user/├── etc│ ├── airflow│ ├── dags│ └── data│ ├── fuseki│ └── tomcat├── garden│ ├── war│ ├── dags│ ├── script│ ├── job_executor│ └── node_services├── tmp└── .</description>
+    </item>
+    
+    <item>
+      <title>构建&amp;安装</title>
+      <link>https://open-garden.github.io/garden/zh/build/build/</link>
+      <pubDate>Mon, 21 Jun 2021 11:35:56 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/zh/build/build/</guid>
+      <description>构建 GARDEN Scenario Platform。
+切换用户。
+sudo su - garden-user安装 Maven。
+sudo apt updatesudo apt install maven=3.6.0-1~18.04.1安装 Ant。
+sudo apt updatesudo apt install ant=1.10.5-3~18.04安装 Git。
+sudo apt updatesudo apt install git=1:2.17.1-1ubuntu0.8下载 GWT。
+cd ~/gardencurl -O https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zip解压文件。
+unzip gwt-2.9.0.zip -d ./执行 GARDEN 项目的构建（build）。
+cd ~/gardengit clone https://github.com/open-garden/garden.git garden-repocp ~/garden/garden-repo/script/GARDEN_acacia.sh ~/garden/script	cd ~/garden/scriptchmod 764 GARDEN_acacia.sh	./GARDEN_acacia.sh build_all确认所需资源按如下目录结构保存。
+# war资源/home/garden-user/garden/war├── Zipc_Webplatform.</description>
+    </item>
+    
+  </channel>
+</rss>

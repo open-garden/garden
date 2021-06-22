@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/garden/img/favicon.png" type="image/png">
+
+    <title>ビルド&amp;インストール :: ja</title>
+
+    
+    <link href="/garden/css/nucleus.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/fontawesome-all.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/hybrid.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/featherlight.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/perfect-scrollbar.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/auto-complete.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/atom-one-dark-reasonable.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/theme.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/hugo-theme.css?1626218051" rel="stylesheet">
+    
+    <link href="/garden/css/theme-white.css?1626218051" rel="stylesheet">
+    
+    
+
+    <script src="/garden/js/jquery-3.3.1.min.js?1626218051"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/garden/ja/build/build/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/garden/ja'>
+<img src="/garden/img/logo_garden3.png" hspace="0" vspace="0px" width="100%">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="検索...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/garden/js/jquery-3.3.1.min.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.stemmer.support.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/tinyseg.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.jp.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.multi.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/auto-complete.js?1626218051"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/open-garden.github.io\/garden\/\/ja";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/garden/js/search.js?1626218051"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenariomodeler/" title="Scenario Modeler" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenariomodeler/">
+          Scenario Modeler
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioanalyzer/" title="Scenario Analyzer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioanalyzer/">
+          Scenario Analyzer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioroadeditor/" title="Scenario RoadEditor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioroadeditor/">
+          Scenario RoadEditor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioeditor/" title="Scenario Editor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioeditor/">
+          Scenario Editor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioexecuter/" title="Scenario Executer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioexecuter/">
+          Scenario Executer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/build/" title="Build &amp; Install" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/ja/build/">
+          Build &amp; Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/createuser/" title="ユーザー作成" class="dd-item ">
+        <a href="/garden/ja/build/createuser/">
+        ユーザー作成
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/build/tools/" title="ツールのインストール" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/build/tools/">
+          ツールのインストール
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/postgresql/" title="PostgreSQL" class="dd-item ">
+        <a href="/garden/ja/build/tools/postgresql/">
+        PostgreSQL
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/java/" title="Java" class="dd-item ">
+        <a href="/garden/ja/build/tools/java/">
+        Java
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/apache2/" title="Apache2" class="dd-item ">
+        <a href="/garden/ja/build/tools/apache2/">
+        Apache2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/jena/" title="Apache Jena Fuseki" class="dd-item ">
+        <a href="/garden/ja/build/tools/jena/">
+        Apache Jena Fuseki
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/tomcat/" title="Tomcat" class="dd-item ">
+        <a href="/garden/ja/build/tools/tomcat/">
+        Tomcat
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/influxdb/" title="InfluxDB" class="dd-item ">
+        <a href="/garden/ja/build/tools/influxdb/">
+        InfluxDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/chronograf/" title="Chronograf" class="dd-item ">
+        <a href="/garden/ja/build/tools/chronograf/">
+        Chronograf
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/airflow/" title="Airflow" class="dd-item ">
+        <a href="/garden/ja/build/tools/airflow/">
+        Airflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/nodejs/" title="Nodejs" class="dd-item ">
+        <a href="/garden/ja/build/tools/nodejs/">
+        Nodejs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/mongodb/" title="MongoDB" class="dd-item ">
+        <a href="/garden/ja/build/tools/mongodb/">
+        MongoDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/build/" title="ビルド&amp;インストール" class="dd-item active">
+        <a href="/garden/ja/build/build/">
+        ビルド&amp;インストール
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/license/" title="License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/license/">
+          License
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/contact/" title="Contact" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/contact/">
+          Contact
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://open-garden.github.io/garden/ja/build/build/" selected>日本語</option>
+                    
+                  
+              
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="zh" value="https://open-garden.github.io/garden/zh/build/build/">中文</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small></small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/garden/ja/'>GARDEN ScenarioPlatform</a> > <a href='/garden/ja/build/'>Build & Install</a> > ビルド&インストール
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              ビルド&amp;インストール
+            </h1>
+          
+
+        
+
+
+<p>GARDEN Scenario Platform をビルドします。</p>
+<p>ユーザーを切り替えます。</p>
+<pre><code>sudo su - garden-user
+</code></pre><p>Mavenをインストールします。</p>
+<pre><code>sudo apt update
+sudo apt install maven=3.6.0-1~18.04.1
+</code></pre><p>Antをインストールします。</p>
+<pre><code>sudo apt update
+sudo apt install ant=1.10.5-3~18.04
+</code></pre><p>Gitをインストールします。</p>
+<pre><code>sudo apt update
+sudo apt install git=1:2.17.1-1ubuntu0.8
+</code></pre><p>GWTをダウンロードします。</p>
+<pre><code>cd ~/garden
+curl -O https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zip
+</code></pre><p>ファイル展開します。</p>
+<pre><code>unzip gwt-2.9.0.zip -d ./
+</code></pre><p>GARDENプロジェクトのビルドを実行します。</p>
+<pre><code>cd ~/garden
+git clone https://github.com/open-garden/garden.git garden-repo
+cp ~/garden/garden-repo/script/GARDEN_acacia.sh ~/garden/script	
+cd ~/garden/script
+chmod 764 GARDEN_acacia.sh	
+./GARDEN_acacia.sh build_all
+</code></pre><p>必要な資材が以下のように格納されていることを確認します。</p>
+<pre><code># warの資材
+/home/garden-user/garden/war
+├── Zipc_Webplatform.war
+├── com.zipc.garden.webplatform.dsl.fmc.web.war
+├── com.zipc.garden.webplatform.dsl.sc.web.war
+├── RDFViewer.jar
+└── prefix.properties
+
+# dagsの資材
+/home/garden-user/garden/dags
+├── analyzer
+├── coordinates_converter.py
+├── coordinates_converter_trigger.py
+├── garden_analyzer.py
+├── garden_dag_trigger.py
+├── lon_lat_extractor.py
+└── requirements.txt
+
+# scriptの資材
+/home/garden-user/garden/script
+├── CompactDatabase.jar
+└── GARDEN_acacia.sh
+
+# Job Executorの資材
+/home/garden-user/garden/job_executor/
+├── Zipc_JobExecutor.jar
+├── acts_cmd_2.92.jar
+└── lib
+    └── z3
+        ├── Microsoft.Z3.dll
+        ├── com.microsoft.z3.jar
+        ├── libz3.dll
+        ├── libz3.so
+        ├── libz3java.dll
+        ├── libz3java.so
+        ├── msvcp110.dll
+        ├── msvcr110.dll
+        └── vcomp110.dll
+
+# node系アプリの資材
+/home/garden-user/garden/node_services/
+├── GARDEN_Portal
+├── Zipc_ScenarioEditor
+└── Zipc_Microservice-Road
+</code></pre><p>garden-userでPM2をインストールします。</p>
+<pre><code>npm install pm2@5.1.0 -g
+</code></pre><p>ecosystem.config.jsファイルを新規作成する</p>
+<pre><code>cd /home/garden-user/garden/node_services
+pm2 ecosystem
+</code></pre><p>作成されたファイルの内容を変更します。</p>
+<pre><code>vi /home/garden-user/garden/node_services/ecosystem.config.js
+</code></pre><pre><code>module.exports = {
+  apps : [
+    {
+      name: 'portal',
+      script: 'npm --prefix /home/garden-user/garden/node_services/GARDEN_Portal/server run start',
+      error_file: '/home/garden-user/garden/node_services/GARDEN_Portal/server/logs/err.log',
+      out_file: '/home/garden-user/garden/node_services/GARDEN_Portal/server/logs/out.log',
+      time: true
+    },{
+      name: 'road_service',
+      script: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/index.js',
+      error_file: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/logs/err.log',
+      out_file: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/logs/out.log',
+      time: true
+    },{
+      name: 'scenario_editor',
+      script: 'npm --prefix /home/garden-user/garden/node_services/Zipc_ScenarioEditor run start',
+      error_file: '/home/garden-user/garden/node_services/Zipc_ScenarioEditor/logs/err.log',
+      out_file: '/home/garden-user/garden/node_services/Zipc_ScenarioEditor/logs/out.log',
+      time: true
+    }
+  ]
+};
+
+</code></pre><p>apache2.confの設定を変更します。</p>
+<pre><code>sudo vi /etc/apache2/apache2.conf
+</code></pre><p>以下を追記します。</p>
+<pre><code>&lt;Directory /home/garden-user/etc/tomcat/webapps&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+&lt;/Directory&gt;
+</code></pre><p><img src="/garden/img/Build.ja/2021-06-22-09-15-49.png" alt=""></p>
+<p>Locationを追記します。</p>
+<pre><code>&lt;Location /scenario_modeler/&gt;
+        ProxyPass ajp://localhost:8080/scenario_modeler/
+&lt;/Location&gt;
+&lt;Location /rdf_viewer/&gt;
+        ProxyPass ajp://localhost:8080/rdf_viewer/
+&lt;/Location&gt;
+</code></pre><p>AJPポート設定の追加をします。</p>
+<pre><code>sudo vi /etc/apache2/mods-available/proxy_ajp.conf
+</code></pre><p>proxy_ajp.conf の内容は以下となります。</p>
+<pre><code>ProxyPass /scenario_modeler/  ajp://localhost:8080/scenario_modeler/
+ProxyPass /rdf_viewer/ ajp://localhost:8080/rdf_viewer/
+</code></pre><p>proxy proxy_ajp　を有効にします。</p>
+<pre><code>cd /etc/apache2/mods-available/
+sudo a2enmod proxy proxy_ajp
+</code></pre><p><img src="/garden/img/Build.ja/2021-06-22-09-17-37.png" alt=""></p>
+<p>apache2 を再起動します。</p>
+<pre><code>sudo systemctl restart apache2
+</code></pre><p>Tomcatの設定を変更します。</p>
+<pre><code>sudo vi /home/garden-user/etc/tomcat/conf/server.xml
+</code></pre><p>以下を追記します。</p>
+<pre><code>&lt;Context path=&quot;/scenario_modeler&quot;
+    docBase=&quot;/home/garden-user/etc/tomcat/webapps/Zipc_Webplatform&quot;
+    debug=&quot;0&quot; reloadable=&quot;true&quot; /&gt;
+&lt;Context path=&quot;/rdf_viewer&quot;
+    docBase=&quot;/home/garden-user/etc/tomcat/webapps/RDFViewer&quot;
+    debug=&quot;0&quot; reloadable=&quot;true&quot; /&gt;
+</code></pre><p><img src="/garden/img/Build.ja/2021-06-22-09-19-48.png" alt=""></p>
+<p>tomcat, apacheを再起動します。</p>
+<pre><code>sudo systemctl restart tomcat
+sudo systemctl restart apache2
+</code></pre><p><img src="/garden/img/Build.ja/2021-06-22-09-20-31.png" alt=""></p>
+<p>GARDENのサービスを実行するには以下を実行します。</p>
+<pre><code>cd ~/garden/script
+./GARDEN_acacia.sh start_all
+</code></pre><p>GARDENのサービスを停止するには以下を実行します。</p>
+<pre><code>cd ~/garden/script
+./GARDEN_acacia.sh stop_all
+</code></pre><p>Fusekiデータベースのcompactを実行するには以下を実行します。</p>
+<pre><code>cd ~/garden/script
+./GARDEN_acacia.sh compact_fuseki
+</code></pre><p>定時実行の設定をします。</p>
+<p>cronをインストールします。</p>
+<pre><code>sudo apt update
+sudo apt install cron
+</code></pre><p>crontabファイルを作成します。</p>
+<pre><code>sudo cp /etc/crontab /etc/cron.d/acacia_cron
+sudo vi /etc/cron.d/acacia_cron
+</code></pre><p>毎日23:30に、Fuseki Compactを実行する設定をします。</p>
+<pre><code># /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user  command
+30 23   * * *  root  cd /home/garden-user/garden/script &amp;&amp; &quot;./GARDEN_acacia.sh&quot; &quot;compact_fuseki&quot;&gt;&gt;/home/garden-user/garden/script/script.log
+
+</code></pre><p>crontabファイルの設定を有効にします。</p>
+<pre><code>sudo systemctl restart cron
+</code></pre>
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/garden/ja/build/tools/mongodb/" title="MongoDB"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/garden/ja/license/" title="License" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/garden/js/clipboard.min.js?1626218051"></script>
+    <script src="/garden/js/perfect-scrollbar.min.js?1626218051"></script>
+    <script src="/garden/js/perfect-scrollbar.jquery.min.js?1626218051"></script>
+    <script src="/garden/js/jquery.sticky.js?1626218051"></script>
+    <script src="/garden/js/featherlight.min.js?1626218051"></script>
+    <script src="/garden/js/highlight.pack.js?1626218051"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/garden/js/modernizr.custom-3.6.0.js?1626218051"></script>
+    <script src="/garden/js/learn.js?1626218051"></script>
+    <script src="/garden/js/hugo-learn.js?1626218051"></script>
+
+    <link href="/garden/mermaid/mermaid.css?1626218051" rel="stylesheet" />
+    <script src="/garden/mermaid/mermaid.js?1626218051"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

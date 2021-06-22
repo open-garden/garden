@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="zh" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/garden/img/favicon.png" type="image/png">
+
+    <title>Airflow :: zh</title>
+
+    
+    <link href="/garden/css/nucleus.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/fontawesome-all.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/hybrid.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/featherlight.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/perfect-scrollbar.min.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/auto-complete.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/atom-one-dark-reasonable.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/theme.css?1626218051" rel="stylesheet">
+    <link href="/garden/css/hugo-theme.css?1626218051" rel="stylesheet">
+    
+    <link href="/garden/css/theme-white.css?1626218051" rel="stylesheet">
+    
+    
+
+    <script src="/garden/js/jquery-3.3.1.min.js?1626218051"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/garden/zh/build/tools/airflow/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/garden/zh'>
+<img src="/garden/img/logo_garden3.png" hspace="0" vspace="0px" width="100%">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="検索...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/garden/js/jquery-3.3.1.min.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.stemmer.support.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/tinyseg.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.jp.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/lunr.multi.js?1626218051"></script>
+<script type="text/javascript" src="/garden/js/auto-complete.js?1626218051"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/open-garden.github.io\/garden\/\/zh";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/garden/js/search.js?1626218051"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenariomodeler/" title="Scenario Modeler" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenariomodeler/">
+          Scenario Modeler
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioanalyzer/" title="Scenario Analyzer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioanalyzer/">
+          Scenario Analyzer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioroadeditor/" title="Scenario RoadEditor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioroadeditor/">
+          Scenario RoadEditor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioeditor/" title="Scenario Editor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioeditor/">
+          Scenario Editor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/scenarioexecuter/" title="Scenario Executer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/scenarioexecuter/">
+          Scenario Executer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/build/" title="Build &amp; Install" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/zh/build/">
+          Build &amp; Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/createuser/" title="创建用户" class="dd-item ">
+        <a href="/garden/zh/build/createuser/">
+        创建用户
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/build/tools/" title="安装工具" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/zh/build/tools/">
+          安装工具
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/postgresql/" title="PostgreSQL" class="dd-item ">
+        <a href="/garden/zh/build/tools/postgresql/">
+        PostgreSQL
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/java/" title="Java" class="dd-item ">
+        <a href="/garden/zh/build/tools/java/">
+        Java
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/apache2/" title="Apache2" class="dd-item ">
+        <a href="/garden/zh/build/tools/apache2/">
+        Apache2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/jena/" title="Apache Jena Fuseki" class="dd-item ">
+        <a href="/garden/zh/build/tools/jena/">
+        Apache Jena Fuseki
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/tomcat/" title="Tomcat" class="dd-item ">
+        <a href="/garden/zh/build/tools/tomcat/">
+        Tomcat
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/influxdb/" title="InfluxDB" class="dd-item ">
+        <a href="/garden/zh/build/tools/influxdb/">
+        InfluxDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/chronograf/" title="Chronograf" class="dd-item ">
+        <a href="/garden/zh/build/tools/chronograf/">
+        Chronograf
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/airflow/" title="Airflow" class="dd-item active">
+        <a href="/garden/zh/build/tools/airflow/">
+        Airflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/nodejs/" title="Nodejs" class="dd-item ">
+        <a href="/garden/zh/build/tools/nodejs/">
+        Nodejs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/tools/mongodb/" title="MongoDB" class="dd-item ">
+        <a href="/garden/zh/build/tools/mongodb/">
+        MongoDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/zh/build/build/" title="构建&amp;安装" class="dd-item ">
+        <a href="/garden/zh/build/build/">
+        构建&amp;安装
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/license/" title="License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/license/">
+          License
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/zh/contact/" title="Contact" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/zh/contact/">
+          Contact
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://open-garden.github.io/garden/ja/build/tools/airflow/">日本語</option>
+                    
+                  
+              
+                  
+              
+                  
+              
+          
+              
+              
+                  
+              
+                  
+              
+                  
+                    
+                    
+                      <option id="zh" value="https://open-garden.github.io/garden/zh/build/tools/airflow/" selected>中文</option>
+                    
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small></small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/garden/zh/'>GARDEN ScenarioPlatform</a> > <a href='/garden/zh/build/'>Build & Install</a> > <a href='/garden/zh/build/tools/'>安装工具</a> > Airflow
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Airflow
+            </h1>
+          
+
+        
+
+
+<p>安装 Airflow。</p>
+<p>创建 airflow 组。</p>
+<pre><code>sudo groupadd airflow
+</code></pre><p>创建 airflow 用户。</p>
+<pre><code>sudo useradd -s /bin/false -g airflow -d /home/garden-user/etc/airflow airflow
+</code></pre><p>设置权限。</p>
+<pre><code>cd /home/garden-user/etc/airflow
+sudo chgrp -R airflow /home/garden-user/etc/airflow
+sudo chown -R airflow /home/garden-user/etc/airflow
+sudo chmod -R 764 /home/garden-user/etc/airflow
+</code></pre><p>安装 Python3.6。</p>
+<pre><code>sudo apt install python3.6 python3-pip
+</code></pre><p>用 psql 连接 PostgreSQL。</p>
+<pre><code>sudo -u postgres psql
+</code></pre><p>显示如下：</p>
+<pre><code>psql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))
+&quot;help&quot; 显示帮助。
+
+postgres=#
+</code></pre><p>创建数据库「airflow」。</p>
+<pre><code>CREATE DATABASE airflow;
+</code></pre><p>退出 psql，从 PostgreSQL 断开。</p>
+<pre><code>\q
+</code></pre><p>切换用户。</p>
+<pre><code>sudo su - airflow --shell=/bin/bash
+</code></pre><p>设置环境变量。</p>
+<pre><code>vi ~/.profile
+</code></pre><p>.profile 内容如下：</p>
+<pre><code># Set airflow home
+export AIRFLOW_HOME=&quot;/home/garden-user/etc/airflow&quot;
+
+# set python path
+export PYTHONPATH=$PYTHONPATH:$AIRFLOW_HOME/dags:$AIRFLOW_HOME/dags/analyzer:$AIRFLOW_HOME/dags/analyzer/datas:$AIRFLOW_HOME/dags/analyzer/utils
+
+# set path so it includes user's pip global installations directory.
+export PATH=~/.local/bin:$PATH
+# Set python
+alias python=&quot;python3&quot;
+alias pip=&quot;pip3&quot;
+</code></pre><p>使修改生效。</p>
+<pre><code>source ~/.profile
+</code></pre><p>安装 psycopg2-binary 和 setuptools。</p>
+<pre><code>pip install --user --upgrade pip setuptools
+pip install --user psycopg2-binary==2.9.1
+pip install --user apache-airflow-providers-postgres==1.0.2
+</code></pre><p>安装 Airflow。</p>
+<pre><code>AIRFLOW_VERSION=2.0.1
+PYTHON_VERSION=&quot;$(python --version | cut -d &quot; &quot; -f 2 | cut -d &quot;.&quot; -f 1-2)&quot;
+CONSTRAINT_URL=&quot;https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt&quot;
+pip install --user &quot;apache-airflow==${AIRFLOW_VERSION}&quot; --constraint &quot;${CONSTRAINT_URL}&quot;
+pip install --user airflow_code_editor==4.0.0
+</code></pre><p>初始化 Airflow。</p>
+<pre><code>airflow db init
+</code></pre><p>编辑 airflow.cfg。</p>
+<pre><code>vi airflow.cfg
+</code></pre><p>修改 airflow.cfg 的下列项目：</p>
+<pre><code>default_timezone = Asia/Tokyo
+executor = LocalExecutor
+sql_alchemy_conn = postgresql+psycopg2://postgres:postgres@localhost:5432/airflow
+load_examples = False
+endpoint_url = http://localhost:8085/airflow
+auth_backend = airflow.api.auth.backend.basic_auth
+base_url = http://localhost:8085/airflow
+default_ui_timezone = Asia/Tokyo
+web_server_port = 8085
+enable_proxy_fix = True
+flower_url_prefix = /airflow
+</code></pre><p>在 airflow.cfg 中添加下列项目：</p>
+<pre><code>[code_editor]
+   git_enabled = False
+
+</code></pre><p>使 airflow.cfg 的修改生效。</p>
+<pre><code>airflow db init
+</code></pre><p>创建访问用户。</p>
+<pre><code>airflow users create \
+--role Admin \
+--username admin \
+--firstname admin \
+--lastname user \
+--email admin@acme.com \
+--password admin
+</code></pre><p>注销 airflow 用户。</p>
+<pre><code>exit
+</code></pre><p>创建 airflow-scheduler.service 文件。</p>
+<pre><code>sudo vi /etc/systemd/system/airflow-scheduler.service
+</code></pre><p>airflow-scheduler.service 内容如下：</p>
+<pre><code>[Unit]
+Description=Airflow scheduler daemon
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+# which airflow
+Environment=&quot;PATH=/bin:/home/garden-user/etc/airflow/.local/bin:$PATH&quot;
+Environment=&quot;PYTHONPATH=$PYTHONPATH:/home/garden-user/etc/airflow/dags:/home/garden-user/etc/airflow/dags/analyzer:/home/garden-user/etc/airflow/dags/analyzer/datas:/home/garden-user/etc/airflow/dags/analyzer/utils&quot;
+# AIRFLOW_HOME
+Environment=&quot;AIRFLOW_CONFIG=/home/garden-user/etc/airflow/airflow.cfg&quot;
+Environment=&quot;AIRFLOW_HOME=/home/garden-user/etc/airflow&quot;
+# Execute User
+User=airflow
+Group=airflow
+Type=simple
+# which airflow
+ExecStart= /home/garden-user/etc/airflow/.local/bin/airflow scheduler
+Restart=on-failure
+RestartSec=5s
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>创建 airflow-webserver.service 文件。</p>
+<pre><code>sudo vi /etc/systemd/system/airflow-webserver.service
+</code></pre><p>airflow-webserver.service 内容如下：</p>
+<pre><code>[Unit]
+Description=Airflow scheduler daemon
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+# which airflow
+Environment=&quot;PATH=/bin:/home/garden-user/etc/airflow/.local/bin:$PATH&quot;
+Environment=&quot;PYTHONPATH=$PYTHONPATH:/home/garden-user/etc/airflow/dags:/home/garden-user/etc/airflow/dags/analyzer:/home/garden-user/etc/airflow/dags/analyzer/datas:/home/garden-user/etc/airflow/dags/analyzer/utils&quot;
+# AIRFLOW_HOME
+Environment=&quot;AIRFLOW_CONFIG=/home/garden-user/etc/airflow/airflow.cfg&quot;
+Environment=&quot;AIRFLOW_HOME=/home/garden-user/etc/airflow&quot;
+# Execute User
+User=airflow
+Group=airflow
+Type=simple
+# which airflow
+ExecStart= /home/garden-user/etc/airflow/.local/bin/airflow webserver
+Restart=on-failure
+RestartSec=5s
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+
+</code></pre><p>重新加载配置文件。</p>
+<pre><code>sudo systemctl daemon-reload
+</code></pre><p>将服务设为自动启动。</p>
+<pre><code>sudo systemctl enable airflow-scheduler
+sudo systemctl enable airflow-webserver
+</code></pre><p>启动 Apache Airflow。</p>
+<pre><code>sudo systemctl start airflow-scheduler
+sudo systemctl start airflow-webserver
+</code></pre><p>访问 Apache Airflow。</p>
+<p>http://localhost:8085/airflow</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/garden/zh/build/tools/chronograf/" title="Chronograf"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/garden/zh/build/tools/nodejs/" title="Nodejs" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/garden/js/clipboard.min.js?1626218051"></script>
+    <script src="/garden/js/perfect-scrollbar.min.js?1626218051"></script>
+    <script src="/garden/js/perfect-scrollbar.jquery.min.js?1626218051"></script>
+    <script src="/garden/js/jquery.sticky.js?1626218051"></script>
+    <script src="/garden/js/featherlight.min.js?1626218051"></script>
+    <script src="/garden/js/highlight.pack.js?1626218051"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/garden/js/modernizr.custom-3.6.0.js?1626218051"></script>
+    <script src="/garden/js/learn.js?1626218051"></script>
+    <script src="/garden/js/hugo-learn.js?1626218051"></script>
+
+    <link href="/garden/mermaid/mermaid.css?1626218051" rel="stylesheet" />
+    <script src="/garden/mermaid/mermaid.js?1626218051"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

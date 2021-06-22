@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Build &amp; Install on ja</title>
+    <link>https://open-garden.github.io/garden/ja/build/</link>
+    <description>Recent content in Build &amp; Install on ja</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/build/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ユーザー作成</title>
+      <link>https://open-garden.github.io/garden/ja/build/createuser/</link>
+      <pubDate>Mon, 21 Jun 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/createuser/</guid>
+      <description>Ubuntu 18.04 上にユーザーを作成します。ホームディレクトリを /home/garden-user に指定して、ユーザーを作成します。
+sudo useradd -s /bin/bash -m -d /home/garden-user -c &amp;quot;GARDEN user&amp;quot; garden-userパスワードを &amp;ldquo;garden&amp;rdquo; に設定します。
+sudo passwd garden-usergarden-user に sudo の権限を与えます。
+sudo usermod -aG sudo garden-userアプリ配置ディレクトリを作成します。 garden-user に切り替えます。
+sudo su - garden-usergarden-user のhomeディレクトリの直下に下記のようなフォルダを作成します。
+mkdir -p {etc/{airflow/{dags,data},fuseki,tomcat},garden/{war,dags,script,job_executor,node_services},tmp}/home/garden-user/├── etc│ ├── airflow│ ├── dags│ └── data│ ├── fuseki│ └── tomcat├── garden│ ├── war│ ├── dags│ ├── script│ ├── job_executor│ └── node_services├── tmp└── .</description>
+    </item>
+    
+    <item>
+      <title>ビルド&amp;インストール</title>
+      <link>https://open-garden.github.io/garden/ja/build/build/</link>
+      <pubDate>Mon, 21 Jun 2021 11:35:56 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/build/build/</guid>
+      <description>GARDEN Scenario Platform をビルドします。
+ユーザーを切り替えます。
+sudo su - garden-userMavenをインストールします。
+sudo apt updatesudo apt install maven=3.6.0-1~18.04.1Antをインストールします。
+sudo apt updatesudo apt install ant=1.10.5-3~18.04Gitをインストールします。
+sudo apt updatesudo apt install git=1:2.17.1-1ubuntu0.8GWTをダウンロードします。
+cd ~/gardencurl -O https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zipファイル展開します。
+unzip gwt-2.9.0.zip -d ./GARDENプロジェクトのビルドを実行します。
+cd ~/gardengit clone https://github.com/open-garden/garden.git garden-repocp ~/garden/garden-repo/script/GARDEN_acacia.sh ~/garden/script	cd ~/garden/scriptchmod 764 GARDEN_acacia.sh	./GARDEN_acacia.sh build_all必要な資材が以下のように格納されていることを確認します。
+# warの資材/home/garden-user/garden/war├── Zipc_Webplatform.war├── com.zipc.garden.webplatform.dsl.fmc.web.war├── com.</description>
+    </item>
+    
+  </channel>
+</rss>

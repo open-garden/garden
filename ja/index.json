@@ -1,0 +1,169 @@
+[
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/postgresql/",
+	"title": "PostgreSQL",
+	"tags": [],
+	"description": "",
+	"content": "認証キーの追加をします。\nsudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -\rリポジトリの追加をします。\nlsb_release -c\rsudo sh -c 'echo \u0026quot;deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main\u0026quot; \u0026gt; /etc/apt/sources.list.d/pgdg.list'\rPostgreSQL をインストールします。\nsudo apt update\rsudo apt install postgresql-11\r.pgpassファイルの設定をします。\nデータベースに接続するとき、psqlは強制的にパスワード入力を促しますので、パスワードの入力省略するため、事前に.pgpassファイルを作成します。\ngarden-userに切り替えます\nsudo su - garden-user\r.pgpassファイルを編集します。\nvi ~/.pgpass\r.pgpassファイルの内容は以下の通りです。\n# データベースgardenの接続情報\rlocalhost:5432:garden:postgres:postgres\r# データベースairflowの接続情報\rlocalhost:5432:airflow:postgres:postgres\r.pgpassファイルの権限を変更します。\nchmod 600 ~/.pgpass\r外部接続許可設定（オプション）\n外部から接続するため、接続許可の設定をします。\npostgresql.conf を編集します。\nsudo vi /etc/postgresql/11/main/postgresql.conf\r57行目【# - Connection Settings -】の付近、listen_addresses = \u0026lsquo;*\u0026rsquo; を追加し、すべての通信を受け入れます。\n# - Connection Settings -\r#listen_addresses = 'localhost' # what IP address(es) to listen on;\rlisten_addresses = '*'\rpg_hba.conf の編集をします。\n sudo vi /etc/postgresql/11/main/pg_hba.conf\r91行目【# IPv4 local connections:】の付近、認証を受け付けるIP/IP範囲を追記します。\n# IPv4 local connections:\rhost all all 127.0.0.1/32 md5\rhost all all 0.0.0.0/0 md5\rfirewallがアクティブになる場合、portの許可を追加します。\nsudo ufw allow 5432/tcp\rpostgres ユーザーのパスワード設定をします。\npsql を使って PostgreSQL へ接続します。\nsudo -u postgres psql\r以下のように表示されます。\npsql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))\r\u0026quot;help\u0026quot; でヘルプを表示します。\rpostgres=#\rpostgres ユーザーのパスワードを \u0026ldquo;postgres\u0026rdquo; に設定します。\n\\password postgres\rデータベース「garden」を作成します。\nCREATE DATABASE garden;\rデータベース「garden」に接続します。\n\\c garden\r以下の２つのSQLを実行して、データベース「garden」にテーブルを作成します。\nCREATE TABLE public.drivingdata\r(\rid bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),\rsourcetype character varying(255) COLLATE pg_catalog.\u0026quot;default\u0026quot;,\rsourceuri bytea,\rCONSTRAINT drivingdata_pkey PRIMARY KEY (id)\r)\rWITH (\rOIDS = FALSE\r)\rTABLESPACE pg_default;\rALTER TABLE public.drivingdata\rOWNER to postgres;\rCREATE TABLE public.importeddata\r(\rid bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),\rdrivingdataid bigint,\rlat double precision,\rlatmax double precision,\rlatmin double precision,\rlon double precision,\rlonmax double precision,\rlonmin double precision,\rmapid character varying(255) COLLATE pg_catalog.\u0026quot;default\u0026quot;,\rmeasurement character varying(255) COLLATE pg_catalog.\u0026quot;default\u0026quot;,\rstatus integer,\rCONSTRAINT importeddata_pkey PRIMARY KEY (id),\rCONSTRAINT importeddata_measurement UNIQUE (measurement)\r)\rWITH (\rOIDS = FALSE\r)\rTABLESPACE pg_default;\rALTER TABLE public.importeddata\rOWNER to postgres;\rpsqlを終了してPostgreSQLから切断します。\n\\q\rPostgreSQLサーバを起動します。\nsudo service postgresql start\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/createuser/",
+	"title": "ユーザー作成",
+	"tags": [],
+	"description": "",
+	"content": "Ubuntu 18.04 上にユーザーを作成します。ホームディレクトリを /home/garden-user に指定して、ユーザーを作成します。\nsudo useradd -s /bin/bash -m -d /home/garden-user -c \u0026quot;GARDEN user\u0026quot; garden-user\rパスワードを \u0026ldquo;garden\u0026rdquo; に設定します。\nsudo passwd garden-user\rgarden-user に sudo の権限を与えます。\nsudo usermod -aG sudo garden-user\rアプリ配置ディレクトリを作成します。 garden-user に切り替えます。\nsudo su - garden-user\rgarden-user のhomeディレクトリの直下に下記のようなフォルダを作成します。\nmkdir -p {etc/{airflow/{dags,data},fuseki,tomcat},garden/{war,dags,script,job_executor,node_services},tmp}\r/home/garden-user/\r├── etc\r│ ├── airflow\r│ ├── dags\r│ └── data\r│ ├── fuseki\r│ └── tomcat\r├── garden\r│ ├── war\r│ ├── dags\r│ ├── script\r│ ├── job_executor\r│ └── node_services\r├── tmp\r└── .pgpass\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/",
+	"title": "ツールのインストール",
+	"tags": [],
+	"description": "",
+	"content": "インストールの準備をします。\nzip、unzip、curlをインストールします。\nsudo apt update\rsudo apt install zip unzip curl\r以下のツールのインストールと設定を行います。\n PostgreSQL Java Apache2 Apache Jena Fuseki Tomcat InfluxDB Chronograf Airflow Node.js MongoDB  "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/java/",
+	"title": "Java",
+	"tags": [],
+	"description": "",
+	"content": "OpenJDK Amazon Corretto 8 をインストールします。\njava-common パッケージをインストールします。\nsudo apt-get update \u0026amp;\u0026amp; sudo apt-get install java-common=0.68ubuntu1~18.04.1\rLinux .deb ファイルをダウンロードして、インストールします。\ncd ~/tmp\rwget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb\rsudo apt install ./amazon-corretto-8-x64-linux-jdk.deb\rjavaバージョンを確認します。\njava -version\r以下のように表示されます。\nopenjdk version \u0026quot;1.8.0_292\u0026quot;\rOpenJDK Runtime Environment Corretto-8.292.10.1 (build 1.8.0_292-b10)\rOpenJDK 64-Bit Server VM Corretto-8.292.10.1 (build 25.292-b10, mixed mode)\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/apache2/",
+	"title": "Apache2",
+	"tags": [],
+	"description": "",
+	"content": "Apache2をインストールします。\nsudo apt update\rsudo apt install apache2=2.4.29-1ubuntu4.16\r以下のパスに***.confを作成します。\ncd /etc/apache2/sites-available/\rsudo vi acacia.conf\rファイルの内容は以下となります。\n\u0026lt;VirtualHost *:80\u0026gt;\rProxyPreserveHost On\rProxyRequests Off\rErrorLog ${APACHE_LOG_DIR}/hoge_error.log\r\u0026lt;Location /scenario_modeler\u0026gt;\rProxyPass http://localhost:8080/scenario_modeler\rProxyPassReverse http://localhost:8080/scenario_modeler\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /rdf_viewer\u0026gt;\rProxyPass http://localhost:8080/rdf_viewer\rProxyPassReverse http://localhost:8080/rdf_viewer\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /scenario_editor\u0026gt;\rProxyPass http://localhost:5000/scenario_editor\rProxyPassReverse http://localhost:5000/scenario_editor\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /airflow\u0026gt;\rProxyPass http://localhost:8085/airflow\rProxyPassReverse http://localhost:8085/airflow\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /chronograf\u0026gt;\rProxyPass http://localhost:8888/chronograf\rProxyPassReverse http://localhost:8888/chronograf\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /road_editor\u0026gt;\rProxyPass http://localhost:38001/road_editor\rProxyPassReverse http://localhost:38001/road_editor\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /portal\u0026gt;\rProxyPass http://localhost:3000/portal\rProxyPassReverse http://localhost:3000/portal\r\u0026lt;/Location\u0026gt;\r\u0026lt;/VirtualHost\u0026gt;\ra2dissite コマンドで 000-default.conf を無効にします。\nsudo a2dissite 000-default\ra2enmodでproxyモジュールを有効にします。\nsudo a2enmod proxy_http\ra2ensite コマンドで acacia.conf を有効にします。\nsudo a2ensite acacia\rApache を再起動して設定を反映します。\nsudo systemctl restart apache2\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/build/",
+	"title": "ビルド&amp;インストール",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN Scenario Platform をビルドします。\nユーザーを切り替えます。\nsudo su - garden-user\rMavenをインストールします。\nsudo apt update\rsudo apt install maven=3.6.0-1~18.04.1\rAntをインストールします。\nsudo apt update\rsudo apt install ant=1.10.5-3~18.04\rGitをインストールします。\nsudo apt update\rsudo apt install git=1:2.17.1-1ubuntu0.8\rGWTをダウンロードします。\ncd ~/garden\rcurl -O https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zip\rファイル展開します。\nunzip gwt-2.9.0.zip -d ./\rGARDENプロジェクトのビルドを実行します。\ncd ~/garden\rgit clone https://github.com/open-garden/garden.git garden-repo\rcp ~/garden/garden-repo/script/GARDEN_acacia.sh ~/garden/script\tcd ~/garden/script\rchmod 764 GARDEN_acacia.sh\t./GARDEN_acacia.sh build_all\r必要な資材が以下のように格納されていることを確認します。\n# warの資材\r/home/garden-user/garden/war\r├── Zipc_Webplatform.war\r├── com.zipc.garden.webplatform.dsl.fmc.web.war\r├── com.zipc.garden.webplatform.dsl.sc.web.war\r├── RDFViewer.jar\r└── prefix.properties\r# dagsの資材\r/home/garden-user/garden/dags\r├── analyzer\r├── coordinates_converter.py\r├── coordinates_converter_trigger.py\r├── garden_analyzer.py\r├── garden_dag_trigger.py\r├── lon_lat_extractor.py\r└── requirements.txt\r# scriptの資材\r/home/garden-user/garden/script\r├── CompactDatabase.jar\r└── GARDEN_acacia.sh\r# Job Executorの資材\r/home/garden-user/garden/job_executor/\r├── Zipc_JobExecutor.jar\r├── acts_cmd_2.92.jar\r└── lib\r└── z3\r├── Microsoft.Z3.dll\r├── com.microsoft.z3.jar\r├── libz3.dll\r├── libz3.so\r├── libz3java.dll\r├── libz3java.so\r├── msvcp110.dll\r├── msvcr110.dll\r└── vcomp110.dll\r# node系アプリの資材\r/home/garden-user/garden/node_services/\r├── GARDEN_Portal\r├── Zipc_ScenarioEditor\r└── Zipc_Microservice-Road\rgarden-userでPM2をインストールします。\nnpm install pm2@5.1.0 -g\recosystem.config.jsファイルを新規作成する\ncd /home/garden-user/garden/node_services\rpm2 ecosystem\r作成されたファイルの内容を変更します。\nvi /home/garden-user/garden/node_services/ecosystem.config.js\rmodule.exports = {\rapps : [\r{\rname: 'portal',\rscript: 'npm --prefix /home/garden-user/garden/node_services/GARDEN_Portal/server run start',\rerror_file: '/home/garden-user/garden/node_services/GARDEN_Portal/server/logs/err.log',\rout_file: '/home/garden-user/garden/node_services/GARDEN_Portal/server/logs/out.log',\rtime: true\r},{\rname: 'road_service',\rscript: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/index.js',\rerror_file: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/logs/err.log',\rout_file: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/logs/out.log',\rtime: true\r},{\rname: 'scenario_editor',\rscript: 'npm --prefix /home/garden-user/garden/node_services/Zipc_ScenarioEditor run start',\rerror_file: '/home/garden-user/garden/node_services/Zipc_ScenarioEditor/logs/err.log',\rout_file: '/home/garden-user/garden/node_services/Zipc_ScenarioEditor/logs/out.log',\rtime: true\r}\r]\r};\rapache2.confの設定を変更します。\nsudo vi /etc/apache2/apache2.conf\r以下を追記します。\n\u0026lt;Directory /home/garden-user/etc/tomcat/webapps\u0026gt;\rOptions Indexes FollowSymLinks\rAllowOverride None\rRequire all granted\r\u0026lt;/Directory\u0026gt;\rLocationを追記します。\n\u0026lt;Location /scenario_modeler/\u0026gt;\rProxyPass ajp://localhost:8080/scenario_modeler/\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /rdf_viewer/\u0026gt;\rProxyPass ajp://localhost:8080/rdf_viewer/\r\u0026lt;/Location\u0026gt;\rAJPポート設定の追加をします。\nsudo vi /etc/apache2/mods-available/proxy_ajp.conf\rproxy_ajp.conf の内容は以下となります。\nProxyPass /scenario_modeler/ ajp://localhost:8080/scenario_modeler/\rProxyPass /rdf_viewer/ ajp://localhost:8080/rdf_viewer/\rproxy proxy_ajp　を有効にします。\ncd /etc/apache2/mods-available/\rsudo a2enmod proxy proxy_ajp\rapache2 を再起動します。\nsudo systemctl restart apache2\rTomcatの設定を変更します。\nsudo vi /home/garden-user/etc/tomcat/conf/server.xml\r以下を追記します。\n\u0026lt;Context path=\u0026quot;/scenario_modeler\u0026quot;\rdocBase=\u0026quot;/home/garden-user/etc/tomcat/webapps/Zipc_Webplatform\u0026quot;\rdebug=\u0026quot;0\u0026quot; reloadable=\u0026quot;true\u0026quot; /\u0026gt;\r\u0026lt;Context path=\u0026quot;/rdf_viewer\u0026quot;\rdocBase=\u0026quot;/home/garden-user/etc/tomcat/webapps/RDFViewer\u0026quot;\rdebug=\u0026quot;0\u0026quot; reloadable=\u0026quot;true\u0026quot; /\u0026gt;\rtomcat, apacheを再起動します。\nsudo systemctl restart tomcat\rsudo systemctl restart apache2\rGARDENのサービスを実行するには以下を実行します。\ncd ~/garden/script\r./GARDEN_acacia.sh start_all\rGARDENのサービスを停止するには以下を実行します。\ncd ~/garden/script\r./GARDEN_acacia.sh stop_all\rFusekiデータベースのcompactを実行するには以下を実行します。\ncd ~/garden/script\r./GARDEN_acacia.sh compact_fuseki\r定時実行の設定をします。\ncronをインストールします。\nsudo apt update\rsudo apt install cron\rcrontabファイルを作成します。\nsudo cp /etc/crontab /etc/cron.d/acacia_cron\rsudo vi /etc/cron.d/acacia_cron\r毎日23:30に、Fuseki Compactを実行する設定をします。\n# /etc/crontab: system-wide crontab\r# Unlike any other crontab you don't have to run the `crontab'\r# command to install the new version when you edit this file\r# and files in /etc/cron.d. These files also have username fields,\r# that none of the other crontabs do.\rSHELL=/bin/sh\rPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\r# m h dom mon dow user command\r30 23 * * * root cd /home/garden-user/garden/script \u0026amp;\u0026amp; \u0026quot;./GARDEN_acacia.sh\u0026quot; \u0026quot;compact_fuseki\u0026quot;\u0026gt;\u0026gt;/home/garden-user/garden/script/script.log\rcrontabファイルの設定を有効にします。\nsudo systemctl restart cron\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/jena/",
+	"title": "Apache Jena Fuseki",
+	"tags": [],
+	"description": "",
+	"content": "Apache Jena Fusekiをインストールします。\nfusekiグループを作成します。\nsudo groupadd fuseki\rfusekiユーザを作成します。\nsudo useradd -s /bin/false -g fuseki -d /home/garden-user/etc/fuseki fuseki\rApache Jena Fusekiをダウンロードします。\ncd ~/tmp\rwget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-3.17.0.tar.gz\rダウンロードファイルを展開します。\nsudo tar xzvf apache-jena-fuseki-3.17.0.tar.gz -C /home/garden-user/etc/fuseki --strip-components=1\r権限の設定をします。\nsudo chgrp -R fuseki /home/garden-user/etc/fuseki\rsudo chown -R fuseki /home/garden-user/etc/fuseki\rsudo chmod -R 764 /home/garden-user/etc/fuseki\rデータベース設定ファイルの格納ディレクトリを作成します。\nsudo -u fuseki mkdir -p /home/garden-user/etc/fuseki/run/configuration\rデータベース設定ファイル garden.ttl を作成します。\nsudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden.ttl\rgarden.ttl ファイルの内容は以下となります。\n@prefix : \u0026lt;http://base/#\u0026gt; .\r@prefix rdf: \u0026lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#\u0026gt; .\r@prefix tdb2: \u0026lt;http://jena.apache.org/2016/tdb#\u0026gt; .\r@prefix ja: \u0026lt;http://jena.hpl.hp.com/2005/11/Assembler#\u0026gt; .\r@prefix rdfs: \u0026lt;http://www.w3.org/2000/01/rdf-schema#\u0026gt; .\r@prefix fuseki: \u0026lt;http://jena.apache.org/fuseki#\u0026gt; .\rtdb2:DatasetTDB rdfs:subClassOf ja:RDFDataset .\rja:DatasetTxnMem rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#DatasetTDB\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\rja:ViewGraph rdfs:subClassOf ja:Model .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#GraphTDB\u0026gt;\rrdfs:subClassOf ja:Model .\rtdb2:GraphTDB2 rdfs:subClassOf ja:Model .\rja:MemoryDataset rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetZero rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.apache.org/text#TextDataset\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\r:service_tdb_all a fuseki:Service ;\rrdfs:label \u0026quot;TDB2 garden\u0026quot; ;\rfuseki:dataset :tdb_dataset_readwrite ;\rfuseki:name \u0026quot;garden\u0026quot; ;\rfuseki:serviceQuery \u0026quot;query\u0026quot; , \u0026quot;\u0026quot; , \u0026quot;sparql\u0026quot; ;\rfuseki:serviceReadGraphStore \u0026quot;get\u0026quot; ;\rfuseki:serviceReadWriteGraphStore\r\u0026quot;data\u0026quot; ;\rfuseki:serviceUpdate \u0026quot;\u0026quot; , \u0026quot;update\u0026quot; ;\rfuseki:serviceUpload \u0026quot;upload\u0026quot; .\r:tdb_dataset_readwrite\ra tdb2:DatasetTDB2 ;\rtdb2:location \u0026quot;/home/garden-user/etc/fuseki/run/databases/garden\u0026quot; .\rtdb2:GraphTDB rdfs:subClassOf ja:Model .\rja:RDFDatasetOne rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetSink rdfs:subClassOf ja:RDFDataset .\rtdb2:DatasetTDB2 rdfs:subClassOf ja:RDFDataset .\rデータベース設定ファイル「garden_rdf.ttl」を作成します。\nsudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden_rdf.ttl\rgarden_rdf.ttl ファイルの内容は以下となります。\n@prefix : \u0026lt;http://base/#\u0026gt; .\r@prefix rdf: \u0026lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#\u0026gt; .\r@prefix tdb2: \u0026lt;http://jena.apache.org/2016/tdb#\u0026gt; .\r@prefix ja: \u0026lt;http://jena.hpl.hp.com/2005/11/Assembler#\u0026gt; .\r@prefix rdfs: \u0026lt;http://www.w3.org/2000/01/rdf-schema#\u0026gt; .\r@prefix fuseki: \u0026lt;http://jena.apache.org/fuseki#\u0026gt; .\rtdb2:DatasetTDB rdfs:subClassOf ja:RDFDataset .\rja:DatasetTxnMem rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#DatasetTDB\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\rja:ViewGraph rdfs:subClassOf ja:Model .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#GraphTDB\u0026gt;\rrdfs:subClassOf ja:Model .\rtdb2:GraphTDB2 rdfs:subClassOf ja:Model .\rja:MemoryDataset rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetZero rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.apache.org/text#TextDataset\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\r:service_tdb_all a fuseki:Service ;\rrdfs:label \u0026quot;TDB2 garden_rdf\u0026quot; ;\rfuseki:dataset :tdb_dataset_readwrite ;\rfuseki:name \u0026quot;garden_rdf\u0026quot; ;\rfuseki:serviceQuery \u0026quot;query\u0026quot; , \u0026quot;\u0026quot; , \u0026quot;sparql\u0026quot; ;\rfuseki:serviceReadGraphStore \u0026quot;get\u0026quot; ;\rfuseki:serviceReadWriteGraphStore\r\u0026quot;data\u0026quot; ;\rfuseki:serviceUpdate \u0026quot;\u0026quot; , \u0026quot;update\u0026quot; ;\rfuseki:serviceUpload \u0026quot;upload\u0026quot; .\r:tdb_dataset_readwrite\ra tdb2:DatasetTDB2 ;\rtdb2:location \u0026quot;/home/garden-user/etc/fuseki/run/databases/garden_rdf\u0026quot; .\rtdb2:GraphTDB rdfs:subClassOf ja:Model .\rja:RDFDatasetOne rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetSink rdfs:subClassOf ja:RDFDataset .\rtdb2:DatasetTDB2 rdfs:subClassOf ja:RDFDataset .\rFusekiのサービスを設定します。\nsudo vi /etc/systemd/system/fuseki.service\rfuseki.serviceの内容は以下となります。\n[Unit]\rDescription=Fuseki\r[Service]\r# Edit environment variables to match your installation\rEnvironment=FUSEKI_HOME=/home/garden-user/etc/fuseki\rEnvironment=FUSEKI_BASE=/home/garden-user/etc/fuseki/run\r# Edit the line below to adjust the amount of memory allocated to Fuseki\rEnvironment=JVM_ARGS=-Xmx4G\r# Edit to match your installation\rExecStart=/home/garden-user/etc/fuseki/fuseki-server\r# Run as user \u0026quot;fuseki\u0026quot;\rUser=fuseki\rRestart=on-abort\r# Java processes exit with status 143 when terminated by SIGTERM, this\r# should be considered a successful shutdown\rSuccessExitStatus=143\r### By default, the service logs to journalctl only.\r### If additional logging to a file is required, uncomment the following three lines\r# StandardOutput=syslog\r# StandardError=syslog\r# SyslogIdentifier=fuseki\r### This logs to syslog. If, e.g., rsyslogd is used, you can provide a file\r### /etc/rsyslog.d/fuseki.conf, consisting of the following two lines (uncommented)\r### if $programname == 'fuseki' then /var/log/fuseki/stderrout.log\r### if $programname == 'fuseki' then stop\r[Install]\rWantedBy=multi-user.target\r設定ファイルを再読込します。\nsudo systemctl daemon-reload\rサービスの自動起動を有効にします。\nsudo systemctl enable fuseki\rFusekiサービスを起動します。\nsudo systemctl start fuseki\rブラウザで Apache Jena Fuseki にアクセスします。\nhttp://localhost:3030/\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/tomcat/",
+	"title": "Tomcat",
+	"tags": [],
+	"description": "",
+	"content": "Tomcatをインストールします。\ntomcatグループを作成します。\nsudo groupadd tomcat\rtomcatユーザを作成します。\nsudo useradd -s /bin/false -g tomcat -d /home/garden-user/etc/tomcat tomcat\rApache Tomcatをダウンロードします。Tomcat 9 の最新版をダウンロードしてください。ダウンロードのURLは以下から確認できます。 https://downloads.apache.org/tomcat/tomcat-9/\n確認したバージョンで以下の v9.x.x を変更して実行してください。\ncd ~/tmp\rwget https://downloads.apache.org/tomcat/tomcat-9/v9.x.x/bin/apache-tomcat-9.x.x.tar.gz\rダウンロードファイルを展開します。\nsudo tar xzvf apache-tomcat-9.x.x.tar.gz -C /home/garden-user/etc/tomcat --strip-components=1\r権限の設定をします。\ncd /home/garden-user/etc/tomcat\rsudo chgrp -R tomcat /home/garden-user/etc/tomcat\rsudo chown -R tomcat /home/garden-user/etc/tomcat\rsudo chmod -R 764 /home/garden-user/etc/tomcat\rTomcatのサービスを設定します。\nsudo vi /etc/systemd/system/tomcat.service\rtomcat.serviceの内容は以下となります。\n[Unit]\rDescription=Apache Tomcat Web Application Container\rAfter=network.target\r[Service]\rType=forking\rEnvironment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto\rEnvironment=CATALINA_PID=/home/garden-user/etc/tomcat/temp/tomcat.pid\rEnvironment=CATALINA_HOME=/home/garden-user/etc/tomcat\rEnvironment=CATALINA_BASE=/home/garden-user/etc/tomcat\rEnvironment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'\rEnvironment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'\rExecStart=/home/garden-user/etc/tomcat/bin/startup.sh\rExecStop=/home/garden-user/etc/tomcat/bin/shutdown.sh\rUser=tomcat\rGroup=tomcat\rUMask=0007\rRestartSec=10\rRestart=always\r[Install]\rWantedBy=multi-user.target\r設定ファイルを再読込します。\nsudo systemctl daemon-reload\rサービスの自動起動を有効にします。\nsudo systemctl enable tomcat\rTomcatサービスを起動します。\nsudo systemctl start tomcat\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/influxdb/",
+	"title": "InfluxDB",
+	"tags": [],
+	"description": "",
+	"content": "InfluxDBをインストールします。\nリポジトリを追加します。\necho \u0026quot;deb https://repos.influxdata.com/ubuntu bionic stable\u0026quot; | sudo tee /etc/apt/sources.list.d/influxdb.list\rGPGキーをインポートします。\nsudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -\rInfluxDBをインストールします。\nsudo apt-get update\rsudo apt-get install influxdb=1.8.6-1\rinfluxdb.confを編集します。\nsudo vi /etc/influxdb/influxdb.conf\rbind-address を有効にします。\n[http]\r# Determines whether HTTP endpoint is enabled.\renabled = true\r# Determines whether the Flux query endpoint is enabled.\r# flux-enabled = false\r# Determines whether the Flux query logging is enabled.\r# flux-log-enabled = false\r# The bind address used by the HTTP service.\rbind-address = \u0026quot;:8086\u0026quot;\rInfluxDBを起動します。\nsudo systemctl start influxdb\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/chronograf/",
+	"title": "Chronograf",
+	"tags": [],
+	"description": "",
+	"content": "chronografをインストールします。\nwgetで.debをダウンロードします。\ncd ~/tmp\rsudo wget https://dl.influxdata.com/chronograf/releases/chronograf_1.8.9.1_amd64.deb\rインストールします。\nsudo dpkg -i chronograf_1.8.9.1_amd64.deb\r設定ファイルを編集します。以下のようにEnvironment=\u0026quot;BASE_PATH=/chronograf\u0026quot;を追加します。\nsudo vi /lib/systemd/system/chronograf.service\r[Service]\rUser=chronograf\rGroup=chronograf\rEnvironment=\u0026quot;HOST=0.0.0.0\u0026quot;\rEnvironment=\u0026quot;PORT=8888\u0026quot;\rEnvironment=\u0026quot;BASE_PATH=/chronograf\u0026quot;\rEnvironment=\u0026quot;BOLT_PATH=/var/lib/chronograf/chronograf-v1.db\u0026quot;\rサービスの自動起動有効にします。\nsudo systemctl enable chronograf\r設定ファイルを再読込します。\nsudo systemctl --system daemon-reload\rchronografを起動します。\nsudo systemctl restart chronograf\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/airflow/",
+	"title": "Airflow",
+	"tags": [],
+	"description": "",
+	"content": "Airflowをインストールします。\nairflowグループを作成します。\nsudo groupadd airflow\rairflowユーザを作成します。\nsudo useradd -s /bin/false -g airflow -d /home/garden-user/etc/airflow airflow\r権限の設定をします。\ncd /home/garden-user/etc/airflow\rsudo chgrp -R airflow /home/garden-user/etc/airflow\rsudo chown -R airflow /home/garden-user/etc/airflow\rsudo chmod -R 764 /home/garden-user/etc/airflow\rPython3.6をインストールします。\nsudo apt install python3.6 python3-pip\rpsql を使って PostgreSQL へ接続します。\nsudo -u postgres psql\r以下のように表示されます。\npsql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))\r\u0026quot;help\u0026quot; でヘルプを表示します。\rpostgres=#\rデータベース「airflow」を作成します。\nCREATE DATABASE airflow;\rpsqlを終了してPostgreSQLから切断します。\n\\q\rユーザーを切り替えます。\nsudo su - airflow --shell=/bin/bash\r環境変数の設定をします。\nvi ~/.profile\r.profileの内容は以下となります。\n# Set airflow home\rexport AIRFLOW_HOME=\u0026quot;/home/garden-user/etc/airflow\u0026quot;\r# set python path\rexport PYTHONPATH=$PYTHONPATH:$AIRFLOW_HOME/dags:$AIRFLOW_HOME/dags/analyzer:$AIRFLOW_HOME/dags/analyzer/datas:$AIRFLOW_HOME/dags/analyzer/utils\r# set path so it includes user's pip global installations directory.\rexport PATH=~/.local/bin:$PATH\r# Set python\ralias python=\u0026quot;python3\u0026quot;\ralias pip=\u0026quot;pip3\u0026quot;\r変更を適用します。\nsource ~/.profile\rpsycopg2-binary と setuptools をインストールします。\npip install --user --upgrade pip setuptools\rpip install --user psycopg2-binary==2.9.1\rpip install --user apache-airflow-providers-postgres==1.0.2\rAirflowをインストールします。\nAIRFLOW_VERSION=2.0.1\rPYTHON_VERSION=\u0026quot;$(python --version | cut -d \u0026quot; \u0026quot; -f 2 | cut -d \u0026quot;.\u0026quot; -f 1-2)\u0026quot;\rCONSTRAINT_URL=\u0026quot;https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt\u0026quot;\rpip install --user \u0026quot;apache-airflow==${AIRFLOW_VERSION}\u0026quot; --constraint \u0026quot;${CONSTRAINT_URL}\u0026quot;\rpip install --user airflow_code_editor==4.0.0\rAirflowの初期化をします。\nairflow db init\rairflow.cfg を編集します。\nvi airflow.cfg\rairflow.cfgの下記の項目を修正します。\ndefault_timezone = Asia/Tokyo\rexecutor = LocalExecutor\rsql_alchemy_conn = postgresql+psycopg2://postgres:postgres@localhost:5432/airflow\rload_examples = False\rendpoint_url = http://localhost:8085/airflow\rauth_backend = airflow.api.auth.backend.basic_auth\rbase_url = http://localhost:8085/airflow\rdefault_ui_timezone = Asia/Tokyo\rweb_server_port = 8085\renable_proxy_fix = True\rflower_url_prefix = /airflow\rairflow.cfgに下記の項目を追加：\n[code_editor]\rgit_enabled = False\rairflow.cfgの変更を適用します。\nairflow db init\rアクセスユーザーの作成をします。\nairflow users create \\\r--role Admin \\\r--username admin \\\r--firstname admin \\\r--lastname user \\\r--email admin@acme.com \\\r--password admin\rairflowユーザーをログアウトします。\nexit\rairflow-scheduler.serviceファイルを作成します。\nsudo vi /etc/systemd/system/airflow-scheduler.service\rairflow-scheduler.serviceの内容は以下となります。\n[Unit]\rDescription=Airflow scheduler daemon\rAfter=network.target postgresql.service\rWants=postgresql.service\r[Service]\r# which airflow\rEnvironment=\u0026quot;PATH=/bin:/home/garden-user/etc/airflow/.local/bin:$PATH\u0026quot;\rEnvironment=\u0026quot;PYTHONPATH=$PYTHONPATH:/home/garden-user/etc/airflow/dags:/home/garden-user/etc/airflow/dags/analyzer:/home/garden-user/etc/airflow/dags/analyzer/datas:/home/garden-user/etc/airflow/dags/analyzer/utils\u0026quot;\r# AIRFLOW_HOME\rEnvironment=\u0026quot;AIRFLOW_CONFIG=/home/garden-user/etc/airflow/airflow.cfg\u0026quot;\rEnvironment=\u0026quot;AIRFLOW_HOME=/home/garden-user/etc/airflow\u0026quot;\r# Execute User\rUser=airflow\rGroup=airflow\rType=simple\r# which airflow\rExecStart= /home/garden-user/etc/airflow/.local/bin/airflow scheduler\rRestart=on-failure\rRestartSec=5s\rPrivateTmp=true\r[Install]\rWantedBy=multi-user.target\rairflow-webserver.serviceファイルを作成します。\nsudo vi /etc/systemd/system/airflow-webserver.service\rairflow-webserver.serviceの内容は以下となります。\n[Unit]\rDescription=Airflow scheduler daemon\rAfter=network.target postgresql.service\rWants=postgresql.service\r[Service]\r# which airflow\rEnvironment=\u0026quot;PATH=/bin:/home/garden-user/etc/airflow/.local/bin:$PATH\u0026quot;\rEnvironment=\u0026quot;PYTHONPATH=$PYTHONPATH:/home/garden-user/etc/airflow/dags:/home/garden-user/etc/airflow/dags/analyzer:/home/garden-user/etc/airflow/dags/analyzer/datas:/home/garden-user/etc/airflow/dags/analyzer/utils\u0026quot;\r# AIRFLOW_HOME\rEnvironment=\u0026quot;AIRFLOW_CONFIG=/home/garden-user/etc/airflow/airflow.cfg\u0026quot;\rEnvironment=\u0026quot;AIRFLOW_HOME=/home/garden-user/etc/airflow\u0026quot;\r# Execute User\rUser=airflow\rGroup=airflow\rType=simple\r# which airflow\rExecStart= /home/garden-user/etc/airflow/.local/bin/airflow webserver\rRestart=on-failure\rRestartSec=5s\rPrivateTmp=true\r[Install]\rWantedBy=multi-user.target\r設定ファイルを再読込します。\nsudo systemctl daemon-reload\rサービス自動起動を有効にします。\nsudo systemctl enable airflow-scheduler\rsudo systemctl enable airflow-webserver\rApache Airflow を起動します。\nsudo systemctl start airflow-scheduler\rsudo systemctl start airflow-webserver\rApache Airflow にアクセスします。\nhttp://localhost:8085/airflow\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/nodejs/",
+	"title": "Nodejs",
+	"tags": [],
+	"description": "",
+	"content": "nodejs, npm をインストールします。\nsudo apt install -y nodejs npm\rn package をインストールします。\nsudo npm install n@7.3.0 -g\rn package を使って node をインストールします。\nsudo n 14.17.3\r最初にインストールした nodejs, npm は削除します。\nsudo apt purge -y nodejs npm\rバージョンを確認します。\nnode -v\rgarden-user のホームディレクトリに、npm グローバルインストール用のディレクトリを作成します。\nmkdir ~/.npm-global\r新しいディレクトリパスを使用するようにnpmを設定します。\nnpm config set prefix '~/.npm-global'\rシステム変数の設定をします。\ncat \u0026gt;\u0026gt; ~/.bashrc \u0026lt;\u0026lt;EOL\r# set path so it includes user's npm global installations directory.\rexport PATH=~/.npm-global/bin:$PATH\rEOL\rシステム変数を適用します。\nsource ~/.bashrc\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/tools/mongodb/",
+	"title": "MongoDB",
+	"tags": [],
+	"description": "",
+	"content": "MongoDBをインストールします。\nGPGキーをインポートします。\nsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4\rリポジトリを追加します。\necho \u0026quot;deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse\u0026quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list\rMongoDBをインストールします。\nsudo apt update\rsudo apt install mongodb-org=4.0.25\rMongoDBを起動します。\nsudo systemctl start mongod\rMongoDB compass をインストールします。\nブラウザで https://www.mongodb.com/try/download/compass にアクセスしてダウンロードします。\nMongoDB compass をインストールします。\nsudo dpkg -i EnterfileName.deb\rアクティビティからMongoDB compassを検索して実行します。\nNew Connectionタブを押下し、接続先URLを入力します。 （URL:mongodb://localhost:27017）\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/scenariomodeler/",
+	"title": "Scenario Modeler",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/scenarioanalyzer/",
+	"title": "Scenario Analyzer",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/scenarioroadeditor/",
+	"title": "Scenario RoadEditor",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/scenarioeditor/",
+	"title": "Scenario Editor",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/scenarioexecuter/",
+	"title": "Scenario Executer",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/build/",
+	"title": "Build &amp; Install",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN ScenarioPlatform は Ubuntu 上の Webアプリケーションとして動作します。以下の手順に従って動作環境を構築します。\n ユーザー作成 ツールのインストール  PostgreSQL Java Apache2 Apache Jena Fuseki Tomcat InfluxDB Chronograf Airflow Node.js MongoDB   ビルド\u0026amp;インストール  GARDEN ScenarioPlatform は以下のプロダクト上に構築します。\n   プロダクト名 バージョン     Ubuntu 18.04   PostgreSQL 11.10   Apache Jena Fuseki 3.17.0   Apache2 2.4.29   Keycloak 12.0.4   InfluxDB 1.8.3   Chronograf 1.8.9.1   Airflow 2.0.1   MongoDB 4.0.22   MongoDB compass 1.24.6   Tomcat 9 9.x.x   Node.js 14.17.1    "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/license/",
+	"title": "License",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN ScenarioPlatform のソースコードは BSD 3-Clause License の下で配布されています。\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/contact/",
+	"title": "Contact",
+	"tags": [],
+	"description": "",
+	"content": "お問合せ先： open-garden@googlegroups.com\nopen-garden@googlegroups.com 宛にお問い合わせ頂いた内容については、開発者である株式会社NTTデータオートモビリジェンス研究所にて内容を確認のうえ、ご回答させて頂きます。お問合せ頂きました情報は、匿名の情報として、GARDEN ScenarioPlatformの発展を目的に使用されます。\nNotice : The content of your inquiry will be shared with NTT DATA Automobiligence Research Center, Ltd.\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/",
+	"title": "GARDEN ScenarioPlatform",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN Scenario Platform GARDEN ScenarioPlatform はシナリオベースの開発プロセスをサポートするオープンソースツールのセットです。\n  SourceCode github を参照してください。\n機能概要 GARDEN ScenarioPlatform では、大きく５つの機能を実現します。\n Scenario Modeler Scenario Analyzer Scenario RoadEditor Scenario Editor Scenario Executer  "
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://open-garden.github.io/garden/ja/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

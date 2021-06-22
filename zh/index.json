@@ -1,0 +1,169 @@
+[
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/postgresql/",
+	"title": "PostgreSQL",
+	"tags": [],
+	"description": "",
+	"content": "添加密钥。\nsudo curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -\r添加仓库。\nlsb_release -c\rsudo sh -c 'echo \u0026quot;deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main\u0026quot; \u0026gt; /etc/apt/sources.list.d/pgdg.list'\r安装 PostgreSQL。\nsudo apt update\rsudo apt install postgresql-11\r配置 .pgpass 文件。\n连接数据库时，psql 会强制要求输入密码，为省略输入密码的步骤，提前创建 .pgpass 文件。\n切换到 garden-user\nsudo su - garden-user\r编辑 .pgpass 文件。\nvi ~/.pgpass\r.pgpass 文件内容如下：\n# 数据库garden的连接信息\rlocalhost:5432:garden:postgres:postgres\r# 数据库airflow的连接信息\rlocalhost:5432:airflow:postgres:postgres\r变更 .pgpass 文件的权限。\nchmod 600 ~/.pgpass\r外部连接许可配置（可选）\n为从外部连接，进行连接许可的配置。\n编辑 postgresql.conf。\nsudo vi /etc/postgresql/11/main/postgresql.conf\r第57行【# - Connection Settings -】附近，添加 listen_addresses = \u0026lsquo;*'，接受全部通信。\n# - Connection Settings -\r#listen_addresses = 'localhost' # what IP address(es) to listen on;\rlisten_addresses = '*'\r编辑 pg_hba.conf。\n sudo vi /etc/postgresql/11/main/pg_hba.conf\r第91行【# IPv4 local connections:】附近，添加受理认证的 IP/IP 范围。\n# IPv4 local connections:\rhost all all 127.0.0.1/32 md5\rhost all all 0.0.0.0/0 md5\rfirewall 开启时，添加 port 许可。\nsudo ufw allow 5432/tcp\r设置 postgres 用户的密码。\n使用 psql 连接 PostgreSQL。\nsudo -u postgres psql\r显示如下：\npsql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))\r\u0026quot;help\u0026quot; 显示帮助。\rpostgres=#\r将 postgres 用户的密码设为 \u0026ldquo;postgres\u0026rdquo;。\n\\password postgres\r创建数据库「garden」。\nCREATE DATABASE garden;\r连接数据库「garden」。\n\\c garden\r执行下列 2 条 SQL，在数据库「garden」中创建表。\nCREATE TABLE public.drivingdata\r(\rid bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),\rsourcetype character varying(255) COLLATE pg_catalog.\u0026quot;default\u0026quot;,\rsourceuri bytea,\rCONSTRAINT drivingdata_pkey PRIMARY KEY (id)\r)\rWITH (\rOIDS = FALSE\r)\rTABLESPACE pg_default;\rALTER TABLE public.drivingdata\rOWNER to postgres;\rCREATE TABLE public.importeddata\r(\rid bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),\rdrivingdataid bigint,\rlat double precision,\rlatmax double precision,\rlatmin double precision,\rlon double precision,\rlonmax double precision,\rlonmin double precision,\rmapid character varying(255) COLLATE pg_catalog.\u0026quot;default\u0026quot;,\rmeasurement character varying(255) COLLATE pg_catalog.\u0026quot;default\u0026quot;,\rstatus integer,\rCONSTRAINT importeddata_pkey PRIMARY KEY (id),\rCONSTRAINT importeddata_measurement UNIQUE (measurement)\r)\rWITH (\rOIDS = FALSE\r)\rTABLESPACE pg_default;\rALTER TABLE public.importeddata\rOWNER to postgres;\r退出 psql，从 PostgreSQL 断开。\n\\q\r启动 PostgreSQL 服务器。\nsudo service postgresql start\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/createuser/",
+	"title": "创建用户",
+	"tags": [],
+	"description": "",
+	"content": "在 Ubuntu 18.04 中创建用户。指定 /home/garden-user 为主目录，创建用户。\nsudo useradd -s /bin/bash -m -d /home/garden-user -c \u0026quot;GARDEN user\u0026quot; garden-user\r密码设为 \u0026ldquo;garden\u0026rdquo;。\nsudo passwd garden-user\r赋予 garden-user 用户 sudo 权限。\nsudo usermod -aG sudo garden-user\r创建应用配置目录。 切换到 garden-user。\nsudo su - garden-user\r在 garden-user 的主目录下创建如下文件夹。\nmkdir -p {etc/{airflow/{dags,data},fuseki,tomcat},garden/{war,dags,script,job_executor,node_services},tmp}\r/home/garden-user/\r├── etc\r│ ├── airflow\r│ ├── dags\r│ └── data\r│ ├── fuseki\r│ └── tomcat\r├── garden\r│ ├── war\r│ ├── dags\r│ ├── script\r│ ├── job_executor\r│ └── node_services\r├── tmp\r└── .pgpass\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/",
+	"title": "安装工具",
+	"tags": [],
+	"description": "",
+	"content": "安装前的准备：\n安装 zip、unzip、curl。\nsudo apt update\rsudo apt install zip unzip curl\r安装并配置下列工具：\n PostgreSQL Java Apache2 Apache Jena Fuseki Tomcat InfluxDB Chronograf Airflow Node.js MongoDB  "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/java/",
+	"title": "Java",
+	"tags": [],
+	"description": "",
+	"content": "安装 OpenJDK Amazon Corretto 8。\n安装 java-common 包。\nsudo apt-get update \u0026amp;\u0026amp; sudo apt-get install java-common=0.68ubuntu1~18.04.1\r下载 Linux .deb 文件并安装。\ncd ~/tmp\rwget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.deb\rsudo apt install ./amazon-corretto-8-x64-linux-jdk.deb\r查看 java 版本。\njava -version\r显示如下：\nopenjdk version \u0026quot;1.8.0_292\u0026quot;\rOpenJDK Runtime Environment Corretto-8.292.10.1 (build 1.8.0_292-b10)\rOpenJDK 64-Bit Server VM Corretto-8.292.10.1 (build 25.292-b10, mixed mode)\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/apache2/",
+	"title": "Apache2",
+	"tags": [],
+	"description": "",
+	"content": "安装 Apache2。\nsudo apt update\rsudo apt install apache2=2.4.29-1ubuntu4.16\r在以下路径中创建 ***.conf。\ncd /etc/apache2/sites-available/\rsudo vi acacia.conf\r文件内容如下：\n\u0026lt;VirtualHost *:80\u0026gt;\rProxyPreserveHost On\rProxyRequests Off\rErrorLog ${APACHE_LOG_DIR}/hoge_error.log\r\u0026lt;Location /scenario_modeler\u0026gt;\rProxyPass http://localhost:8080/scenario_modeler\rProxyPassReverse http://localhost:8080/scenario_modeler\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /rdf_viewer\u0026gt;\rProxyPass http://localhost:8080/rdf_viewer\rProxyPassReverse http://localhost:8080/rdf_viewer\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /scenario_editor\u0026gt;\rProxyPass http://localhost:5000/scenario_editor\rProxyPassReverse http://localhost:5000/scenario_editor\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /airflow\u0026gt;\rProxyPass http://localhost:8085/airflow\rProxyPassReverse http://localhost:8085/airflow\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /chronograf\u0026gt;\rProxyPass http://localhost:8888/chronograf\rProxyPassReverse http://localhost:8888/chronograf\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /road_editor\u0026gt;\rProxyPass http://localhost:38001/road_editor\rProxyPassReverse http://localhost:38001/road_editor\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /portal\u0026gt;\rProxyPass http://localhost:3000/portal\rProxyPassReverse http://localhost:3000/portal\r\u0026lt;/Location\u0026gt;\r\u0026lt;/VirtualHost\u0026gt;\r用 a2dissite 命令使 000-default.conf 失效。\nsudo a2dissite 000-default\r用 a2enmod 使 proxy 模块生效。\nsudo a2enmod proxy_http\r用 a2ensite 命令使 acacia.conf 生效。\nsudo a2ensite acacia\r重启 Apache，使配置生效。\nsudo systemctl restart apache2\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/build/",
+	"title": "构建&amp;安装",
+	"tags": [],
+	"description": "",
+	"content": "构建 GARDEN Scenario Platform。\n切换用户。\nsudo su - garden-user\r安装 Maven。\nsudo apt update\rsudo apt install maven=3.6.0-1~18.04.1\r安装 Ant。\nsudo apt update\rsudo apt install ant=1.10.5-3~18.04\r安装 Git。\nsudo apt update\rsudo apt install git=1:2.17.1-1ubuntu0.8\r下载 GWT。\ncd ~/garden\rcurl -O https://storage.googleapis.com/gwt-releases/gwt-2.9.0.zip\r解压文件。\nunzip gwt-2.9.0.zip -d ./\r执行 GARDEN 项目的构建（build）。\ncd ~/garden\rgit clone https://github.com/open-garden/garden.git garden-repo\rcp ~/garden/garden-repo/script/GARDEN_acacia.sh ~/garden/script\tcd ~/garden/script\rchmod 764 GARDEN_acacia.sh\t./GARDEN_acacia.sh build_all\r确认所需资源按如下目录结构保存。\n# war资源\r/home/garden-user/garden/war\r├── Zipc_Webplatform.war\r├── com.zipc.garden.webplatform.dsl.fmc.web.war\r├── com.zipc.garden.webplatform.dsl.sc.web.war\r├── RDFViewer.jar\r└── prefix.properties\r# dags资源\r/home/garden-user/garden/dags\r├── analyzer\r├── coordinates_converter.py\r├── coordinates_converter_trigger.py\r├── garden_analyzer.py\r├── garden_dag_trigger.py\r├── lon_lat_extractor.py\r└── requirements.txt\r# script资源\r/home/garden-user/garden/script\r├── CompactDatabase.jar\r└── GARDEN_acacia.sh\r# Job Executor资源\r/home/garden-user/garden/job_executor/\r├── Zipc_JobExecutor.jar\r├── acts_cmd_2.92.jar\r└── lib\r└── z3\r├── Microsoft.Z3.dll\r├── com.microsoft.z3.jar\r├── libz3.dll\r├── libz3.so\r├── libz3java.dll\r├── libz3java.so\r├── msvcp110.dll\r├── msvcr110.dll\r└── vcomp110.dll\r# node应用资源\r/home/garden-user/garden/node_services/\r├── GARDEN_Portal\r├── Zipc_ScenarioEditor\r└── Zipc_Microservice-Road\r用 garden-user 安装 PM2。\nnpm install pm2@5.1.0 -g\r新建 ecosystem.config.js 文件\ncd /home/garden-user/garden/node_services\rpm2 ecosystem\r修改所建文件的内容。\nvi /home/garden-user/garden/node_services/ecosystem.config.js\rmodule.exports = {\rapps : [\r{\rname: 'portal',\rscript: 'npm --prefix /home/garden-user/garden/node_services/GARDEN_Portal/server run start',\rerror_file: '/home/garden-user/garden/node_services/GARDEN_Portal/server/logs/err.log',\rout_file: '/home/garden-user/garden/node_services/GARDEN_Portal/server/logs/out.log',\rtime: true\r},{\rname: 'road_service',\rscript: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/index.js',\rerror_file: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/logs/err.log',\rout_file: '/home/garden-user/garden/node_services/Zipc_Microservice-Road/logs/out.log',\rtime: true\r},{\rname: 'scenario_editor',\rscript: 'npm --prefix /home/garden-user/garden/node_services/Zipc_ScenarioEditor run start',\rerror_file: '/home/garden-user/garden/node_services/Zipc_ScenarioEditor/logs/err.log',\rout_file: '/home/garden-user/garden/node_services/Zipc_ScenarioEditor/logs/out.log',\rtime: true\r}\r]\r};\r修改 apache2.conf 的配置。\nsudo vi /etc/apache2/apache2.conf\r添加下列内容：\n\u0026lt;Directory /home/garden-user/etc/tomcat/webapps\u0026gt;\rOptions Indexes FollowSymLinks\rAllowOverride None\rRequire all granted\r\u0026lt;/Directory\u0026gt;\r添加 Location。\n\u0026lt;Location /scenario_modeler/\u0026gt;\rProxyPass ajp://localhost:8080/scenario_modeler/\r\u0026lt;/Location\u0026gt;\r\u0026lt;Location /rdf_viewer/\u0026gt;\rProxyPass ajp://localhost:8080/rdf_viewer/\r\u0026lt;/Location\u0026gt;\r添加 AJP 端口配置。\nsudo vi /etc/apache2/mods-available/proxy_ajp.conf\rproxy_ajp.conf 内容如下：\nProxyPass /scenario_modeler/ ajp://localhost:8080/scenario_modeler/\rProxyPass /rdf_viewer/ ajp://localhost:8080/rdf_viewer/\r使 proxy proxy_ajp　生效。\ncd /etc/apache2/mods-available/\rsudo a2enmod proxy proxy_ajp\r重启 apache2。\nsudo systemctl restart apache2\r修改 Tomcat 配置。\nsudo vi /home/garden-user/etc/tomcat/conf/server.xml\r添加下列内容：\n\u0026lt;Context path=\u0026quot;/scenario_modeler\u0026quot;\rdocBase=\u0026quot;/home/garden-user/etc/tomcat/webapps/Zipc_Webplatform\u0026quot;\rdebug=\u0026quot;0\u0026quot; reloadable=\u0026quot;true\u0026quot; /\u0026gt;\r\u0026lt;Context path=\u0026quot;/rdf_viewer\u0026quot;\rdocBase=\u0026quot;/home/garden-user/etc/tomcat/webapps/RDFViewer\u0026quot;\rdebug=\u0026quot;0\u0026quot; reloadable=\u0026quot;true\u0026quot; /\u0026gt;\r重启 tomcat, apache。\nsudo systemctl restart tomcat\rsudo systemctl restart apache2\r要执行 GARDEN 服务，执行下列命令。\ncd ~/garden/script\r./GARDEN_acacia.sh start_all\r要停止 GARDEN 服务，执行下列命令。\ncd ~/garden/script\r./GARDEN_acacia.sh stop_all\r要执行 Fuseki 数据库的 compact，执行下列命令。\ncd ~/garden/script\r./GARDEN_acacia.sh compact_fuseki\r配置定期执行。\ncron。\nsudo apt update\rsudo apt install cron\r创建 crontab 文件。\nsudo cp /etc/crontab /etc/cron.d/acacia_cron\rsudo vi /etc/cron.d/acacia_cron\r每天 23:30 执行 Fuseki Compact 的配置。\n# /etc/crontab: system-wide crontab\r# Unlike any other crontab you don't have to run the `crontab'\r# command to install the new version when you edit this file\r# and files in /etc/cron.d. These files also have username fields,\r# that none of the other crontabs do.\rSHELL=/bin/sh\rPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\r# m h dom mon dow user command\r30 23 * * * root cd /home/garden-user/garden/script \u0026amp;\u0026amp; \u0026quot;./GARDEN_acacia.sh\u0026quot; \u0026quot;compact_fuseki\u0026quot;\u0026gt;\u0026gt;/home/garden-user/garden/script/script.log\r使 crontab 文件配置生效。\nsudo systemctl restart cron\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/jena/",
+	"title": "Apache Jena Fuseki",
+	"tags": [],
+	"description": "",
+	"content": "安装 Apache Jena Fuseki。\n创建 fuseki 组。\nsudo groupadd fuseki\r创建 fuseki 用户。\nsudo useradd -s /bin/false -g fuseki -d /home/garden-user/etc/fuseki fuseki\r下载 Apache Jena Fuseki。\ncd ~/tmp\rwget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-3.17.0.tar.gz\r解压下载文件。\nsudo tar xzvf apache-jena-fuseki-3.17.0.tar.gz -C /home/garden-user/etc/fuseki --strip-components=1\r设置权限。\nsudo chgrp -R fuseki /home/garden-user/etc/fuseki\rsudo chown -R fuseki /home/garden-user/etc/fuseki\rsudo chmod -R 764 /home/garden-user/etc/fuseki\r创建保存数据库配置文件的目录。\nsudo -u fuseki mkdir -p /home/garden-user/etc/fuseki/run/configuration\r创建数据库配置文件 garden.ttl。\nsudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden.ttl\rgarden.ttl 文件内容如下：\n@prefix : \u0026lt;http://base/#\u0026gt; .\r@prefix rdf: \u0026lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#\u0026gt; .\r@prefix tdb2: \u0026lt;http://jena.apache.org/2016/tdb#\u0026gt; .\r@prefix ja: \u0026lt;http://jena.hpl.hp.com/2005/11/Assembler#\u0026gt; .\r@prefix rdfs: \u0026lt;http://www.w3.org/2000/01/rdf-schema#\u0026gt; .\r@prefix fuseki: \u0026lt;http://jena.apache.org/fuseki#\u0026gt; .\rtdb2:DatasetTDB rdfs:subClassOf ja:RDFDataset .\rja:DatasetTxnMem rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#DatasetTDB\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\rja:ViewGraph rdfs:subClassOf ja:Model .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#GraphTDB\u0026gt;\rrdfs:subClassOf ja:Model .\rtdb2:GraphTDB2 rdfs:subClassOf ja:Model .\rja:MemoryDataset rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetZero rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.apache.org/text#TextDataset\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\r:service_tdb_all a fuseki:Service ;\rrdfs:label \u0026quot;TDB2 garden\u0026quot; ;\rfuseki:dataset :tdb_dataset_readwrite ;\rfuseki:name \u0026quot;garden\u0026quot; ;\rfuseki:serviceQuery \u0026quot;query\u0026quot; , \u0026quot;\u0026quot; , \u0026quot;sparql\u0026quot; ;\rfuseki:serviceReadGraphStore \u0026quot;get\u0026quot; ;\rfuseki:serviceReadWriteGraphStore\r\u0026quot;data\u0026quot; ;\rfuseki:serviceUpdate \u0026quot;\u0026quot; , \u0026quot;update\u0026quot; ;\rfuseki:serviceUpload \u0026quot;upload\u0026quot; .\r:tdb_dataset_readwrite\ra tdb2:DatasetTDB2 ;\rtdb2:location \u0026quot;/home/garden-user/etc/fuseki/run/databases/garden\u0026quot; .\rtdb2:GraphTDB rdfs:subClassOf ja:Model .\rja:RDFDatasetOne rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetSink rdfs:subClassOf ja:RDFDataset .\rtdb2:DatasetTDB2 rdfs:subClassOf ja:RDFDataset .\r创建数据库配置文件「garden_rdf.ttl」。\nsudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden_rdf.ttl\rgarden_rdf.ttl 文件内容如下：\n@prefix : \u0026lt;http://base/#\u0026gt; .\r@prefix rdf: \u0026lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#\u0026gt; .\r@prefix tdb2: \u0026lt;http://jena.apache.org/2016/tdb#\u0026gt; .\r@prefix ja: \u0026lt;http://jena.hpl.hp.com/2005/11/Assembler#\u0026gt; .\r@prefix rdfs: \u0026lt;http://www.w3.org/2000/01/rdf-schema#\u0026gt; .\r@prefix fuseki: \u0026lt;http://jena.apache.org/fuseki#\u0026gt; .\rtdb2:DatasetTDB rdfs:subClassOf ja:RDFDataset .\rja:DatasetTxnMem rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#DatasetTDB\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\rja:ViewGraph rdfs:subClassOf ja:Model .\r\u0026lt;http://jena.hpl.hp.com/2008/tdb#GraphTDB\u0026gt;\rrdfs:subClassOf ja:Model .\rtdb2:GraphTDB2 rdfs:subClassOf ja:Model .\rja:MemoryDataset rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetZero rdfs:subClassOf ja:RDFDataset .\r\u0026lt;http://jena.apache.org/text#TextDataset\u0026gt;\rrdfs:subClassOf ja:RDFDataset .\r:service_tdb_all a fuseki:Service ;\rrdfs:label \u0026quot;TDB2 garden_rdf\u0026quot; ;\rfuseki:dataset :tdb_dataset_readwrite ;\rfuseki:name \u0026quot;garden_rdf\u0026quot; ;\rfuseki:serviceQuery \u0026quot;query\u0026quot; , \u0026quot;\u0026quot; , \u0026quot;sparql\u0026quot; ;\rfuseki:serviceReadGraphStore \u0026quot;get\u0026quot; ;\rfuseki:serviceReadWriteGraphStore\r\u0026quot;data\u0026quot; ;\rfuseki:serviceUpdate \u0026quot;\u0026quot; , \u0026quot;update\u0026quot; ;\rfuseki:serviceUpload \u0026quot;upload\u0026quot; .\r:tdb_dataset_readwrite\ra tdb2:DatasetTDB2 ;\rtdb2:location \u0026quot;/home/garden-user/etc/fuseki/run/databases/garden_rdf\u0026quot; .\rtdb2:GraphTDB rdfs:subClassOf ja:Model .\rja:RDFDatasetOne rdfs:subClassOf ja:RDFDataset .\rja:RDFDatasetSink rdfs:subClassOf ja:RDFDataset .\rtdb2:DatasetTDB2 rdfs:subClassOf ja:RDFDataset .\r配置 Fuseki 服务。\nsudo vi /etc/systemd/system/fuseki.service\rfuseki.service 的内容如下：\n[Unit]\rDescription=Fuseki\r[Service]\r# Edit environment variables to match your installation\rEnvironment=FUSEKI_HOME=/home/garden-user/etc/fuseki\rEnvironment=FUSEKI_BASE=/home/garden-user/etc/fuseki/run\r# Edit the line below to adjust the amount of memory allocated to Fuseki\rEnvironment=JVM_ARGS=-Xmx4G\r# Edit to match your installation\rExecStart=/home/garden-user/etc/fuseki/fuseki-server\r# Run as user \u0026quot;fuseki\u0026quot;\rUser=fuseki\rRestart=on-abort\r# Java processes exit with status 143 when terminated by SIGTERM, this\r# should be considered a successful shutdown\rSuccessExitStatus=143\r### By default, the service logs to journalctl only.\r### If additional logging to a file is required, uncomment the following three lines\r# StandardOutput=syslog\r# StandardError=syslog\r# SyslogIdentifier=fuseki\r### This logs to syslog. If, e.g., rsyslogd is used, you can provide a file\r### /etc/rsyslog.d/fuseki.conf, consisting of the following two lines (uncommented)\r### if $programname == 'fuseki' then /var/log/fuseki/stderrout.log\r### if $programname == 'fuseki' then stop\r[Install]\rWantedBy=multi-user.target\r重新加载配置文件。\nsudo systemctl daemon-reload\r将服务设为自动启动。\nsudo systemctl enable fuseki\r启动 Fuseki 服务。\nsudo systemctl start fuseki\r用浏览器访问 Apache Jena Fuseki。\nhttp://localhost:3030/\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/tomcat/",
+	"title": "Tomcat",
+	"tags": [],
+	"description": "",
+	"content": "安装 Tomcat。\n创建 tomcat 组。\nsudo groupadd tomcat\r创建 tomcat 用户。\nsudo useradd -s /bin/false -g tomcat -d /home/garden-user/etc/tomcat tomcat\r下载 Apache Tomcat。请下载 Tomcat 9 最新版。下载 URL 可通过此网址确认： https://downloads.apache.org/tomcat/tomcat-9/\n执行时，请将命令中的 v9.x.x 替换为正确的版本。\ncd ~/tmp\rwget https://downloads.apache.org/tomcat/tomcat-9/v9.x.x/bin/apache-tomcat-9.x.x.tar.gz\r解压下载文件。\nsudo tar xzvf apache-tomcat-9.x.x.tar.gz -C /home/garden-user/etc/tomcat --strip-components=1\r设置权限。\ncd /home/garden-user/etc/tomcat\rsudo chgrp -R tomcat /home/garden-user/etc/tomcat\rsudo chown -R tomcat /home/garden-user/etc/tomcat\rsudo chmod -R 764 /home/garden-user/etc/tomcat\r配置 Tomcat 服务。\nsudo vi /etc/systemd/system/tomcat.service\rtomcat.service 内容如下：\n[Unit]\rDescription=Apache Tomcat Web Application Container\rAfter=network.target\r[Service]\rType=forking\rEnvironment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto\rEnvironment=CATALINA_PID=/home/garden-user/etc/tomcat/temp/tomcat.pid\rEnvironment=CATALINA_HOME=/home/garden-user/etc/tomcat\rEnvironment=CATALINA_BASE=/home/garden-user/etc/tomcat\rEnvironment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'\rEnvironment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'\rExecStart=/home/garden-user/etc/tomcat/bin/startup.sh\rExecStop=/home/garden-user/etc/tomcat/bin/shutdown.sh\rUser=tomcat\rGroup=tomcat\rUMask=0007\rRestartSec=10\rRestart=always\r[Install]\rWantedBy=multi-user.target\r重新加载配置文件。\nsudo systemctl daemon-reload\r将服务设为自动启动。\nsudo systemctl enable tomcat\r启动 Tomcat 服务。\nsudo systemctl start tomcat\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/influxdb/",
+	"title": "InfluxDB",
+	"tags": [],
+	"description": "",
+	"content": "安装 InfluxDB。\n添加仓库。\necho \u0026quot;deb https://repos.influxdata.com/ubuntu bionic stable\u0026quot; | sudo tee /etc/apt/sources.list.d/influxdb.list\r导入 GPG 密钥。\nsudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -\r安装 InfluxDB。\nsudo apt-get update\rsudo apt-get install influxdb=1.8.6-1\r编辑 influxdb.conf。\nsudo vi /etc/influxdb/influxdb.conf\r使 bind-address 生效。\n[http]\r# Determines whether HTTP endpoint is enabled.\renabled = true\r# Determines whether the Flux query endpoint is enabled.\r# flux-enabled = false\r# Determines whether the Flux query logging is enabled.\r# flux-log-enabled = false\r# The bind address used by the HTTP service.\rbind-address = \u0026quot;:8086\u0026quot;\r启动 InfluxDB。\nsudo systemctl start influxdb\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/chronograf/",
+	"title": "Chronograf",
+	"tags": [],
+	"description": "",
+	"content": "安装 chronograf。\n用 wget 下载 .deb。\ncd ~/tmp\rsudo wget https://dl.influxdata.com/chronograf/releases/chronograf_1.8.9.1_amd64.deb\r安装。\nsudo dpkg -i chronograf_1.8.9.1_amd64.deb\r编辑配置文件。如下所示，添加Environment=\u0026quot;BASE_PATH=/chronograf\u0026quot;。\nsudo vi /lib/systemd/system/chronograf.service\r[Service]\rUser=chronograf\rGroup=chronograf\rEnvironment=\u0026quot;HOST=0.0.0.0\u0026quot;\rEnvironment=\u0026quot;PORT=8888\u0026quot;\rEnvironment=\u0026quot;BASE_PATH=/chronograf\u0026quot;\rEnvironment=\u0026quot;BOLT_PATH=/var/lib/chronograf/chronograf-v1.db\u0026quot;\r将服务设为自动启动。\nsudo systemctl enable chronograf\r重新加载配置文件。\nsudo systemctl --system daemon-reload\r启动 chronograf。\nsudo systemctl restart chronograf\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/airflow/",
+	"title": "Airflow",
+	"tags": [],
+	"description": "",
+	"content": "安装 Airflow。\n创建 airflow 组。\nsudo groupadd airflow\r创建 airflow 用户。\nsudo useradd -s /bin/false -g airflow -d /home/garden-user/etc/airflow airflow\r设置权限。\ncd /home/garden-user/etc/airflow\rsudo chgrp -R airflow /home/garden-user/etc/airflow\rsudo chown -R airflow /home/garden-user/etc/airflow\rsudo chmod -R 764 /home/garden-user/etc/airflow\r安装 Python3.6。\nsudo apt install python3.6 python3-pip\r用 psql 连接 PostgreSQL。\nsudo -u postgres psql\r显示如下：\npsql (11.12 (Ubuntu 11.12-1.pgdg18.04+1))\r\u0026quot;help\u0026quot; 显示帮助。\rpostgres=#\r创建数据库「airflow」。\nCREATE DATABASE airflow;\r退出 psql，从 PostgreSQL 断开。\n\\q\r切换用户。\nsudo su - airflow --shell=/bin/bash\r设置环境变量。\nvi ~/.profile\r.profile 内容如下：\n# Set airflow home\rexport AIRFLOW_HOME=\u0026quot;/home/garden-user/etc/airflow\u0026quot;\r# set python path\rexport PYTHONPATH=$PYTHONPATH:$AIRFLOW_HOME/dags:$AIRFLOW_HOME/dags/analyzer:$AIRFLOW_HOME/dags/analyzer/datas:$AIRFLOW_HOME/dags/analyzer/utils\r# set path so it includes user's pip global installations directory.\rexport PATH=~/.local/bin:$PATH\r# Set python\ralias python=\u0026quot;python3\u0026quot;\ralias pip=\u0026quot;pip3\u0026quot;\r使修改生效。\nsource ~/.profile\r安装 psycopg2-binary 和 setuptools。\npip install --user --upgrade pip setuptools\rpip install --user psycopg2-binary==2.9.1\rpip install --user apache-airflow-providers-postgres==1.0.2\r安装 Airflow。\nAIRFLOW_VERSION=2.0.1\rPYTHON_VERSION=\u0026quot;$(python --version | cut -d \u0026quot; \u0026quot; -f 2 | cut -d \u0026quot;.\u0026quot; -f 1-2)\u0026quot;\rCONSTRAINT_URL=\u0026quot;https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt\u0026quot;\rpip install --user \u0026quot;apache-airflow==${AIRFLOW_VERSION}\u0026quot; --constraint \u0026quot;${CONSTRAINT_URL}\u0026quot;\rpip install --user airflow_code_editor==4.0.0\r初始化 Airflow。\nairflow db init\r编辑 airflow.cfg。\nvi airflow.cfg\r修改 airflow.cfg 的下列项目：\ndefault_timezone = Asia/Tokyo\rexecutor = LocalExecutor\rsql_alchemy_conn = postgresql+psycopg2://postgres:postgres@localhost:5432/airflow\rload_examples = False\rendpoint_url = http://localhost:8085/airflow\rauth_backend = airflow.api.auth.backend.basic_auth\rbase_url = http://localhost:8085/airflow\rdefault_ui_timezone = Asia/Tokyo\rweb_server_port = 8085\renable_proxy_fix = True\rflower_url_prefix = /airflow\r在 airflow.cfg 中添加下列项目：\n[code_editor]\rgit_enabled = False\r使 airflow.cfg 的修改生效。\nairflow db init\r创建访问用户。\nairflow users create \\\r--role Admin \\\r--username admin \\\r--firstname admin \\\r--lastname user \\\r--email admin@acme.com \\\r--password admin\r注销 airflow 用户。\nexit\r创建 airflow-scheduler.service 文件。\nsudo vi /etc/systemd/system/airflow-scheduler.service\rairflow-scheduler.service 内容如下：\n[Unit]\rDescription=Airflow scheduler daemon\rAfter=network.target postgresql.service\rWants=postgresql.service\r[Service]\r# which airflow\rEnvironment=\u0026quot;PATH=/bin:/home/garden-user/etc/airflow/.local/bin:$PATH\u0026quot;\rEnvironment=\u0026quot;PYTHONPATH=$PYTHONPATH:/home/garden-user/etc/airflow/dags:/home/garden-user/etc/airflow/dags/analyzer:/home/garden-user/etc/airflow/dags/analyzer/datas:/home/garden-user/etc/airflow/dags/analyzer/utils\u0026quot;\r# AIRFLOW_HOME\rEnvironment=\u0026quot;AIRFLOW_CONFIG=/home/garden-user/etc/airflow/airflow.cfg\u0026quot;\rEnvironment=\u0026quot;AIRFLOW_HOME=/home/garden-user/etc/airflow\u0026quot;\r# Execute User\rUser=airflow\rGroup=airflow\rType=simple\r# which airflow\rExecStart= /home/garden-user/etc/airflow/.local/bin/airflow scheduler\rRestart=on-failure\rRestartSec=5s\rPrivateTmp=true\r[Install]\rWantedBy=multi-user.target\r创建 airflow-webserver.service 文件。\nsudo vi /etc/systemd/system/airflow-webserver.service\rairflow-webserver.service 内容如下：\n[Unit]\rDescription=Airflow scheduler daemon\rAfter=network.target postgresql.service\rWants=postgresql.service\r[Service]\r# which airflow\rEnvironment=\u0026quot;PATH=/bin:/home/garden-user/etc/airflow/.local/bin:$PATH\u0026quot;\rEnvironment=\u0026quot;PYTHONPATH=$PYTHONPATH:/home/garden-user/etc/airflow/dags:/home/garden-user/etc/airflow/dags/analyzer:/home/garden-user/etc/airflow/dags/analyzer/datas:/home/garden-user/etc/airflow/dags/analyzer/utils\u0026quot;\r# AIRFLOW_HOME\rEnvironment=\u0026quot;AIRFLOW_CONFIG=/home/garden-user/etc/airflow/airflow.cfg\u0026quot;\rEnvironment=\u0026quot;AIRFLOW_HOME=/home/garden-user/etc/airflow\u0026quot;\r# Execute User\rUser=airflow\rGroup=airflow\rType=simple\r# which airflow\rExecStart= /home/garden-user/etc/airflow/.local/bin/airflow webserver\rRestart=on-failure\rRestartSec=5s\rPrivateTmp=true\r[Install]\rWantedBy=multi-user.target\r重新加载配置文件。\nsudo systemctl daemon-reload\r将服务设为自动启动。\nsudo systemctl enable airflow-scheduler\rsudo systemctl enable airflow-webserver\r启动 Apache Airflow。\nsudo systemctl start airflow-scheduler\rsudo systemctl start airflow-webserver\r访问 Apache Airflow。\nhttp://localhost:8085/airflow\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/nodejs/",
+	"title": "Nodejs",
+	"tags": [],
+	"description": "",
+	"content": "安装 nodejs, npm。\nsudo apt install -y nodejs npm\r安装 n package。\nsudo npm install n@7.3.0 -g\r用 n package 安装 node。\nsudo n 14.17.3\r删除一开始安装的 nodejs, npm。\nsudo apt purge -y nodejs npm\r查看版本。\nnode -v\r在 garden-user 的主目录下创建 npm 全局安装目录。\nmkdir ~/.npm-global\r配置 npm 使用新的目录路径。\nnpm config set prefix '~/.npm-global'\r设置系统变量。\ncat \u0026gt;\u0026gt; ~/.bashrc \u0026lt;\u0026lt;EOL\r# set path so it includes user's npm global installations directory.\rexport PATH=~/.npm-global/bin:$PATH\rEOL\r使系统变量生效。\nsource ~/.bashrc\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/tools/mongodb/",
+	"title": "MongoDB",
+	"tags": [],
+	"description": "",
+	"content": "安装 MongoDB。\n导入 GPG 密钥。\nsudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4\r添加仓库。\necho \u0026quot;deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse\u0026quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list\r安装 MongoDB。\nsudo apt update\rsudo apt install mongodb-org=4.0.25\r启动 MongoDB。\nsudo systemctl start mongod\r"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/scenariomodeler/",
+	"title": "Scenario Modeler",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/scenarioanalyzer/",
+	"title": "Scenario Analyzer",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/scenarioroadeditor/",
+	"title": "Scenario RoadEditor",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/scenarioeditor/",
+	"title": "Scenario Editor",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/scenarioexecuter/",
+	"title": "Scenario Executer",
+	"tags": [],
+	"description": "",
+	"content": "   "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/build/",
+	"title": "Build &amp; Install",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN ScenarioPlatform 是运行在 Ubuntu 上的 Web应用。搭建运行环境的步骤如下：\n 创建用户 安装工具  PostgreSQL Java Apache2 Apache Jena Fuseki Tomcat InfluxDB Chronograf Airflow Node.js MongoDB   build\u0026amp;install  GARDEN ScenarioPlatform 搭建于以下产品之上。\n   产品名称 版本     Ubuntu 18.04   PostgreSQL 11.10   Apache Jena Fuseki 3.17.0   Apache2 2.4.29   Keycloak 12.0.4   InfluxDB 1.8.3   Chronograf 1.8.9.1   Airflow 2.0.1   MongoDB 4.0.22   MongoDB compass 1.24.6   Tomcat 9 9.x.x   Node.js 14.17.1    "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/license/",
+	"title": "License",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN ScenarioPlatform 源代码按照 BSD 3-Clause License 协议的规定发布。\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/contact/",
+	"title": "Contact",
+	"tags": [],
+	"description": "",
+	"content": "联系方式： open-garden@googlegroups.com\n发送到 open-garden@googlegroups.com 的咨询内容，将由开发方株式会社 NTT DATA Automobiligence 研究所确认后予以答复。咨询信息将作为匿名信息，用于发展 GARDEN ScenarioPlatform。\nNotice : The content of your inquiry will be shared with NTT DATA Automobiligence Research Center, Ltd.\n"
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/",
+	"title": "GARDEN ScenarioPlatform",
+	"tags": [],
+	"description": "",
+	"content": "GARDEN Scenario Platform GARDEN ScenarioPlatform 是支持基于场景开发过程的开源工具集。\n  SourceCode 参见 github。\n功能概要 GARDEN ScenarioPlatform 实现五大功能。\n Scenario Modeler Scenario Analyzer Scenario RoadEditor Scenario Editor Scenario Executer  "
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://open-garden.github.io/garden/zh/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
