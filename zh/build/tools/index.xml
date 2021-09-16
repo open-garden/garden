@@ -98,7 +98,7 @@ sudo vi /etc/systemd/system/tomcat.servicetomcat.service 内容如下：</descr
 添加仓库。
 echo &amp;quot;deb https://repos.influxdata.com/ubuntu bionic stable&amp;quot; | sudo tee /etc/apt/sources.list.d/influxdb.list导入 GPG 密钥。
 sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -安装 InfluxDB。
-sudo apt-get updatesudo apt-get install influxdb=1.8.6-1编辑 influxdb.conf。
+sudo apt-get updatesudo apt-get install influxdb编辑 influxdb.conf。
 sudo vi /etc/influxdb/influxdb.conf使 bind-address 生效。
 [http]# Determines whether HTTP endpoint is enabled.enabled = true# Determines whether the Flux query endpoint is enabled.# flux-enabled = false# Determines whether the Flux query logging is enabled.</description>
     </item>

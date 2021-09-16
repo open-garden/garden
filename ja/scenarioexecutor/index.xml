@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scenario Executor on ja</title>
+    <link>https://open-garden.github.io/garden/ja/scenarioexecutor/</link>
+    <description>Recent content in Scenario Executor on ja</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Mon, 21 Jun 2021 06:09:52 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/scenarioexecutor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ビルド手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page1/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page1/</guid>
+      <description>ScenarioExecutor ScenarioExecutorは自動運転アルゴリズムのテストを行うためのシナリオ実行エンジンです。
+本リポジトリにはCARLAとAutowareを使用し、実際にシナリオを実行しテストを行うデモ環境が含まれています。
+動作環境  Ubuntu 18.04 CARLA Simulator 0.9.11 ROS/ROS2 bridge for CARLA simulator 0.9.11 ROS Melodic Autoware 1.14.0  CARLAのビルド 下記サイトを参照しCARLA 0.9.11のビルドを行ってください。
+https://carla.readthedocs.io/en/0.9.11/build_linux/
+インストール手順の最後にある、以下のコマンドは必須ですので、必ず実行してください。
+make PythonAPI ARGS=&amp;quot;--python-version=2&amp;quot;ros-bridgeのインストール cd ~git clone https://github.com/carla-simulator/ros-bridge.gitcd ros-bridge./install_dependencies.shCARLAのバージョンに対応したros-bridgeをcloneしてください。
+https://github.com/carla-simulator/ros-bridge
+2021年8月現在、CARLA 0.9.11に対応するros-bridgeはリリースされていませんので、masterをcloneしてください。
+ROS Melodicのインストール 下記サイト等を参照しROS Melodicのインストールを行ってください。
+http://wiki.ros.org/melodic/Installation/Ubuntu
+Autowareのビルド 下記サイトを参照しAutoware 1.14.0のビルドを行ってください。
+https://gitlab.com/autowarefoundation/autoware.ai/autoware/-/wikis/Source-Build
+ScenarioExecutorのダウンロード 以下のコマンドを実行してください。
+cd ~git clone https://github.com/open-garden/garden-scenarioexecutor.gitデモ実行 ScenarioExecutorには簡単にシナリオ実行のデモを行うためのシェルスクリプトやROSのlaunchファイルがあらかじめ含まれています。
+これらのファイルは各アプリケーションが以下のフォルダにインストールされていることを前提にしています。    アプリケーション フォルダ     CARLA ~/carla   ros-bridge ~/ros-bridge   Autoware ~/autoware.</description>
+    </item>
+    
+    <item>
+      <title>マップの追加</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page2/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page2/</guid>
+      <description>以下の流れに沿ってCARLAにマップを追加します。
+詳細な手順を以降に記載します。 道路のメッシュの作成 RoadEditorを使用し地図を作成してください。
+作成したらFile &amp;gt; Export OBJでエクスポートしてください。
+ルートの定義 RoadEditorで自車両及び他車両が走行するルートを定義してください。
+定義したらFile &amp;gt; Export Waypointでエクスポートしてください。
+OpenDriveの作成 RoadEditorのFile &amp;gt; Saveで出力したファイルから、OpenDrive変換ツールを使用しOpenDriveを作成してください。
+Unreal Engineにマップを追加 RoadEditorからエクスポートしたobjファイルをそのままCARLAにインポートするとスケールと座標系が異なるため、事前に修正を行う必要があります。
+ここではBlenderを使用した修正方法について記載します。
+ Blenderを起動し、File &amp;gt; Import &amp;gt; Wavefront (.obj)を選択します。
+RoadEditorからエクスポートしたobjファイルを選択しインポートします。 アスファルト部分のメッシュと白線部分のメッシュに分かれているため、アスファルト部分のみ選択します。
+ File &amp;gt; Export &amp;gt; FBX (.fbx)を選択します。
+Limit to Selected Objectsにチェックを入れます。
+Object TypesはMeshのみ選択します。
+Export FBXをクリックします。
+ 同様に白線部分もエクスポートします。
+ CARLAにインポートします。
+インポート先のフォルダで右クリックしImport to /Game/...を選択します。
+Blenderからエクスポートしたfbxファイルを選択します。
+そのままImport Allをクリックします。
+ 空のマップを用意します。
+/Content/Carla/Maps/BaseMap/BaseMapを/Content/Garden/Mapsにドラッグアンドドロップし、Copy Hereを選択します。
+マップの名前を変更しRoadEditorのIDを付けます。
+マップの名前はOpenDriveのファイル名とも一致している必要があります。 空のマップを開き、道路のメッシュを配置します。
+LocationとRotationはすべて0にしてください。 ScenarioExecutorのBlueprintを配置します。
+/Content/Garden/Blueprints/ScenarioExecutor/Garden_ScenarioExecutorをマップ上にドラッグアンドドロップして配置します。  OpenDriveを格納します。
+~/ScenarioExecutor/Content/Garden/Maps/OpenDriveにマップと同名のOpenDriveを格納します。  ウェイポイントの格納  ウェイポイントを格納します。</description>
+    </item>
+    
+    <item>
+      <title>シナリオの記述方法</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page3/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page3/</guid>
+      <description>シナリオの記述方法について解説します。
+シナリオはjson形式で記述します。
+サンプルのシナリオファイルが~/ScenarioExecutor/scenariosフォルダ内にありますので、参考にしてください。
+シナリオの記述内容は大きく4つのブロックに分かれています。    ブロック 記述内容     map_id RoadEditorのIDを指定します。   actors シナリオに登場する自車両、他車両、歩行者、障害物の情報を記述します。   scenario さまざまなシーンを定義し、シーン中にアクターがどのように振舞うか、シーン間をどのような条件で遷移するかを記述します。   stop_condition シナリオの終了条件を記述します。      map_id
+RoadEditorのIDを指定します。
+&amp;#34;map_id&amp;#34;: &amp;#34;highway&amp;#34;   actors
+シナリオ内に登場するアクターを定義します。
+ ego
+自車両を定義します。  actor_id (int)
+アクターのIDを指定します。アクターが複数存在する場合、重複しない値を指定します。 model_id (string)
+車種のIDを指定します。CARLAで定義されている車種のIDを指定します。
+現在、シナリオから自車両の車種を指定することはできません。ros-bridge 0.9.11ではros-bridge/carla_spawn_objects/config/objects.json内で自車両の車種を指定します。 color (string)
+車両の色を指定します(RGB16進数)。
+現在、シナリオから自車両の色を指定することはできません。ros-bridgeの仕様でランダムになっています。   others
+他車両、歩行者等の障害物を定義します。   actor_id (int) - egoのactor_idと同じです。
+  model_id (string)</description>
+    </item>
+    
+    <item>
+      <title>シナリオの実行</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page4/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page4/</guid>
+      <description>シナリオを実行するためのシェルスクリプト~/ScenarioExecutor/run.shについて説明します。
+#!/bin/bash source setup.sh python ScenarioExecutor.py シナリオ(.json) ウェイポイント(.json) [autoware] setup.shはCARLAのPythonAPIライブラリのパスを設定しています。
+ScenarioExecutor.pyの引数は以下の通りです。
+ シナリオ(.json) : シナリオの記述方法のページで説明しているシナリオファイルです。 ウェイポイント(.json) : RoadEditorからエクスポートしたファイルです。 autoware: 3番目の引数にautowareを指定するとAutowareとros-bridgeを起動します。何も指定しない場合はCARLAの~/carla/PythonAPI/examples/manual_control.pyを起動します。
+autowareを指定した場合、自車両はAutowareによって自動でコントロールされ、指定しない場合はmanual_control.pyを使用して手動で自車両をコントロールします。  3番目の引数にautowareを指定した場合、ScenarioExecutor.pyはプログラム内で~/ScenarioExecutor/garden-autoware-agent/src/garden-autoware/launch/garden-autoware.shを呼び出します。
+garden-autoware.sh以降は下記の順序で呼び出しが行われます。
+ScenarioExecutor.py└── garden-autoware.sh $1 $2 $3├── autoware.sh $1 $2 $3│ └── garden-autoware.launch $1 $2 $3└── rviz.launch $1 $2 $3は引数です。それぞれ以下の値がセットされます。  $1: town:=マップ名
+マップ名はシナリオのmap_idがセットされます。 $2: spawn_point:=自車両のスポーン位置
+自車両のスポーン位置はシナリオのscenario:opening_scene:ego:start_position:wp_idとwp_idxで指定されたウェイポイントからx,y,z,roll,pitch,yawを取得してセットされます。 $3: waypoint:=Autoware用のウェイポイント
+Autoware用のウェイポイントには~/ScenarioExecutor/garden-autoware-agent/src/garden-autoware/config/waypointに格納されているcsvファイルのパスがセットされます。
+ファイル名はscenario:opening_scene:ego:start_position:wp_idから取得します。   garden-autoware.launch内で、Autowareとros-bridgeのノード及び自己位置推定ノードを起動しています。
+(自己位置推定ノードはCARLAのOdometryセンサーの情報のみ使用して簡易的に自己位置推定を行うScenarioExecutorが提供するノードです。) rviz.launchはRVizの起動を行います。  </description>
+    </item>
+    
+    <item>
+      <title>実行ログ</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page5/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page5/</guid>
+      <description>ScenarioExecutorを実行すると、シミュレーション実行時のログが保存されます。
+ログの保存先は~/ScenarioExecutor/logです。ファイル名はシナリオのファイル名と同じで、拡張子が.csvになります。
+ログに保存される内容は以下の通りです。
+   項目 内容     timestamp タイムスタンプ(50ms間隔でログを保存します)   scene_id シナリオのscene_id   ego_x 自車両のx座標 (m)   ego_y 自車両のy座標 (m)   ego_z 自車両のz座標 (m)   ego_roll 自車両のroll (ラジアン)   ego_pitch 自車両のpitch (ラジアン)   ego_yaw 自車両のyaw (ラジアン)   ego_lane_id 自車両の最寄りのレーンID (RoadEditorで定義したルートの順番に0から番号が割り振られます)   collision 自車両の衝突の有無 (通常は0で衝突時は0以外の値になります)   obs0_x 障害物0のx座標 (m)   obs0_y 障害物0のy座標 (m)   obs0_z 障害物0のz座標 (m)   obs0_roll 障害物0のroll (ラジアン)   obs0_pitch 障害物0のpitch (ラジアン)   obs0_yaw 障害物0のyaw (ラジアン)   obs0_lane_id 障害物0の最寄りのレーンID (RoadEditorで定義したルートの順番に0から番号が割り振られます)    障害物が複数ある場合は、obs1,obs2…と続きます。</description>
+    </item>
+    
+  </channel>
+</rss>

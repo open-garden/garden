@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/garden/img/favicon.png" type="image/png">
+
+    <title>シナリオの記述方法 :: ja</title>
+
+    
+    <link href="/garden/css/nucleus.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/fontawesome-all.min.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/hybrid.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/featherlight.min.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/perfect-scrollbar.min.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/auto-complete.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/atom-one-dark-reasonable.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/theme.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/hugo-theme.css?1631857748" rel="stylesheet">
+    
+    <link href="/garden/css/theme-white.css?1631857748" rel="stylesheet">
+    
+    
+
+    <script src="/garden/js/jquery-3.3.1.min.js?1631857748"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/garden/ja/scenarioexecutor/page3/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/garden/ja'>
+<img src="/garden/img/logo_garden3.png" hspace="0" vspace="0px" width="100%">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="検索...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/garden/js/jquery-3.3.1.min.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.stemmer.support.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/tinyseg.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.jp.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.multi.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/auto-complete.js?1631857748"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/open-garden.github.io\/garden\/\/ja";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/garden/js/search.js?1631857748"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenariomodeler/" title="Scenario Modeler" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenariomodeler/">
+          Scenario Modeler
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioanalyzer/" title="Scenario Analyzer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioanalyzer/">
+          Scenario Analyzer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioroadeditor/" title="Scenario RoadEditor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioroadeditor/">
+          Scenario RoadEditor
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page1/" title="ビルド手順" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page1/">
+        ビルド手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page2/" title="Mapの作成手順" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page2/">
+        Mapの作成手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page3/" title="ルートの作成手順" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page3/">
+        ルートの作成手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page4/" title="OpenDRIVEエクスポート" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page4/">
+        OpenDRIVEエクスポート
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioeditor/" title="Scenario Editor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioeditor/">
+          Scenario Editor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioexecutor/" title="Scenario Executor" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/ja/scenarioexecutor/">
+          Scenario Executor
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page1/" title="ビルド手順" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page1/">
+        ビルド手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page2/" title="マップの追加" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page2/">
+        マップの追加
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page3/" title="シナリオの記述方法" class="dd-item active">
+        <a href="/garden/ja/scenarioexecutor/page3/">
+        シナリオの記述方法
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page4/" title="シナリオの実行" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page4/">
+        シナリオの実行
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page5/" title="実行ログ" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page5/">
+        実行ログ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/build/" title="Build &amp; Install" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/build/">
+          Build &amp; Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/createuser/" title="ユーザー作成" class="dd-item ">
+        <a href="/garden/ja/build/createuser/">
+        ユーザー作成
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/build/tools/" title="ツールのインストール" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/build/tools/">
+          ツールのインストール
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/postgresql/" title="PostgreSQL" class="dd-item ">
+        <a href="/garden/ja/build/tools/postgresql/">
+        PostgreSQL
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/java/" title="Java" class="dd-item ">
+        <a href="/garden/ja/build/tools/java/">
+        Java
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/apache2/" title="Apache2" class="dd-item ">
+        <a href="/garden/ja/build/tools/apache2/">
+        Apache2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/jena/" title="Apache Jena Fuseki" class="dd-item ">
+        <a href="/garden/ja/build/tools/jena/">
+        Apache Jena Fuseki
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/tomcat/" title="Tomcat" class="dd-item ">
+        <a href="/garden/ja/build/tools/tomcat/">
+        Tomcat
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/influxdb/" title="InfluxDB" class="dd-item ">
+        <a href="/garden/ja/build/tools/influxdb/">
+        InfluxDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/chronograf/" title="Chronograf" class="dd-item ">
+        <a href="/garden/ja/build/tools/chronograf/">
+        Chronograf
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/airflow/" title="Airflow" class="dd-item ">
+        <a href="/garden/ja/build/tools/airflow/">
+        Airflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/nodejs/" title="Nodejs" class="dd-item ">
+        <a href="/garden/ja/build/tools/nodejs/">
+        Nodejs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/mongodb/" title="MongoDB" class="dd-item ">
+        <a href="/garden/ja/build/tools/mongodb/">
+        MongoDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/build/" title="ビルド&amp;インストール" class="dd-item ">
+        <a href="/garden/ja/build/build/">
+        ビルド&amp;インストール
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/license/" title="License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/license/">
+          License
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/contact/" title="Contact" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/contact/">
+          Contact
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://open-garden.github.io/garden/ja/scenarioexecutor/page3/" selected>日本語</option>
+                    
+                  
+              
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small></small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/garden/ja/'>GARDEN ScenarioPlatform</a> > <a href='/garden/ja/scenarioexecutor/'>Scenario Executor</a> > シナリオの記述方法
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              シナリオの記述方法
+            </h1>
+          
+
+        
+
+
+<p>シナリオの記述方法について解説します。<br>
+シナリオはjson形式で記述します。<br>
+サンプルのシナリオファイルが<code>~/ScenarioExecutor/scenarios</code>フォルダ内にありますので、参考にしてください。</p>
+<p>シナリオの記述内容は大きく4つのブロックに分かれています。  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ブロック</th>
+<th style="text-align:left">記述内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">map_id</td>
+<td style="text-align:left">RoadEditorのIDを指定します。</td>
+</tr>
+<tr>
+<td style="text-align:left">actors</td>
+<td style="text-align:left">シナリオに登場する自車両、他車両、歩行者、障害物の情報を記述します。</td>
+</tr>
+<tr>
+<td style="text-align:left">scenario</td>
+<td style="text-align:left">さまざまなシーンを定義し、シーン中にアクターがどのように振舞うか、シーン間をどのような条件で遷移するかを記述します。</td>
+</tr>
+<tr>
+<td style="text-align:left">stop_condition</td>
+<td style="text-align:left">シナリオの終了条件を記述します。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>map_id</strong><br>
+RoadEditorのIDを指定します。<br>
+<img src="/garden/img/ScenarioExecutor/2_12.png" alt=""></p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;map_id&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;highway&#34;</span>
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>actors</strong><br>
+シナリオ内に登場するアクターを定義します。</p>
+<ul>
+<li><strong>ego</strong><br>
+自車両を定義します。
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+アクターのIDを指定します。アクターが複数存在する場合、重複しない値を指定します。</li>
+<li><strong>model_id</strong> (string)<br>
+車種のIDを指定します。CARLAで定義されている車種のIDを指定します。<br>
+現在、シナリオから自車両の車種を指定することはできません。ros-bridge 0.9.11では<code>ros-bridge/carla_spawn_objects/config/objects.json</code>内で自車両の車種を指定します。</li>
+<li><strong>color</strong>  (string)<br>
+車両の色を指定します(RGB16進数)。<br>
+現在、シナリオから自車両の色を指定することはできません。ros-bridgeの仕様でランダムになっています。</li>
+</ul>
+</li>
+<li><strong>others</strong><br>
+他車両、歩行者等の障害物を定義します。
+<ul>
+<li>
+<p><strong>actor_id</strong> (int) - <code>ego</code>の<code>actor_id</code>と同じです。</p>
+</li>
+<li>
+<p><strong>model_id</strong> (string)<br>
+他車両として指定できるIDは以下になります。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">model_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>vehicle.audi.a2</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.audi.etron</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.audi.tt</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.bmw.grandtourer</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.chevrolet.impala</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.charger2020.charger2020</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.garden.gambulancejp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.garden.gpolicecarjp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.garden.gpumperjp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.lincoln2020.mkz2020</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.mercedesccc.mercedesccc</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.mini.cooperst</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.nissan.micra</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.tesla.model3</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.toyota.prius</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.volkswagen.t2</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>vehicle.kawasaki.ninja</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>color</strong>  (string) - <code>ego</code>の<code>colorと</code>同じです。</p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;actors&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+   <span style="color:#f92672">&#34;ego&#34;</span>: {
+      <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">0</span>,
+      <span style="color:#f92672">&#34;model_id&#34;</span>: <span style="color:#e6db74">&#34;vehicle.toyota.prius&#34;</span>,
+      <span style="color:#f92672">&#34;color&#34;</span>: <span style="color:#e6db74">&#34;000000&#34;</span>
+   },
+   <span style="color:#f92672">&#34;others&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+         <span style="color:#f92672">&#34;model_id&#34;</span>: <span style="color:#e6db74">&#34;vehicle.nissan.micra&#34;</span>,
+         <span style="color:#f92672">&#34;color&#34;</span>: <span style="color:#e6db74">&#34;ff0000&#34;</span>
+      },
+      {
+         <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">2</span>,
+         <span style="color:#f92672">&#34;model_id&#34;</span>: <span style="color:#e6db74">&#34;vehicle.kawasaki.ninja&#34;</span>,
+         <span style="color:#f92672">&#34;color&#34;</span>: <span style="color:#e6db74">&#34;00ff00&#34;</span>
+      }
+   ]
+}
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>scenario</strong><br>
+シナリオを定義します。<br>
+シナリオはオープニングシーンから始まり、さまざまなシーンへの遷移を経て、最終的にエンディングシーンに遷移して終了となります。</p>
+<ul>
+<li>
+<p><strong>opening_scene</strong><br>
+各アクターの初期状態を定義します。</p>
+<ul>
+<li><strong>ego</strong><br>
+自車両の初期状態を定義します。
+<ul>
+<li><strong>start_position</strong><br>
+自車両の初期位置を指定します。<br>
+<code>wp_id</code>と<code>wp_idx</code>で指定したウェイポイントの座標が自車両の初期位置になります。
+<ul>
+<li><strong>wp_id</strong> (string)<br>
+ウェイポイントID(RoadEditorでルートを定義した際に付けた名前)を指定します。<br>
+<img src="/garden/img/ScenarioExecutor/3_2.png" alt=""></li>
+<li><strong>wp_idx</strong> (int)<br>
+ウェイポイントのインデックスを指定します。RoadEditorでウェイポイントをクリックすると参照することができます。<br>
+<img src="/garden/img/ScenarioExecutor/3_3.png" alt=""></li>
+</ul>
+</li>
+<li><strong>end_position</strong><br>
+自車両の終了位置を指定します。<br>
+<code>wp_id</code>と<code>wp_idx</code>で指定したウェイポイントの座標が自車両の終了位置になります。<br>
+現在未使用です。Autowareの場合、Autoware自身が持つウェイポイントの終点が終了位置になりますので、シナリオで終了位置を指定することはできません。
+<ul>
+<li><strong>wp_id</strong> (string) - <code>start_position</code>の<code>wp_id</code>と同じです。</li>
+<li><strong>wp_idx</strong> (int) - <code>start_position</code>の<code>wp_idx</code>と同じです。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>others</strong><br>
+他車両、歩行者等の障害物の初期状態を定義します。
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象となるアクターのIDを指定します。
+<ul>
+<li><strong>start_position</strong>
+<ul>
+<li><strong>type</strong> (string)<br>
+ウェイポイントの座標で指定する場合は<code>waypoint</code>を指定します。アクター間の距離で指定する場合は<code>distance</code>を指定します。</li>
+<li><strong>wp_id</strong> (string)<br>
+typeがwaypointのときwp_idを指定します。<code>ego</code>の<code>start_postion</code>と同じです。</li>
+<li><strong>wp_idx</strong> (int)<br>
+typeがwaypointのときwp_idxを指定します。<code>ego</code>の<code>start_postion</code>と同じです。</li>
+<li><strong>target_actor_id</strong> (int)<br>
+typeがdistanceのとき車間距離の基準となる相手のアクターを指定します。</li>
+<li><strong>distance</strong> (double)<br>
+typeがdistanceのとき車間距離を指定します。</li>
+<li><strong>measure_type</strong> (string)<br>
+typeがdistanceのとき車間距離をアクターの中心のからの距離で指定する場合は<code>center</code>を指定します。アクターの表面からの距離で指定する場合は<code>surface</code>を指定します。<br>
+<img src="/garden/img/ScenarioExecutor/3_4.png" alt=""></li>
+</ul>
+</li>
+<li><strong>start_speed</strong><br>
+アクターの初期速度を指定します。
+<ul>
+<li><strong>type</strong> (string)<br>
+絶対速度の場合は<code>absolute</code>を指定します。相対速度の場合は<code>relative</code>を指定します。
+<ul>
+<li><strong>target_actor_id</strong> (int)<br>
+typeが<code>absolute</code>のとき相対速度の基準となる相手のアクターを指定します。</li>
+<li><strong>value</strong> (double)<br>
+速度(km/h)を指定します。typeが<code>absolute</code>のときは絶対速度、typeが<code>relative</code>のときは相対速度を意味します。</li>
+<li><strong>accel</strong><br>
+typeが<code>absolute</code>のとき加速度を指定します。</li>
+<li><strong>type</strong> (string)<br>
+徐々に加速させたい場合は<code>specify</code>を指定します。即時valueの速度にしたい場合は<code>gods_hand</code>を指定します。</li>
+<li><strong>value</strong> (double)<br>
+typeがspecifyのとき加速度(m/s2)を指定します。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>next_scenes</strong><br>
+次に遷移するシーンのIDを指定します。<br>
+各シーンの定義には遷移条件が設定されており、next_scenesで指定したいずれかのシーンの遷移条件がtrueとなった時点でそのシーンに遷移します。<br>
+<img src="/garden/img/ScenarioExecutor/3_5.png" alt=""></li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;opening_scene&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+   <span style="color:#f92672">&#34;ego&#34;</span>: {
+      <span style="color:#f92672">&#34;start_position&#34;</span>: {
+            <span style="color:#f92672">&#34;wp_id&#34;</span>: <span style="color:#e6db74">&#34;Waypoint01&#34;</span>,
+            <span style="color:#f92672">&#34;wp_idx&#34;</span>: <span style="color:#ae81ff">0</span>
+      }
+   }
+   <span style="color:#e6db74">&#34;others&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+         <span style="color:#f92672">&#34;start_position&#34;</span>: {
+            <span style="color:#f92672">&#34;wp_id&#34;</span>: <span style="color:#e6db74">&#34;Waypoint01&#34;</span>,
+            <span style="color:#f92672">&#34;wp_idx&#34;</span>: <span style="color:#ae81ff">20</span>
+         },
+         <span style="color:#f92672">&#34;start_speed&#34;</span>: {
+            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;relative&#34;</span>,
+            <span style="color:#f92672">&#34;target_actor_id&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;vlaue&#34;</span>: <span style="color:#ae81ff">0</span>,
+         },
+         <span style="color:#f92672">&#34;next_scenes&#34;</span>: [
+            <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>
+         ]
+      }
+   ]
+}
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>scenes</strong><br>
+シーンを定義します。遷移条件、アクション、遷移先から構成されます。</p>
+<ul>
+<li>
+<p><strong>scene_id</strong> (int)<br>
+シーンIDを指定します。</p>
+</li>
+<li>
+<p><strong>duration</strong> (double)<br>
+ここで指定した時間(s)、強制的にシーンにとどまり続けます。<br>
+次のシーンへの遷移条件がtrueになっても、ここで指定した時間が経過するまで遷移しません。</p>
+</li>
+<li>
+<p><strong>conditions</strong><br>
+遷移条件を定義します。</p>
+<ul>
+<li><strong>operator</strong><br>
+複数の遷移条件を<code>or</code>で判定するか<code>and</code>で判定するかを指定します。
+<ul>
+<li><strong>position</strong><br>
+アクターが指定の位置に到達した場合の遷移条件を定義します。
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>type</strong> (string)<br>
+指定のウェイポイントに到達した場合は<code>reach</code>を指定します。現在は<code>reach</code>のみ指定できます。</li>
+<li><strong>wp_id</strong> (string)<br>
+typeが<code>reach</code>のときウェイポイントのIDを指定します。</li>
+<li><strong>wp_idx</strong> (int)<br>
+typeが<code>reach</code>のときウェイポイントのインデックスを指定します。</li>
+<li><strong>tolerance</strong> (double)<br>
+typeが<code>reach</code>のときwp_id、wp_idxで指定した座標の許容範囲の半径を指定します。</li>
+</ul>
+</li>
+<li><strong>distance</strong><br>
+アクター同士の間隔が指定の距離に到達した場合の遷移条件を定義します。
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>type</strong> (string)<br>
+直線距離の場合は<code>straight</code>を指定します。道路の中心線を基準にした距離の場合は<code>traveled</code>を指定します。<br>
+<img src="/garden/img/ScenarioExecutor/3_6.png" alt=""></li>
+<li><strong>target_actor_id</strong> (int)<br>
+距離の基準となるアクターを指定します。</li>
+<li><strong>comparison</strong> (string)<br>
+<code>&gt;、&gt;=、=、&lt;=、&lt;</code>のいずれかを指定します。現在は<code>&lt;=、&lt;</code>のみ指定できます。</li>
+<li><strong>value</strong> (double)<br>
+距離(m)を指定します。</li>
+<li><strong>measure_type</strong> (string)<br>
+アクターの中心のからの距離で指定する場合は<code>center</code>を指定します。アクターの表面からの距離で指定する場合は<code>surface</code>を指定します。</li>
+</ul>
+</li>
+<li><strong>speed</strong><br>
+アクターが指定の速度に到達した場合の遷移条件を定義します。
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>type</strong> (string)<br>
+絶対速度の場合は<code>absolute</code>を指定します。相対速度の場合は<code>relative</code>を指定します。</li>
+<li><strong>target_actor_id</strong> (int)<br>
+typeが<code>relative</code>のとき相対速度の基準となるアクターを指定します。現在は自車のみ指定できます。</li>
+<li><strong>comparison</strong> (string)<br>
+<code>&gt;、&gt;=、=、&lt;=、&lt;</code>のいずれかを指定します。現在は<code>&gt;=</code>のみ指定できます。</li>
+<li><strong>value</strong> (double)<br>
+速度(km/h)を指定します。typeが<code>absolute</code>のときは絶対速度、typeが<code>relative</code>のときは相対速度を意味します。</li>
+</ul>
+</li>
+<li><strong>time_headway</strong><br>
+アクターが指定した地点に到着するまでの時間が指定した時間に達した場合の遷移条件を定義します。<br>
+距離を速度で割った時間で判定します。
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>wp_id</strong> (string)<br>
+ウェイポイントのIDを指定します。</li>
+<li><strong>wp_idx</strong> (int)<br>
+ウェイポイントのインデックスを指定します。</li>
+<li><strong>comparison</strong> (string)<br>
+<code>&gt;、&gt;=、=、&lt;=、&lt;</code>のいずれかを指定します。現在は<code>&lt;=</code>のみ指定できます。</li>
+<li><strong>value</strong> (double)<br>
+時間(s)を指定します。</li>
+</ul>
+</li>
+<li><strong>collision</strong><br>
+衝突時の遷移条件を定義します。</li>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。現在は自車のみ指定できます。</li>
+<li><strong>simulation_time</strong><br>
+シミュレーション開始からの経過時間の遷移条件を定義します。
+<ul>
+<li><strong>comparison</strong> (string)<br>
+<code>&gt;=</code>のみ指定できます。</li>
+<li><strong>value</strong> (double)<br>
+時間(s)を指定します。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;conditions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+   <span style="color:#f92672">&#34;or&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;position&#34;</span>: {
+            <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;reach&#34;</span>,
+            <span style="color:#f92672">&#34;wp_id&#34;</span>: <span style="color:#e6db74">&#34;Waypoint01&#34;</span>,
+            <span style="color:#f92672">&#34;wp_idx&#34;</span>: <span style="color:#ae81ff">125</span>,
+            <span style="color:#f92672">&#34;tolerance&#34;</span>: <span style="color:#ae81ff">1</span>
+         }
+      },
+      {
+         <span style="color:#f92672">&#34;speed&#34;</span>: {
+            <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;absolute&#34;</span>,
+            <span style="color:#f92672">&#34;comparison&#34;</span>: <span style="color:#e6db74">&#34;&lt;=&#34;</span>,
+            <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#ae81ff">0.1</span>
+         }
+      }
+   ]
+}
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>actions</strong><br>
+シーンに遷移したときに実行するアクションを定義します。</p>
+<ul>
+<li>
+<p><strong>lane_change</strong><br>
+レーンチェンジのアクションを定義します。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>type</strong> (string)<br>
+laneのみ指定できます。</li>
+<li><strong>wp_id</strong> (string)<br>
+レーンチェンジ先のウェイポイントIDを指定します。</li>
+<li><strong>time</strong> (double)<br>
+レーンチェンジにかかる時間を指定します。</li>
+</ul>
+</li>
+<li>
+<p><strong>lane_offset</strong><br>
+レーンの中心線から左右にオフセットするアクションを定義します。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>value</strong> (double)<br>
+レーンの中心線から左右にオフセットする距離(m)を指定します。左にオフセットする場合は+。右にオフセットする場合は-。0はレーンの中心線を走行します。</li>
+<li><strong>time</strong> (double)<br>
+オフセットにかかる時間(s)を指定します。</li>
+</ul>
+</li>
+<li>
+<p><strong>speed</strong><br>
+速度変更のアクションを定義します。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>type</strong> (string)<br>
+絶対速度の場合は<code>absolute</code>を指定します。相対速度の場合は<code>relative</code>を指定します。</li>
+<li><strong>target_actor_id</strong> (int)<br>
+typeが<code>relative</code>のとき相対速度の基準となるアクターを指定します。</li>
+<li><strong>value</strong> (double)<br>
+速度(km/h)を指定します。typeが<code>absolute</code>のときは絶対速度、typeが<code>relative</code>のときは相対速度を意味します。</li>
+<li><strong>accel</strong><br>
+typeがabsoluteのとき加速度を指定します。
+<ul>
+<li><strong>type</strong> (string)<br>
+徐々に加速させたい場合は<code>specify</code>を指定します。即時valueの速度にしたい場合は<code>gods_hand</code>を指定します。</li>
+<li><strong>value</strong> (double)<br>
+typeが<code>specify</code>のとき加速度(m/s<!-- raw HTML omitted -->2<!-- raw HTML omitted -->)を指定します。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>traveled_distance</strong><br>
+車間距離を維持するアクションを定義します。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>target_actor_id</strong> (int)<br>
+車間距離の基準となる相手のアクターを指定します。</li>
+<li><strong>value</strong> (double)<br>
+車間距離(m)を指定します。+は前方、-は後方になります。</li>
+<li><strong>measure_type</strong> (string)<br>
+アクターの中心のからの距離で指定する場合は<code>center</code>を指定します。アクターの表面からの距離で指定する場合は<code>surface</code>を指定します。</li>
+</ul>
+</li>
+<li>
+<p><strong>route_move</strong><br>
+指定した地点に移動させるアクションを定義します。地点は複数指定できます。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>type</strong><br>
+指定したウェイポイントに向かって移動させたい場合は<code>waypoint</code>を指定します。(現在はアクターが歩行者の場合のみ有効です)<br>
+現在走行しているウェイポイントから左右にオフセットした位置に移動させたい場合は<code>wp_offset</code>を指定します。</li>
+<li><strong>route</strong><br>
+ルートを定義します。
+<ul>
+<li><strong>wp_id</strong> (string)<br>
+typeがwaypointの場合、ウェイポイントのIDを指定します。</li>
+<li><strong>wp_idx</strong> (int)<br>
+typeがwaypointの場合、ウェイポイントのインデックスを指定します。</li>
+<li><strong>wp_offset</strong> (double)<br>
+typeが<code>wp_offset</code>の場合、レーンの中心線から左右にオフセットする距離(m)を指定します。左にオフセットする場合は+、右にオフセットする場合は-です。0はレーンの中心線を走行します。</li>
+<li><strong>time</strong> (double)<br>
+前回の地点から次の地点までの移動時間(s)を指定します。速度は移動先までの距離と移動時間から自動的に計算されます。</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;route_move&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+   <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+   <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;waypoint&#34;</span>,
+   <span style="color:#f92672">&#34;route&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">7.2</span>,
+         <span style="color:#f92672">&#34;wp_id&#34;</span>: <span style="color:#e6db74">&#34;Waypoint02&#34;</span>,
+         <span style="color:#f92672">&#34;wp_idx&#34;</span>: <span style="color:#ae81ff">500</span>,
+         <span style="color:#f92672">&#34;wp_offset&#34;</span>: <span style="color:#ae81ff">5</span>
+      }
+   ]
+}
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>light_state</strong><br>
+ライトの点灯/消灯のアクションを定義します。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>blinker_left</strong> (bool)<br>
+左ウィンカーをを点灯するときは<code>true</code>、消灯するときは<code>false</code>を指定します。</li>
+<li><strong>blinker_right</strong><br>
+右ウィンカーをを点灯するときは<code>true</code>、消灯するときは<code>false</code>を指定します。</li>
+<li><strong>special1</strong><br>
+特殊なライトの点灯/消灯を行います。
+点灯するときは<code>true</code>、消灯するときは<code>false</code>を指定します。<br>
+車種ごとに対象となるライトが異なります。現在緊急車両のパトライトの点灯/消灯のみ対応しています。</li>
+</ul>
+</li>
+<li>
+<p><strong>sound_state</strong><br>
+サイレンの鳴動/停止のアクションを定義します。</p>
+<ul>
+<li><strong>actor_id</strong> (int)<br>
+対象のアクターを指定します。</li>
+<li><strong>sound</strong> (bool)<br>
+サイレンを鳴動させるときは<code>true</code>、停止するときは<code>false</code>を指定します。</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;actions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+   {
+      <span style="color:#f92672">&#34;lane_change&#34;</span>: {
+         <span style="color:#f92672">&#34;actor_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+         <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;lane&#34;</span>,
+         <span style="color:#f92672">&#34;wp_id&#34;</span>: <span style="color:#e6db74">&#34;Waypoint02&#34;</span>,
+         <span style="color:#f92672">&#34;time&#34;</span>: <span style="color:#ae81ff">5</span>
+      }
+   }
+]
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>next_scenes</strong> - <code>opening_scene</code>の<code>next_scenes</code>と同じです。</p>
+</li>
+<li>
+<p><strong>ending_scene</strong><br>
+最終シーンを定義します。<br>
+このシーンに到達したらシナリオが終了になります。</p>
+<ul>
+<li><strong>scene_id</strong> - <code>scenes</code>の<code>scene_id</code>と同じです。</li>
+<li><strong>conditions</strong> - <code>scenes</code>の<code>condition</code>と同じです。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;scenario&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+   <span style="color:#f92672">&#34;opening_scene&#34;</span>: {
+      <span style="color:#f92672">&#34;ego&#34;</span>: {
+         <span style="color:#960050;background-color:#1e0010">...</span>
+      },
+      <span style="color:#f92672">&#34;others&#34;</span>: [
+         <span style="color:#960050;background-color:#1e0010">...</span>
+      ],
+      <span style="color:#f92672">&#34;next_scenes&#34;</span>: [
+         <span style="color:#ae81ff">1</span>
+      ]
+   },
+   <span style="color:#f92672">&#34;scenes&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;scene_id&#34;</span>: <span style="color:#ae81ff">1</span>,
+         <span style="color:#f92672">&#34;conditions&#34;</span>: {
+            <span style="color:#960050;background-color:#1e0010">...</span>
+         },
+         <span style="color:#f92672">&#34;actions&#34;</span>: [
+            <span style="color:#960050;background-color:#1e0010">...</span>
+         ],
+         <span style="color:#f92672">&#34;next_scenes&#34;</span>: [
+            <span style="color:#ae81ff">2</span>
+         ]
+      },
+      {
+         <span style="color:#f92672">&#34;scene_id&#34;</span>: <span style="color:#ae81ff">2</span>,
+         <span style="color:#f92672">&#34;conditions&#34;</span>: {
+            <span style="color:#960050;background-color:#1e0010">...</span>
+         },
+         <span style="color:#f92672">&#34;actions&#34;</span>: [
+            <span style="color:#960050;background-color:#1e0010">...</span>
+         ],
+         <span style="color:#f92672">&#34;next_scenes&#34;</span>: [
+            <span style="color:#ae81ff">3</span>
+         ]
+      }
+   ],
+   <span style="color:#f92672">&#34;ending_scenes&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;scene_id&#34;</span>: <span style="color:#ae81ff">3</span>,
+         <span style="color:#f92672">&#34;conditions&#34;</span>: {
+            <span style="color:#960050;background-color:#1e0010">...</span>
+         }
+      }
+   ]
+}
+</code></pre></div></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p><strong>stop_conditions</strong> - <code>scenes</code>の<code>conditions</code>と同じです。<br>
+シナリオの終了条件を定義します。<br>
+条件が成立したら強制的にシナリオを終了します。</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;stop_conditions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+   <span style="color:#f92672">&#34;or&#34;</span>: [
+      {
+         <span style="color:#f92672">&#34;simulation_time&#34;</span>: {
+            <span style="color:#f92672">&#34;comparison&#34;</span>: <span style="color:#e6db74">&#34;&gt;=&#34;</span>,
+            <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#ae81ff">300</span>
+         }
+      }
+   ]
+}
+</code></pre></div><!-- raw HTML omitted -->
+</li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/garden/ja/scenarioexecutor/page2/" title="マップの追加"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/garden/ja/scenarioexecutor/page4/" title="シナリオの実行" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/garden/js/clipboard.min.js?1631857748"></script>
+    <script src="/garden/js/perfect-scrollbar.min.js?1631857748"></script>
+    <script src="/garden/js/perfect-scrollbar.jquery.min.js?1631857748"></script>
+    <script src="/garden/js/jquery.sticky.js?1631857748"></script>
+    <script src="/garden/js/featherlight.min.js?1631857748"></script>
+    <script src="/garden/js/highlight.pack.js?1631857748"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/garden/js/modernizr.custom-3.6.0.js?1631857748"></script>
+    <script src="/garden/js/learn.js?1631857748"></script>
+    <script src="/garden/js/hugo-learn.js?1631857748"></script>
+
+    <link href="/garden/mermaid/mermaid.css?1631857748" rel="stylesheet" />
+    <script src="/garden/mermaid/mermaid.js?1631857748"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

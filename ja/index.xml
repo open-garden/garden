@@ -8,6 +8,38 @@
     <language>js</language>
     <lastBuildDate>Thu, 07 Jan 2021 10:03:13 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>ビルド手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page1/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page1/</guid>
+      <description>ScenarioExecutor ScenarioExecutorは自動運転アルゴリズムのテストを行うためのシナリオ実行エンジンです。
+本リポジトリにはCARLAとAutowareを使用し、実際にシナリオを実行しテストを行うデモ環境が含まれています。
+動作環境  Ubuntu 18.04 CARLA Simulator 0.9.11 ROS/ROS2 bridge for CARLA simulator 0.9.11 ROS Melodic Autoware 1.14.0  CARLAのビルド 下記サイトを参照しCARLA 0.9.11のビルドを行ってください。
+https://carla.readthedocs.io/en/0.9.11/build_linux/
+インストール手順の最後にある、以下のコマンドは必須ですので、必ず実行してください。
+make PythonAPI ARGS=&amp;quot;--python-version=2&amp;quot;ros-bridgeのインストール cd ~git clone https://github.com/carla-simulator/ros-bridge.gitcd ros-bridge./install_dependencies.shCARLAのバージョンに対応したros-bridgeをcloneしてください。
+https://github.com/carla-simulator/ros-bridge
+2021年8月現在、CARLA 0.9.11に対応するros-bridgeはリリースされていませんので、masterをcloneしてください。
+ROS Melodicのインストール 下記サイト等を参照しROS Melodicのインストールを行ってください。
+http://wiki.ros.org/melodic/Installation/Ubuntu
+Autowareのビルド 下記サイトを参照しAutoware 1.14.0のビルドを行ってください。
+https://gitlab.com/autowarefoundation/autoware.ai/autoware/-/wikis/Source-Build
+ScenarioExecutorのダウンロード 以下のコマンドを実行してください。
+cd ~git clone https://github.com/open-garden/garden-scenarioexecutor.gitデモ実行 ScenarioExecutorには簡単にシナリオ実行のデモを行うためのシェルスクリプトやROSのlaunchファイルがあらかじめ含まれています。
+これらのファイルは各アプリケーションが以下のフォルダにインストールされていることを前提にしています。    アプリケーション フォルダ     CARLA ~/carla   ros-bridge ~/ros-bridge   Autoware ~/autoware.</description>
+    </item>
+    
+    <item>
+      <title>ビルド手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page1/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page1/</guid>
+      <description>ビルド手順はBuild &amp;amp; Installを参照してください。</description>
+    </item>
+    
+    <item>
       <title>PostgreSQL</title>
       <link>https://open-garden.github.io/garden/ja/build/tools/postgresql/</link>
       <pubDate>Mon, 21 Jun 2021 11:10:34 +0900</pubDate>
@@ -44,6 +76,53 @@ mkdir -p {etc/{airflow/{dags,data},fuseki,tomcat},garden/{war,dags,script,job_ex
     </item>
     
     <item>
+      <title>Mapの作成手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page2/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page2/</guid>
+      <description>Mapの保存と読込 ScenarioRoadEditorを表示して、メニューからFile &amp;gt; Saveでローカル環境にjson形式で保存ができます。
+保存したMapファイルをScenarioRoadEditorで開く場合は、メニューからFile &amp;gt; Openでローカル環境のjson形式のファイルを開くことができます。
+Mapの作成手順 Mapの作成手順の詳細は以下の動画を参照してください。※交差点の作成方法については以下に補足があります。
+  道路の方向について 道路には方向があり、道路を選択した際に、道路の移動や回転を編集できるハンドルが表示される側が、道路の開始側となります。交差点を作成する際には、接続する道路の方向を調べて道路の開始側（predecessor）か終了側（successor）のどちらを接続するかを指定します。
+交差点作成時の道路の接続順について 交差点に接続する道路は以下のように時計回りに接続する必要があります。 </description>
+    </item>
+    
+    <item>
+      <title>マップの追加</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page2/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page2/</guid>
+      <description>以下の流れに沿ってCARLAにマップを追加します。
+詳細な手順を以降に記載します。 道路のメッシュの作成 RoadEditorを使用し地図を作成してください。
+作成したらFile &amp;gt; Export OBJでエクスポートしてください。
+ルートの定義 RoadEditorで自車両及び他車両が走行するルートを定義してください。
+定義したらFile &amp;gt; Export Waypointでエクスポートしてください。
+OpenDriveの作成 RoadEditorのFile &amp;gt; Saveで出力したファイルから、OpenDrive変換ツールを使用しOpenDriveを作成してください。
+Unreal Engineにマップを追加 RoadEditorからエクスポートしたobjファイルをそのままCARLAにインポートするとスケールと座標系が異なるため、事前に修正を行う必要があります。
+ここではBlenderを使用した修正方法について記載します。
+ Blenderを起動し、File &amp;gt; Import &amp;gt; Wavefront (.obj)を選択します。
+RoadEditorからエクスポートしたobjファイルを選択しインポートします。 アスファルト部分のメッシュと白線部分のメッシュに分かれているため、アスファルト部分のみ選択します。
+ File &amp;gt; Export &amp;gt; FBX (.fbx)を選択します。
+Limit to Selected Objectsにチェックを入れます。
+Object TypesはMeshのみ選択します。
+Export FBXをクリックします。
+ 同様に白線部分もエクスポートします。
+ CARLAにインポートします。
+インポート先のフォルダで右クリックしImport to /Game/...を選択します。
+Blenderからエクスポートしたfbxファイルを選択します。
+そのままImport Allをクリックします。
+ 空のマップを用意します。
+/Content/Carla/Maps/BaseMap/BaseMapを/Content/Garden/Mapsにドラッグアンドドロップし、Copy Hereを選択します。
+マップの名前を変更しRoadEditorのIDを付けます。
+マップの名前はOpenDriveのファイル名とも一致している必要があります。 空のマップを開き、道路のメッシュを配置します。
+LocationとRotationはすべて0にしてください。 ScenarioExecutorのBlueprintを配置します。
+/Content/Garden/Blueprints/ScenarioExecutor/Garden_ScenarioExecutorをマップ上にドラッグアンドドロップして配置します。  OpenDriveを格納します。
+~/ScenarioExecutor/Content/Garden/Maps/OpenDriveにマップと同名のOpenDriveを格納します。  ウェイポイントの格納  ウェイポイントを格納します。</description>
+    </item>
+    
+    <item>
       <title>Java</title>
       <link>https://open-garden.github.io/garden/ja/build/tools/java/</link>
       <pubDate>Mon, 21 Jun 2021 11:19:40 +0900</pubDate>
@@ -55,6 +134,49 @@ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install java-common=0.68ubun
 cd ~/tmpwget https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.debsudo apt install ./amazon-corretto-8-x64-linux-jdk.debjavaバージョンを確認します。
 java -version以下のように表示されます。
 openjdk version &amp;quot;1.8.0_292&amp;quot;OpenJDK Runtime Environment Corretto-8.292.10.1 (build 1.8.0_292-b10)OpenJDK 64-Bit Server VM Corretto-8.292.10.1 (build 25.292-b10, mixed mode)</description>
+    </item>
+    
+    <item>
+      <title>シナリオの記述方法</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page3/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page3/</guid>
+      <description>シナリオの記述方法について解説します。
+シナリオはjson形式で記述します。
+サンプルのシナリオファイルが~/ScenarioExecutor/scenariosフォルダ内にありますので、参考にしてください。
+シナリオの記述内容は大きく4つのブロックに分かれています。    ブロック 記述内容     map_id RoadEditorのIDを指定します。   actors シナリオに登場する自車両、他車両、歩行者、障害物の情報を記述します。   scenario さまざまなシーンを定義し、シーン中にアクターがどのように振舞うか、シーン間をどのような条件で遷移するかを記述します。   stop_condition シナリオの終了条件を記述します。      map_id
+RoadEditorのIDを指定します。
+&amp;#34;map_id&amp;#34;: &amp;#34;highway&amp;#34;   actors
+シナリオ内に登場するアクターを定義します。
+ ego
+自車両を定義します。  actor_id (int)
+アクターのIDを指定します。アクターが複数存在する場合、重複しない値を指定します。 model_id (string)
+車種のIDを指定します。CARLAで定義されている車種のIDを指定します。
+現在、シナリオから自車両の車種を指定することはできません。ros-bridge 0.9.11ではros-bridge/carla_spawn_objects/config/objects.json内で自車両の車種を指定します。 color (string)
+車両の色を指定します(RGB16進数)。
+現在、シナリオから自車両の色を指定することはできません。ros-bridgeの仕様でランダムになっています。   others
+他車両、歩行者等の障害物を定義します。   actor_id (int) - egoのactor_idと同じです。
+  model_id (string)</description>
+    </item>
+    
+    <item>
+      <title>ルートの作成手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page3/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page3/</guid>
+      <description>シナリオ作成やシミュレーション実行に必要なルート情報を作成する手順について追加例を用いて記します。
+地図の読込 ここではExemples &amp;gt; 道路（合流）で地図を表示します。
+道路構造と作成ルート 道路のIDとレーンのIDは以下のようになっています。
+ここでは以下のように2つのルートを作成することを考えます。
+Route1の作成 メニューからAdd &amp;gt; Routeを選択して新しいRoute要素を追加します。右側の編集タブではROUTEが選択され、新規に追加されたRoute要素が選択状態となります。削除するにはRoute要素を選択し、Deleteキーを押して削除してください。
+追加した要素を選択して、IDをRoute1に変更します。
+Route要素を選択し、Route項目のEditをクリックしてください。ルートの編集エディタが表示されます。エディタを閉じる場合は右上のXをクリックします。
+ルートを以下のように記述します。entitiesの配列の要素にルートが通過するレーンの情報をentitiesの配列要素として記述します。ルートの開始はtypeをstartとします。ルートの終了はtypeをgoalとします。
+[{&amp;#34;entities&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;start&amp;#34;, &amp;#34;lane&amp;#34;: {&amp;#34;road&amp;#34;: &amp;#34;R100&amp;#34;,&amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34;}, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 100 }, { &amp;#34;type&amp;#34;: &amp;#34;goal&amp;#34;, &amp;#34;lane&amp;#34;: {&amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;,&amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34;}, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 100 }]}] ルート編集エディタを閉じるとルートが描画されます。
+Route2の作成 Route1と同様にメニューからAdd &amp;gt; Routeを選択して新しいRoute要素を追加します。IDをRoute1に変更してEditをクリックし、ルートの編集エディタを表示します。以下のようにルートを記述します。ルートの開始と終了の要素の間に道路がある場合は、typeをmidとします。
+[{&amp;#34;entities&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;start&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R300&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-01&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 50 }, { &amp;#34;type&amp;#34;: &amp;#34;mid&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-04&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: 1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 50 }, { &amp;#34;type&amp;#34;: &amp;#34;mid&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: 50, &amp;#34;velocity&amp;#34;: 70 }, { &amp;#34;type&amp;#34;: &amp;#34;goal&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 100 }]}] 途中でレーンを変更する場合はlanechange_startとlanechange_endで指定します。指定の方法は以下の図を参照してください。</description>
     </item>
     
     <item>
@@ -88,6 +210,36 @@ cd ~/gardengit clone https://github.com/open-garden/garden.git garden-repocp ~
     </item>
     
     <item>
+      <title>OpenDRIVEエクスポート</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page4/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page4/</guid>
+      <description>ScenarioRoadEditorで記述した地図情報をOpenDRIVEファイルに変換します。
+github garden-opendriveconverter のREADME.mdを参照してください。</description>
+    </item>
+    
+    <item>
+      <title>シナリオの実行</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page4/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page4/</guid>
+      <description>シナリオを実行するためのシェルスクリプト~/ScenarioExecutor/run.shについて説明します。
+#!/bin/bash source setup.sh python ScenarioExecutor.py シナリオ(.json) ウェイポイント(.json) [autoware] setup.shはCARLAのPythonAPIライブラリのパスを設定しています。
+ScenarioExecutor.pyの引数は以下の通りです。
+ シナリオ(.json) : シナリオの記述方法のページで説明しているシナリオファイルです。 ウェイポイント(.json) : RoadEditorからエクスポートしたファイルです。 autoware: 3番目の引数にautowareを指定するとAutowareとros-bridgeを起動します。何も指定しない場合はCARLAの~/carla/PythonAPI/examples/manual_control.pyを起動します。
+autowareを指定した場合、自車両はAutowareによって自動でコントロールされ、指定しない場合はmanual_control.pyを使用して手動で自車両をコントロールします。  3番目の引数にautowareを指定した場合、ScenarioExecutor.pyはプログラム内で~/ScenarioExecutor/garden-autoware-agent/src/garden-autoware/launch/garden-autoware.shを呼び出します。
+garden-autoware.sh以降は下記の順序で呼び出しが行われます。
+ScenarioExecutor.py└── garden-autoware.sh $1 $2 $3├── autoware.sh $1 $2 $3│ └── garden-autoware.launch $1 $2 $3└── rviz.launch $1 $2 $3は引数です。それぞれ以下の値がセットされます。  $1: town:=マップ名
+マップ名はシナリオのmap_idがセットされます。 $2: spawn_point:=自車両のスポーン位置
+自車両のスポーン位置はシナリオのscenario:opening_scene:ego:start_position:wp_idとwp_idxで指定されたウェイポイントからx,y,z,roll,pitch,yawを取得してセットされます。 $3: waypoint:=Autoware用のウェイポイント
+Autoware用のウェイポイントには~/ScenarioExecutor/garden-autoware-agent/src/garden-autoware/config/waypointに格納されているcsvファイルのパスがセットされます。
+ファイル名はscenario:opening_scene:ego:start_position:wp_idから取得します。   garden-autoware.launch内で、Autowareとros-bridgeのノード及び自己位置推定ノードを起動しています。
+(自己位置推定ノードはCARLAのOdometryセンサーの情報のみ使用して簡易的に自己位置推定を行うScenarioExecutorが提供するノードです。) rviz.launchはRVizの起動を行います。  </description>
+    </item>
+    
+    <item>
       <title>Apache Jena Fuseki</title>
       <link>https://open-garden.github.io/garden/ja/build/tools/jena/</link>
       <pubDate>Tue, 22 Jun 2021 03:59:00 +0900</pubDate>
@@ -103,6 +255,18 @@ sudo chgrp -R fuseki /home/garden-user/etc/fusekisudo chown -R fuseki /home/gar
 sudo -u fuseki mkdir -p /home/garden-user/etc/fuseki/run/configurationデータベース設定ファイル garden.ttl を作成します。
 sudo -u fuseki vi /home/garden-user/etc/fuseki/run/configuration/garden.ttlgarden.ttl ファイルの内容は以下となります。
 @prefix : &amp;lt;http://base/#&amp;gt; .@prefix rdf: &amp;lt;http://www.</description>
+    </item>
+    
+    <item>
+      <title>実行ログ</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioexecutor/page5/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioexecutor/page5/</guid>
+      <description>ScenarioExecutorを実行すると、シミュレーション実行時のログが保存されます。
+ログの保存先は~/ScenarioExecutor/logです。ファイル名はシナリオのファイル名と同じで、拡張子が.csvになります。
+ログに保存される内容は以下の通りです。
+   項目 内容     timestamp タイムスタンプ(50ms間隔でログを保存します)   scene_id シナリオのscene_id   ego_x 自車両のx座標 (m)   ego_y 自車両のy座標 (m)   ego_z 自車両のz座標 (m)   ego_roll 自車両のroll (ラジアン)   ego_pitch 自車両のpitch (ラジアン)   ego_yaw 自車両のyaw (ラジアン)   ego_lane_id 自車両の最寄りのレーンID (RoadEditorで定義したルートの順番に0から番号が割り振られます)   collision 自車両の衝突の有無 (通常は0で衝突時は0以外の値になります)   obs0_x 障害物0のx座標 (m)   obs0_y 障害物0のy座標 (m)   obs0_z 障害物0のz座標 (m)   obs0_roll 障害物0のroll (ラジアン)   obs0_pitch 障害物0のpitch (ラジアン)   obs0_yaw 障害物0のyaw (ラジアン)   obs0_lane_id 障害物0の最寄りのレーンID (RoadEditorで定義したルートの順番に0から番号が割り振られます)    障害物が複数ある場合は、obs1,obs2…と続きます。</description>
     </item>
     
     <item>
@@ -133,7 +297,7 @@ sudo vi /etc/systemd/system/tomcat.servicetomcat.serviceの内容は以下と�
 リポジトリを追加します。
 echo &amp;quot;deb https://repos.influxdata.com/ubuntu bionic stable&amp;quot; | sudo tee /etc/apt/sources.list.d/influxdb.listGPGキーをインポートします。
 sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -InfluxDBをインストールします。
-sudo apt-get updatesudo apt-get install influxdb=1.8.6-1influxdb.confを編集します。
+sudo apt-get updatesudo apt-get install influxdbinfluxdb.confを編集します。
 sudo vi /etc/influxdb/influxdb.confbind-address を有効にします。
 [http]# Determines whether HTTP endpoint is enabled.enabled = true# Determines whether the Flux query endpoint is enabled.# flux-enabled = false# Determines whether the Flux query logging is enabled.# flux-log-enabled = false# The bind address used by the HTTP service.</description>
     </item>

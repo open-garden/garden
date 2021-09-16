@@ -223,17 +223,17 @@
                 href="https://open-garden.github.io/garden/zh/scenarioeditor/"
                 />
   </url><url>
-    <loc>https://open-garden.github.io/garden/zh/scenarioexecuter/</loc>
+    <loc>https://open-garden.github.io/garden/zh/scenarioexecutor/</loc>
     <lastmod>2021-06-21T06:09:52+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://open-garden.github.io/garden/ja/scenarioexecuter/"
+                href="https://open-garden.github.io/garden/ja/scenarioexecutor/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://open-garden.github.io/garden/zh/scenarioexecuter/"
+                href="https://open-garden.github.io/garden/zh/scenarioexecutor/"
                 />
   </url><url>
     <loc>https://open-garden.github.io/garden/zh/build/</loc>

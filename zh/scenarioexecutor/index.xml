@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scenario Executor on zh</title>
+    <link>https://open-garden.github.io/garden/zh/scenarioexecutor/</link>
+    <description>Recent content in Scenario Executor on zh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>js</language>
+    <lastBuildDate>Mon, 21 Jun 2021 06:09:52 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/zh/scenarioexecutor/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="ja" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/garden/img/favicon.png" type="image/png">
+
+    <title>ルートの作成手順 :: ja</title>
+
+    
+    <link href="/garden/css/nucleus.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/fontawesome-all.min.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/hybrid.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/featherlight.min.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/perfect-scrollbar.min.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/auto-complete.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/atom-one-dark-reasonable.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/theme.css?1631857748" rel="stylesheet">
+    <link href="/garden/css/hugo-theme.css?1631857748" rel="stylesheet">
+    
+    <link href="/garden/css/theme-white.css?1631857748" rel="stylesheet">
+    
+    
+
+    <script src="/garden/js/jquery-3.3.1.min.js?1631857748"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/garden/ja/scenarioroadeditor/page3/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      
+
+<a id="logo" href='/garden/ja'>
+<img src="/garden/img/logo_garden3.png" hspace="0" vspace="0px" width="100%">
+</a>
+    </div>
+    
+        
+
+<div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="検索...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/garden/js/jquery-3.3.1.min.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.stemmer.support.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/tinyseg.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.jp.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/lunr.multi.js?1631857748"></script>
+<script type="text/javascript" src="/garden/js/auto-complete.js?1631857748"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/open-garden.github.io\/garden\/\/ja";
+    
+
+
+window.onscroll = function(){
+    var targetElement = document.getElementsByClassName("searchbox")[0];
+    var searchResult = document.getElementsByClassName("autocomplete-suggestions")[0];
+    var searchboxPosition = targetElement.getBoundingClientRect();
+    var searchboxH = searchboxPosition.height;
+    var searchboxT = searchboxPosition.top;
+    var scrollTop = document.documentElement.scrollTop;
+    searchResult.style.top  = searchboxH + searchboxT + scrollTop + 'px'; 
+}
+</script>
+<script type="text/javascript" src="/garden/js/search.js?1631857748"></script>
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenariomodeler/" title="Scenario Modeler" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenariomodeler/">
+          Scenario Modeler
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioanalyzer/" title="Scenario Analyzer" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioanalyzer/">
+          Scenario Analyzer
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioroadeditor/" title="Scenario RoadEditor" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/garden/ja/scenarioroadeditor/">
+          Scenario RoadEditor
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page1/" title="ビルド手順" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page1/">
+        ビルド手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page2/" title="Mapの作成手順" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page2/">
+        Mapの作成手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page3/" title="ルートの作成手順" class="dd-item active">
+        <a href="/garden/ja/scenarioroadeditor/page3/">
+        ルートの作成手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioroadeditor/page4/" title="OpenDRIVEエクスポート" class="dd-item ">
+        <a href="/garden/ja/scenarioroadeditor/page4/">
+        OpenDRIVEエクスポート
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioeditor/" title="Scenario Editor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioeditor/">
+          Scenario Editor
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/scenarioexecutor/" title="Scenario Executor" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/scenarioexecutor/">
+          Scenario Executor
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page1/" title="ビルド手順" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page1/">
+        ビルド手順
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page2/" title="マップの追加" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page2/">
+        マップの追加
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page3/" title="シナリオの記述方法" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page3/">
+        シナリオの記述方法
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page4/" title="シナリオの実行" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page4/">
+        シナリオの実行
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/scenarioexecutor/page5/" title="実行ログ" class="dd-item ">
+        <a href="/garden/ja/scenarioexecutor/page5/">
+        実行ログ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/build/" title="Build &amp; Install" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/build/">
+          Build &amp; Install
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/createuser/" title="ユーザー作成" class="dd-item ">
+        <a href="/garden/ja/build/createuser/">
+        ユーザー作成
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/build/tools/" title="ツールのインストール" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/build/tools/">
+          ツールのインストール
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/postgresql/" title="PostgreSQL" class="dd-item ">
+        <a href="/garden/ja/build/tools/postgresql/">
+        PostgreSQL
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/java/" title="Java" class="dd-item ">
+        <a href="/garden/ja/build/tools/java/">
+        Java
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/apache2/" title="Apache2" class="dd-item ">
+        <a href="/garden/ja/build/tools/apache2/">
+        Apache2
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/jena/" title="Apache Jena Fuseki" class="dd-item ">
+        <a href="/garden/ja/build/tools/jena/">
+        Apache Jena Fuseki
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/tomcat/" title="Tomcat" class="dd-item ">
+        <a href="/garden/ja/build/tools/tomcat/">
+        Tomcat
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/influxdb/" title="InfluxDB" class="dd-item ">
+        <a href="/garden/ja/build/tools/influxdb/">
+        InfluxDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/chronograf/" title="Chronograf" class="dd-item ">
+        <a href="/garden/ja/build/tools/chronograf/">
+        Chronograf
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/airflow/" title="Airflow" class="dd-item ">
+        <a href="/garden/ja/build/tools/airflow/">
+        Airflow
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/nodejs/" title="Nodejs" class="dd-item ">
+        <a href="/garden/ja/build/tools/nodejs/">
+        Nodejs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/tools/mongodb/" title="MongoDB" class="dd-item ">
+        <a href="/garden/ja/build/tools/mongodb/">
+        MongoDB
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/garden/ja/build/build/" title="ビルド&amp;インストール" class="dd-item ">
+        <a href="/garden/ja/build/build/">
+        ビルド&amp;インストール
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/license/" title="License" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/license/">
+          License
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/garden/ja/contact/" title="Contact" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/garden/ja/contact/">
+          Contact
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+          <div class="select-style">
+            <select id="select-language" onchange="location = this.value;">
+          
+          
+          
+              
+              
+                  
+                    
+                    
+                      <option id="ja" value="https://open-garden.github.io/garden/ja/scenarioroadeditor/page3/" selected>日本語</option>
+                    
+                  
+              
+                  
+              
+                  
+              
+          
+        </select>
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="255px" height="255px" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255;" xml:space="preserve">
+          <g>
+            <g id="arrow-drop-down">
+              <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+            </g>
+          </g>
+        </svg>
+        </div>
+        </a>
+        </li>
+      
+      
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+<small></small>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/garden/ja/'>GARDEN ScenarioPlatform</a> > <a href='/garden/ja/scenarioroadeditor/'>Scenario RoadEditor</a> > ルートの作成手順
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#地図の読込">地図の読込</a></li>
+    <li><a href="#道路構造と作成ルート">道路構造と作成ルート</a></li>
+    <li><a href="#route1の作成">Route1の作成</a></li>
+    <li><a href="#route2の作成">Route2の作成</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              ルートの作成手順
+            </h1>
+          
+
+        
+
+
+<p>シナリオ作成やシミュレーション実行に必要なルート情報を作成する手順について追加例を用いて記します。</p>
+<h2 id="地図の読込">地図の読込</h2>
+<p>ここでは<code>Exemples &gt; 道路（合流）</code>で地図を表示します。</p>
+<p><img src="/garden/img/page3/2021-09-15-14-11-14.png" alt=""></p>
+<p><img src="/garden/img/page3/2021-09-15-14-21-38.png" alt=""></p>
+<h2 id="道路構造と作成ルート">道路構造と作成ルート</h2>
+<p>道路のIDとレーンのIDは以下のようになっています。</p>
+<p><img src="/garden/img/page3/2021-09-15-14-34-52.png" alt=""></p>
+<p>ここでは以下のように2つのルートを作成することを考えます。</p>
+<p><img src="/garden/img/page3/2021-09-15-14-43-01.png" alt=""></p>
+<h2 id="route1の作成">Route1の作成</h2>
+<p>メニューから<code>Add &gt; Route</code>を選択して新しいRoute要素を追加します。右側の編集タブでは<code>ROUTE</code>が選択され、新規に追加されたRoute要素が選択状態となります。削除するにはRoute要素を選択し、<code>Delete</code>キーを押して削除してください。</p>
+<p><img src="/garden/img/page3/2021-09-13-16-42-50.png" alt=""></p>
+<p><img src="/garden/img/page3/2021-09-15-14-51-35.png" alt=""></p>
+<p>追加した要素を選択して、IDを<code>Route1</code>に変更します。</p>
+<p><img src="/garden/img/page3/2021-09-15-15-00-13.png" alt=""></p>
+<p>Route要素を選択し、Route項目の<code>Edit</code>をクリックしてください。ルートの編集エディタが表示されます。エディタを閉じる場合は右上のXをクリックします。</p>
+<p><img src="/garden/img/page3/2021-09-15-15-25-51.png" alt=""></p>
+<p><img src="/garden/img/page3/2021-09-15-15-49-20.png" alt=""></p>
+<p>ルートを以下のように記述します。<code>entities</code>の配列の要素にルートが通過するレーンの情報を<code>entities</code>の配列要素として記述します。ルートの開始は<code>type</code>を<code>start</code>とします。ルートの終了は<code>type</code>を<code>goal</code>とします。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[{<span style="color:#f92672">&#34;entities&#34;</span>: [
+			{
+				<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;start&#34;</span>,
+				<span style="color:#f92672">&#34;lane&#34;</span>: {<span style="color:#f92672">&#34;road&#34;</span>: <span style="color:#e6db74">&#34;R100&#34;</span>,<span style="color:#f92672">&#34;lane&#34;</span>: <span style="color:#e6db74">&#34;L-03&#34;</span>},
+				<span style="color:#f92672">&#34;lanechange_start&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;lanechange_end&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;velocity&#34;</span>: <span style="color:#ae81ff">100</span>
+			},
+			{
+				<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;goal&#34;</span>,
+				<span style="color:#f92672">&#34;lane&#34;</span>: {<span style="color:#f92672">&#34;road&#34;</span>: <span style="color:#e6db74">&#34;R200&#34;</span>,<span style="color:#f92672">&#34;lane&#34;</span>: <span style="color:#e6db74">&#34;L-03&#34;</span>},
+				<span style="color:#f92672">&#34;lanechange_start&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;lanechange_end&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;velocity&#34;</span>: <span style="color:#ae81ff">100</span>
+			}]}]
+</code></pre></div><p><img src="/garden/img/page3/2021-09-15-15-55-14.png" alt=""></p>
+<p>ルート編集エディタを閉じるとルートが描画されます。</p>
+<p><img src="/garden/img/page3/2021-09-15-15-56-46.png" alt=""></p>
+<h2 id="route2の作成">Route2の作成</h2>
+<p>Route1と同様にメニューから<code>Add &gt; Route</code>を選択して新しいRoute要素を追加します。IDを<code>Route1</code>に変更して<code>Edit</code>をクリックし、ルートの編集エディタを表示します。以下のようにルートを記述します。ルートの開始と終了の要素の間に道路がある場合は、<code>type</code>を<code>mid</code>とします。</p>
+<p><img src="/garden/img/page3/2021-09-15-16-40-19.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[{<span style="color:#f92672">&#34;entities&#34;</span>: [
+			{
+				<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;start&#34;</span>,
+				<span style="color:#f92672">&#34;lane&#34;</span>: {
+					<span style="color:#f92672">&#34;road&#34;</span>: <span style="color:#e6db74">&#34;R300&#34;</span>,
+					<span style="color:#f92672">&#34;lane&#34;</span>: <span style="color:#e6db74">&#34;L-01&#34;</span>
+				},
+				<span style="color:#f92672">&#34;lanechange_start&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;lanechange_end&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;velocity&#34;</span>: <span style="color:#ae81ff">50</span>
+			},
+			{
+				<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;mid&#34;</span>,
+				<span style="color:#f92672">&#34;lane&#34;</span>: {
+					<span style="color:#f92672">&#34;road&#34;</span>: <span style="color:#e6db74">&#34;R200&#34;</span>,
+					<span style="color:#f92672">&#34;lane&#34;</span>: <span style="color:#e6db74">&#34;L-04&#34;</span>
+				},
+				<span style="color:#f92672">&#34;lanechange_start&#34;</span>: <span style="color:#ae81ff">1</span>,
+				<span style="color:#f92672">&#34;lanechange_end&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;velocity&#34;</span>: <span style="color:#ae81ff">50</span>
+			},
+			{
+				<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;mid&#34;</span>,
+				<span style="color:#f92672">&#34;lane&#34;</span>: {
+					<span style="color:#f92672">&#34;road&#34;</span>: <span style="color:#e6db74">&#34;R200&#34;</span>,
+					<span style="color:#f92672">&#34;lane&#34;</span>: <span style="color:#e6db74">&#34;L-03&#34;</span>
+				},
+				<span style="color:#f92672">&#34;lanechange_start&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;lanechange_end&#34;</span>: <span style="color:#ae81ff">50</span>,
+				<span style="color:#f92672">&#34;velocity&#34;</span>: <span style="color:#ae81ff">70</span>
+			},
+			{
+				<span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;goal&#34;</span>,
+				<span style="color:#f92672">&#34;lane&#34;</span>: {
+					<span style="color:#f92672">&#34;road&#34;</span>: <span style="color:#e6db74">&#34;R200&#34;</span>,
+					<span style="color:#f92672">&#34;lane&#34;</span>: <span style="color:#e6db74">&#34;L-03&#34;</span>
+				},
+				<span style="color:#f92672">&#34;lanechange_start&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;lanechange_end&#34;</span>: <span style="color:#ae81ff">-1</span>,
+				<span style="color:#f92672">&#34;velocity&#34;</span>: <span style="color:#ae81ff">100</span>
+			}]}]
+</code></pre></div><p><img src="/garden/img/page3/2021-09-15-16-41-54.png" alt=""></p>
+<p>途中でレーンを変更する場合は<code>lanechange_start</code>と<code>lanechange_end</code>で指定します。指定の方法は以下の図を参照してください。</p>
+<p><img src="/garden/img/page3/2021-09-15-16-47-40.png" alt=""></p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/garden/ja/scenarioroadeditor/page2/" title="Mapの作成手順"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/garden/ja/scenarioroadeditor/page4/" title="OpenDRIVEエクスポート" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/garden/js/clipboard.min.js?1631857748"></script>
+    <script src="/garden/js/perfect-scrollbar.min.js?1631857748"></script>
+    <script src="/garden/js/perfect-scrollbar.jquery.min.js?1631857748"></script>
+    <script src="/garden/js/jquery.sticky.js?1631857748"></script>
+    <script src="/garden/js/featherlight.min.js?1631857748"></script>
+    <script src="/garden/js/highlight.pack.js?1631857748"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/garden/js/modernizr.custom-3.6.0.js?1631857748"></script>
+    <script src="/garden/js/learn.js?1631857748"></script>
+    <script src="/garden/js/hugo-learn.js?1631857748"></script>
+
+    <link href="/garden/mermaid/mermaid.css?1631857748" rel="stylesheet" />
+    <script src="/garden/mermaid/mermaid.js?1631857748"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

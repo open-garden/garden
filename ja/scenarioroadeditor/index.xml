@@ -7,5 +7,56 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>js</language>
     <lastBuildDate>Mon, 21 Jun 2021 04:37:56 +0900</lastBuildDate><atom:link href="https://open-garden.github.io/garden/ja/scenarioroadeditor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ビルド手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page1/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page1/</guid>
+      <description>ビルド手順はBuild &amp;amp; Installを参照してください。</description>
+    </item>
+    
+    <item>
+      <title>Mapの作成手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page2/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page2/</guid>
+      <description>Mapの保存と読込 ScenarioRoadEditorを表示して、メニューからFile &amp;gt; Saveでローカル環境にjson形式で保存ができます。
+保存したMapファイルをScenarioRoadEditorで開く場合は、メニューからFile &amp;gt; Openでローカル環境のjson形式のファイルを開くことができます。
+Mapの作成手順 Mapの作成手順の詳細は以下の動画を参照してください。※交差点の作成方法については以下に補足があります。
+  道路の方向について 道路には方向があり、道路を選択した際に、道路の移動や回転を編集できるハンドルが表示される側が、道路の開始側となります。交差点を作成する際には、接続する道路の方向を調べて道路の開始側（predecessor）か終了側（successor）のどちらを接続するかを指定します。
+交差点作成時の道路の接続順について 交差点に接続する道路は以下のように時計回りに接続する必要があります。 </description>
+    </item>
+    
+    <item>
+      <title>ルートの作成手順</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page3/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page3/</guid>
+      <description>シナリオ作成やシミュレーション実行に必要なルート情報を作成する手順について追加例を用いて記します。
+地図の読込 ここではExemples &amp;gt; 道路（合流）で地図を表示します。
+道路構造と作成ルート 道路のIDとレーンのIDは以下のようになっています。
+ここでは以下のように2つのルートを作成することを考えます。
+Route1の作成 メニューからAdd &amp;gt; Routeを選択して新しいRoute要素を追加します。右側の編集タブではROUTEが選択され、新規に追加されたRoute要素が選択状態となります。削除するにはRoute要素を選択し、Deleteキーを押して削除してください。
+追加した要素を選択して、IDをRoute1に変更します。
+Route要素を選択し、Route項目のEditをクリックしてください。ルートの編集エディタが表示されます。エディタを閉じる場合は右上のXをクリックします。
+ルートを以下のように記述します。entitiesの配列の要素にルートが通過するレーンの情報をentitiesの配列要素として記述します。ルートの開始はtypeをstartとします。ルートの終了はtypeをgoalとします。
+[{&amp;#34;entities&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;start&amp;#34;, &amp;#34;lane&amp;#34;: {&amp;#34;road&amp;#34;: &amp;#34;R100&amp;#34;,&amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34;}, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 100 }, { &amp;#34;type&amp;#34;: &amp;#34;goal&amp;#34;, &amp;#34;lane&amp;#34;: {&amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;,&amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34;}, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 100 }]}] ルート編集エディタを閉じるとルートが描画されます。
+Route2の作成 Route1と同様にメニューからAdd &amp;gt; Routeを選択して新しいRoute要素を追加します。IDをRoute1に変更してEditをクリックし、ルートの編集エディタを表示します。以下のようにルートを記述します。ルートの開始と終了の要素の間に道路がある場合は、typeをmidとします。
+[{&amp;#34;entities&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;start&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R300&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-01&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 50 }, { &amp;#34;type&amp;#34;: &amp;#34;mid&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-04&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: 1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 50 }, { &amp;#34;type&amp;#34;: &amp;#34;mid&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: 50, &amp;#34;velocity&amp;#34;: 70 }, { &amp;#34;type&amp;#34;: &amp;#34;goal&amp;#34;, &amp;#34;lane&amp;#34;: { &amp;#34;road&amp;#34;: &amp;#34;R200&amp;#34;, &amp;#34;lane&amp;#34;: &amp;#34;L-03&amp;#34; }, &amp;#34;lanechange_start&amp;#34;: -1, &amp;#34;lanechange_end&amp;#34;: -1, &amp;#34;velocity&amp;#34;: 100 }]}] 途中でレーンを変更する場合はlanechange_startとlanechange_endで指定します。指定の方法は以下の図を参照してください。</description>
+    </item>
+    
+    <item>
+      <title>OpenDRIVEエクスポート</title>
+      <link>https://open-garden.github.io/garden/ja/scenarioroadeditor/page4/</link>
+      <pubDate>Wed, 25 Aug 2021 10:56:04 +0900</pubDate>
+      
+      <guid>https://open-garden.github.io/garden/ja/scenarioroadeditor/page4/</guid>
+      <description>ScenarioRoadEditorで記述した地図情報をOpenDRIVEファイルに変換します。
+github garden-opendriveconverter のREADME.mdを参照してください。</description>
+    </item>
+    
   </channel>
 </rss>
