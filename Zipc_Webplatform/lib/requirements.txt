@@ -17,4 +17,4 @@ http://ftp.jaist.ac.jp/pub/eclipse/modeling/emf/emf/updates/2.7/core/R2012013009
 http://ftp.jaist.ac.jp/pub/eclipse/modeling/emf/emf/updates/2.7/core/R201201300943/plugins/org.eclipse.emf.gwt.ecore_2.7.0.v20120130-0943.jar
 
 # smartgwt.jar
-https://www.smartclient.com/builds/SmartGWT/13.0d/LGPL/2021-06-19/smartgwt.jar
+https://www.smartclient.com/builds/SmartGWT/13.0d/LGPL/latest/smartgwt.jar
