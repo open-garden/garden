@@ -1,5 +1,5 @@
 #! /bin/bash
-# 
+#
 ###############################
 #  	     Variables            #
 ###############################
@@ -38,7 +38,7 @@ has_running_job() {
 	local sql="SELECT count(1) FROM job where status in ('$JOB_STATUS_NOEXEC' ,'$JOB_STATUS_EXECUTING');"
 	local cnt=$(psql -h $PGHOST -p $PGPORT -U $PGUSER -d garden -q  --no-align -t -c "$sql";)
 
-	if [ $cnt -ne 0 ] 
+	if [ $cnt -ne 0 ]
 	then # 実行中のJOBが存在する場合
 		return 0
 	else # 実行中のJOBが存在しない場合
@@ -206,14 +206,14 @@ start_all() {
 	echo "#########################################################"
 	local jobExePid=$(ps -e -o pid,cmd | grep Zipc_JobExecutor.jar | grep -v grep | awk '{ print $1 }');
 	has_running_job
-	local hasRunJob=$? 
+	local hasRunJob=$?
 	if [ -n "$jobExePid" ] && [ $hasRunJob -eq 0 ] ; then
 		echo "Job Executorが実行中で、stop_all を実行してから start_allをもう一回実行してください。";
 		return 1
 	fi
 
 	has_running_task
-	local hasRunTask=$? 
+	local hasRunTask=$?
 	if [ $hasRunTask -eq 0 ] ; then
 		echo "Airflowのタスクが実行中で、stop_all を実行してから start_allをもう一回実行してください。";
 		return 1
@@ -250,14 +250,14 @@ stop_all() {
 	echo "#########################################################"
 	local jobExePid=$(ps -e -o pid,cmd | grep Zipc_JobExecutor.jar | grep -v grep | awk '{ print $1 }');
 	has_running_job
-	local hasRunJob=$? 
+	local hasRunJob=$?
 	if [ -n "$jobExePid" ] && [ $hasRunJob -eq 0 ] ; then
 		echo "Job Executorが実行中で、サーバの停止を取り消しました。";
 		return 1
 	fi
 
 	has_running_task
-	local hasRunTask=$? 
+	local hasRunTask=$?
 	if [ $hasRunTask -eq 0 ] ; then
 		echo "Airflowのタスクが実行中で、サーバの停止を取り消しました。";
 		return 1
@@ -319,12 +319,12 @@ build_all() {
 	'
     # ビルド資材の配布
 	# warの資材
-	if [ ! -d "/home/garden-user/garden/war" ]; then mkdir -p /home/garden-user/garden/war; else rm -rf /home/garden-user/garden/war/*; fi;
-	cp /home/garden-user/garden/garden-repo/RDFViewer/prefix.properties /home/garden-user/garden/war;
-	cp /home/garden-user/garden/garden-repo/RDFViewer/target/RDFViewer.war /home/garden-user/garden/war;
-	cp /home/garden-user/garden/garden-repo/Zipc_Webplatform/Zipc_Webplatform.war /home/garden-user/garden/war;
-	cp /home/garden-user/garden/garden-repo/com.zipc.garden.webplatform.dsl.sc.parent/com.zipc.garden.webplatform.dsl.sc.web/target/com.zipc.garden.webplatform.dsl.sc.web.war /home/garden-user/garden/war;
-	cp /home/garden-user/garden/garden-repo/com.zipc.garden.webplatform.dsl.fmc.parent/com.zipc.garden.webplatform.dsl.fmc.web/target/com.zipc.garden.webplatform.dsl.fmc.web.war /home/garden-user/garden/war;
+	if [ ! -d "/home/garden-user/garden/war" ]; then sudo mkdir -p /home/garden-user/garden/war; else sudo rm -rf /home/garden-user/garden/war/*; fi;
+	sudo cp /home/garden-user/garden/garden-repo/RDFViewer/prefix.properties /home/garden-user/garden/war;
+	sudo cp /home/garden-user/garden/garden-repo/RDFViewer/target/RDFViewer.war /home/garden-user/garden/war;
+	sudo cp /home/garden-user/garden/garden-repo/Zipc_Webplatform/Zipc_Webplatform.war /home/garden-user/garden/war;
+	sudo cp /home/garden-user/garden/garden-repo/com.zipc.garden.webplatform.dsl.sc.parent/com.zipc.garden.webplatform.dsl.sc.web/target/com.zipc.garden.webplatform.dsl.sc.web.war /home/garden-user/garden/war;
+	sudo cp /home/garden-user/garden/garden-repo/com.zipc.garden.webplatform.dsl.fmc.parent/com.zipc.garden.webplatform.dsl.fmc.web/target/com.zipc.garden.webplatform.dsl.fmc.web.war /home/garden-user/garden/war;
 
 	# warファイルをTomcatにコピーする
 	sudo ls -l /home/garden-user/etc/tomcat/webapps/;
@@ -362,13 +362,13 @@ build_all() {
 	'
 
 	# scriptの資材
-	cp -fR /home/garden-user/garden/garden-repo/RDFCompact/target/RDFCompact.jar /home/garden-user/garden/script/CompactDatabase.jar;
+	sudo cp -fR /home/garden-user/garden/garden-repo/RDFCompact/target/RDFCompact.jar /home/garden-user/garden/script/CompactDatabase.jar;
 
 	# Job Executorの資材
-	if [ ! -d "/home/garden-user/garden/job_executor" ]; then mkdir -p /home/garden-user/garden/job_executor; else rm -rf /home/garden-user/garden/job_executor/*; fi;
-	cp -rf /home/garden-user/garden/garden-repo/Zipc_JobExecutor/lib /home/garden-user/garden/job_executor;
-	cp -rf /home/garden-user/garden/garden-repo/Zipc_JobExecutor/acts_cmd_2.92.jar /home/garden-user/garden/job_executor;
-	cp -rf /home/garden-user/garden/garden-repo/Zipc_JobExecutor/Zipc_JobExecutor.jar /home/garden-user/garden/job_executor;
+	if [ ! -d "/home/garden-user/garden/job_executor" ]; then sudo mkdir -p /home/garden-user/garden/job_executor; else sudo rm -rf /home/garden-user/garden/job_executor/*; fi;
+	sudo cp -rf /home/garden-user/garden/garden-repo/Zipc_JobExecutor/lib /home/garden-user/garden/job_executor;
+	sudo cp -rf /home/garden-user/garden/garden-repo/Zipc_JobExecutor/acts_cmd_2.92.jar /home/garden-user/garden/job_executor;
+	sudo cp -rf /home/garden-user/garden/garden-repo/Zipc_JobExecutor/Zipc_JobExecutor.jar /home/garden-user/garden/job_executor;
 
 
 	# Nodeプロジェクトのビルド
