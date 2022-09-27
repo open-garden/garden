@@ -46,14 +46,14 @@ class RdfGraphAccessor(object):
     #     print('%s: %s' % (result["label"]["xml:lang"], result["label"]["value"]))
     # print(results)
   @staticmethod
-  def get_scene_periods(measurement, sukura32_name):
+  def get_scene_periods(measurement, sakura32_name):
     """
 
     :param _id:
     :return:
     """
     sparql = SPARQLWrapper(ENDPOINT)
-    sparql.setQuery(create_sparql_str(measurement, sukura32_name))
+    sparql.setQuery(create_sparql_str(measurement, sakura32_name))
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
   
